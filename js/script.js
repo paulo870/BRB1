@@ -124,7 +124,7 @@ function loadStudentUnit(unitNumber) {
     loadImage(currentImages[currentIndex]);
     prevBtn.style.display = "block";
     nextBtn.style.display = "block";
-};
+}
 
 // ==========================
 // ACTIVITY BOOK
