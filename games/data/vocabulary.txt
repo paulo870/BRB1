@@ -51,7 +51,7 @@
 49. company
 50. specialize
  
-# Unit 1: Companies
+# Unit 2: Companies
 1. contact   
 2. network   
 3. colleague   
