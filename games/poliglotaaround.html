@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071b20">
+  <title>Poliglota Around</title>
+  <link rel="stylesheet" href="css/poliglotaaround.css">
+</head>
+<body>
+  <main class="app-shell">
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">P</span>
+        <span>POLIGLOTA <b>AROUND</b></span>
+      </div>
+
+      <div class="unit-pill" id="unit-pill">
+        LOADING UNIT…
+      </div>
+    </header>
+
+    <!-- SETUP SCREEN -->
+    <section id="setup-screen" class="screen setup-screen">
+
+      <div class="eyebrow">
+        ACADEMIA POLIGLOTA · CLASSROOM GAME
+      </div>
+
+      <h1>Ready to <span>play?</span></h1>
+
+      <p class="intro">
+        Set up the players and rounds. The selected unit's vocabulary
+        will be used throughout the game.
+      </p>
+
+      <div class="setup-card">
+
+        <div class="setup-grid">
+
+          <label class="field">
+            <span>NUMBER OF PLAYERS</span>
+
+            <select id="player-count">
+              <option value="1">1 player</option>
+              <option value="2" selected>2 players</option>
+              <option value="3">3 players</option>
+              <option value="4">4 players</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>NUMBER OF ROUNDS</span>
+
+            <select id="round-count">
+              <option value="3" selected>3 rounds</option>
+              <option value="5">5 rounds</option>
+              <option value="8">8 rounds</option>
+            </select>
+          </label>
+
+        </div>
+
+        <div id="player-fields" class="player-fields"></div>
+
+        <div class="vocab-status" id="vocab-status">
+          Loading unit vocabulary…
+        </div>
+
+        <button id="start-btn" class="primary-btn" disabled>
+          START GAME <span>→</span>
+        </button>
+
+      </div>
+    </section>
+
+
+    <!-- GAME SCREEN -->
+    <section id="game-screen" class="screen game-screen" hidden>
+
+      <div class="game-heading">
+
+        <div>
+          <div class="eyebrow">POLIGLOTA AROUND</div>
+          <h1 id="round-title">ROUND 1 / 3</h1>
+        </div>
+
+        <button class="quiet-btn" id="end-game-btn">
+          Finish game
+        </button>
+
+      </div>
+
+
+      <div class="game-layout">
+
+        <!-- GAME CARD -->
+        <section class="wheel-panel">
+
+          <div class="wheel-instruction" id="instruction">
+            Look at the colour card.
+          </div>
+
+          <button
+            class="flip-card"
+            id="flip-card"
+            aria-label="Flip card to reveal the three words"
+          >
+
+            <span class="flip-inner" id="flip-inner">
+
+              <span class="card-face colour-face" id="colour-face">
+              </span>
+
+              <span class="card-face words-face" id="words-face">
+              </span>
+
+            </span>
+
+          </button>
+
+
+          <div class="card-controls">
+
+            <button class="secondary-btn" id="flip-btn">
+              REVEAL THREE WORDS
+            </button>
+
+            <button class="text-btn" id="answer-btn">
+              Show colour answer
+            </button>
+
+          </div>
+
+
+          <div class="answer-box" id="answer-box" hidden>
+          </div>
+
+
+          <div class="round-controls">
+
+            <button class="primary-btn" id="next-round-btn">
+              NEXT ROUND →
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <!-- SCOREBOARD -->
+        <aside class="score-panel">
+
+          <div class="score-head">
+
+            <div>
+              <div class="eyebrow">LIVE SCORE</div>
+              <h2>Scoreboard</h2>
+            </div>
+
+            <span class="score-unit">
+              +100 PTS
+            </span>
+
+          </div>
+
+
+          <div id="score-list" class="score-list">
+          </div>
+
+
+          <button class="reset-btn" id="reset-round-btn">
+            ↺ Reset this round's points
+          </button>
+
+
+          <div class="score-note">
+            The teacher awards points to the player who reads the
+            three words correctly first.
+          </div>
+
+        </aside>
+
+      </div>
+
+    </section>
+
+
+    <!-- RESULTS SCREEN -->
+    <section id="result-screen" class="screen result-screen" hidden>
+
+      <div class="eyebrow">GAME COMPLETE</div>
+
+      <h1>That's a <span>wrap!</span></h1>
+
+      <p class="intro">
+        Final scores for this Poliglota Around game.
+      </p>
+
+      <div id="final-scores" class="final-scores">
+      </div>
+
+      <button class="primary-btn" id="play-again-btn">
+        PLAY AGAIN ↻
+      </button>
+
+    </section>
+
+  </main>
+
+
+  <!-- SHARED VOCABULARY SYSTEM -->
+  <script src="js/vocabulary.js"></script>
+
+  <!-- POLIGLOTA AROUND GAME -->
+  <script src="js/poliglotaaround.js"></script>
+
+</body>
+</html>
