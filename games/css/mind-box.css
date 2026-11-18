@@ -4,8 +4,12 @@
 
 body {
     margin: 0;
-    background: #f1f7f7;
-    color: #183638;
+    background: radial-gradient(
+        circle at 50% -10%,
+        #16464a 0,
+        #071b20 54%
+    );
+    color: #ffffff;
     font-family: Inter, Arial, sans-serif;
 }
 
@@ -39,10 +43,11 @@ header h1 {
 }
 
 .panel {
-    background: white;
+    background: #0d292e;
+    color: #ffffff;
     padding: 25px;
     border-radius: 18px;
-    box-shadow: 0 10px 35px rgba(1, 88, 93, .08);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, .25);
 }
 
 select {
