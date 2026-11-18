@@ -1,0 +1,10 @@
+1|What is a company?|A person who works alone|An organisation that provides goods or services|A type of department|A business meeting|1
+1|What does headquarters mean?|The main office of an organisation|A small shop|A temporary workplace|An employee's home|0
+1|What is a branch?|A company's main director|A type of employee|An office belonging to a larger organisation|A business document|2
+1|Who is an employee?|Someone who owns a building|A person who works for an organisation|A company's customer|A business founder|1
+1|Who is an employer?|A person who buys products|A person who works for free|A person or organisation that gives someone a job|A company competitor|2
+1|What is a department?|A section of an organisation|A company customer|A business partner|A private office|0
+1|Who is a founder?|A person who establishes an organisation|A person who visits a company|A temporary employee|A company customer|0
+1|Who is a manager?|A person responsible for organising a team|A person who buys products|A company's receptionist only|A business competitor|0
+1|What is a colleague?|A business owner|A person who works with you|A company building|A company director only|1
+1|What is a client?|A person who manages employees|A company department|A person or organisation receiving professional services|A business founder|2
