@@ -677,7 +677,10 @@ let selectedGameUnit = null;
 // AVAILABLE GAME FILES
 
 const availableGames = {
-    poliglotaaround: "poliglotaaround.html"
+    poliglotaaround: "poliglotaaround/poliglotaaround.html",
+    categories: "categories.html",
+    "word-ladder": "word-ladder.html",
+    "mind-box": "mind-box.html"
 };
 
 
