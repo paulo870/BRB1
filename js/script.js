@@ -1558,3 +1558,154 @@ sidebarToggle.addEventListener("click", function() {
     );
 
 });
+/* =====================================================
+   PRACTICE ENVIRONMENT
+===================================================== */
+
+const practiceBtn = document.getElementById("practice-btn");
+
+const practiceEnvironment =
+    document.getElementById("practice-environment");
+
+const practiceFrame =
+    document.getElementById("practice-frame");
+
+const practicePageLabel =
+    document.getElementById("practice-page-label");
+
+const hidePracticeBtn =
+    document.getElementById("hide-practice-btn");
+
+
+// =====================================================
+// IDENTIFY CURRENT PRESENTATION PAGE
+// =====================================================
+
+function getCurrentPracticePage() {
+
+    if (!currentImages || currentImages.length === 0) {
+        return null;
+    }
+
+    const pageSrc = currentImages[currentIndex];
+
+    if (!pageSrc) {
+        return null;
+    }
+
+    let bookType;
+
+    if (pageSrc.includes("student-book-pages")) {
+
+        bookType = "student";
+
+    } else if (pageSrc.includes("activity-book-pages")) {
+
+        bookType = "activity";
+
+    } else {
+
+        return null;
+
+    }
+
+    const unitMatch = pageSrc.match(/unit_(\d+)/i);
+
+    const pageMatch = pageSrc.match(/page(\d+)/i);
+
+    if (!unitMatch || !pageMatch) {
+        return null;
+    }
+
+    return {
+
+        book: bookType,
+
+        unit: Number(unitMatch[1]),
+
+        page: Number(pageMatch[1])
+
+    };
+
+}
+
+
+// =====================================================
+// UPDATE PRACTICE BUTTON
+// =====================================================
+
+function updatePracticeButton() {
+
+    const page = getCurrentPracticePage();
+
+    practiceBtn.style.display = page ? "flex" : "none";
+
+}
+
+
+// =====================================================
+// OPEN PRACTICE ENVIRONMENT
+// =====================================================
+
+practiceBtn.addEventListener("click", function(e) {
+
+    e.preventDefault();
+
+    e.stopPropagation();
+
+    const page = getCurrentPracticePage();
+
+    if (!page) return;
+
+    const practiceUrl =
+
+        `practice/index.html?book=${page.book}` +
+        `&unit=${page.unit}` +
+        `&page=${page.page}`;
+
+    practiceFrame.src = practiceUrl;
+
+    practicePageLabel.textContent =
+
+        `${page.book.toUpperCase()} BOOK | ` +
+        `UNIT ${String(page.unit).padStart(2, "0")} | ` +
+        `PAGE ${page.page}`;
+
+    practiceEnvironment.classList.add("active");
+
+});
+
+
+// =====================================================
+// CLOSE PRACTICE ENVIRONMENT
+// =====================================================
+
+hidePracticeBtn.addEventListener("click", function() {
+
+    practiceFrame.src = "about:blank";
+
+    practiceEnvironment.classList.remove("active");
+
+});
+
+
+// =====================================================
+// UPDATE BUTTON WHEN CHANGING PAGES
+// =====================================================
+
+const originalLoadImage = loadImage;
+
+loadImage = function(src) {
+
+    originalLoadImage(src);
+
+    updatePracticeButton();
+
+};
+
+
+// =====================================================
+// INITIAL STATE
+// =====================================================
+
+updatePracticeButton();
