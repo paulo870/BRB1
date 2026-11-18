@@ -573,22 +573,22 @@ const unitVideos = {
     1: {
         },
     3: {
-        24: ["br2e_p-i_v1_1","br2e_p-i_v1_2","br2e_p-i_v1_3"]
+        24: ["br2e_p-i_v1_1","br2e_p-i_v1_2","br2e_p-i_v1_3"],
         25: ["br2e_p-i_v1_4final"]
     },
 
     6: {
-        44: ["br2e_p-i_v2_1"]
+        44: ["br2e_p-i_v2_1"],
         45: ["br2e_p-i_v2_2","br2e_p-i_v2_3"]
     },
 
     9: {
-        64: ["br2e_p-i_v3_1"]
+        64: ["br2e_p-i_v3_1"],
         65: ["br2e_p-i_v3_2"]
     },
 
     12: {
-        84: ["br2e_p-i_v4_1"]
+        84: ["br2e_p-i_v4_1"],
         85: ["br2e_p-i_v4_2"]
     }
 };
