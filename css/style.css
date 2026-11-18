@@ -3442,3 +3442,130 @@ select:focus-visible {
     }
 
 }
+/* =========================================================
+   SIDEBAR TOGGLE SYSTEM
+   ========================================================= */
+
+#sidebar-toggle {
+    position: fixed;
+
+    top: 50%;
+    left: 90px;
+
+    transform: translateY(-50%);
+
+    width: 25px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    font-size: 23px;
+    font-weight: 600;
+
+    color: #ffffff;
+
+    background: rgba(13, 57, 73, 0.95);
+
+    border: 1px solid rgba(72, 224, 130, 0.25);
+    border-left: none;
+
+    border-radius: 0 9px 9px 0;
+
+    cursor: pointer;
+
+    z-index: 6000;
+
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
+
+    transition:
+        left 0.3s ease,
+        background 0.2s ease;
+}
+
+#sidebar-toggle:hover {
+    background: #165b74;
+}
+
+
+/* =========================================================
+   SMOOTH SIDEBAR TRANSITIONS
+   ========================================================= */
+
+.control-bar,
+.slide-container {
+    transition:
+        left 0.3s ease,
+        width 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* =========================================================
+   HIDDEN SIDEBAR
+   ========================================================= */
+
+body.sidebar-hidden .control-bar {
+    transform: translateX(-100%);
+}
+
+body.sidebar-hidden .slide-container {
+    left: 0;
+    width: 100%;
+}
+
+body.sidebar-hidden #sidebar-toggle {
+    left: 0;
+    border-left: 1px solid rgba(72, 224, 130, 0.25);
+    border-radius: 0 9px 9px 0;
+}
+
+
+/* =========================================================
+   NAVIGATION ADJUSTMENT
+   ========================================================= */
+
+body.sidebar-hidden #prev-btn {
+    left: 35px;
+}
+
+
+/* =========================================================
+   RESTORE SIDEBAR POSITION
+   ========================================================= */
+
+body:not(.sidebar-hidden) #sidebar-toggle {
+    left: 90px;
+}
+
+
+/* =========================================================
+   MOBILE ADJUSTMENTS
+   ========================================================= */
+
+@media (max-width: 1100px) {
+    body:not(.sidebar-hidden) #sidebar-toggle {
+        left: 78px;
+    }
+}
+
+@media (max-width: 850px) {
+    body:not(.sidebar-hidden) #sidebar-toggle {
+        left: 70px;
+    }
+}
+
+@media (max-width: 600px) {
+    body:not(.sidebar-hidden) #sidebar-toggle {
+        left: 62px;
+    }
+}
+
+@media (max-width: 420px) {
+    body:not(.sidebar-hidden) #sidebar-toggle {
+        left: 56px;
+    }
+}
