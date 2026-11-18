@@ -1,0 +1,540 @@
+/* =====================================================
+   POLIGLOTA PRACTICE PLATFORM
+===================================================== */
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background: #f3f7f7;
+
+    font-family: Inter, Arial, sans-serif;
+
+    color: #183638;
+
+}
+
+
+.practice-container {
+
+    width: min(1050px, 92%);
+
+    margin: 45px auto;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.practice-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 35px;
+
+}
+
+
+.brand {
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #668183;
+
+}
+
+
+.practice-header h1 {
+
+    margin: 12px 0 8px;
+
+    font-size: 32px;
+
+    color: #183638;
+
+}
+
+
+.practice-header p {
+
+    color: #738789;
+
+    font-size: 14px;
+
+}
+
+
+.page-information {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 8px;
+
+}
+
+
+.page-information span {
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.page-information strong {
+
+    font-size: 14px;
+
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress-section {
+
+    margin-bottom: 30px;
+
+}
+
+
+.progress-information {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+
+    font-size: 12px;
+
+    color: #668183;
+
+}
+
+
+.progress-track {
+
+    width: 100%;
+
+    height: 7px;
+
+    background: #dce7e7;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+}
+
+
+#progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: #23877e;
+
+    border-radius: 20px;
+
+    transition: width 0.3s ease;
+
+}
+
+
+/* =====================================================
+   EXERCISE CONTAINER
+===================================================== */
+
+#exercise-container {
+
+    min-height: 380px;
+
+    padding: 40px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+
+        0 5px 25px rgba(0,0,0,0.04);
+
+}
+
+
+.exercise-type {
+
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    background: #e6f2f0;
+
+    color: #23877e;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+.exercise-title {
+
+    margin: 22px 0 12px;
+
+    font-size: 25px;
+
+}
+
+
+.exercise-instructions {
+
+    margin-bottom: 30px;
+
+    color: #758687;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+
+}
+
+
+/* =====================================================
+   AUDIO
+===================================================== */
+
+.exercise-audio {
+
+    width: 100%;
+
+    margin: 20px 0;
+
+}
+
+
+.answer-input {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    padding: 15px;
+
+    border: 1px solid #dce5e5;
+
+    border-radius: 7px;
+
+    font-size: 16px;
+
+    outline: none;
+
+}
+
+
+.answer-input:focus {
+
+    border-color: #23877e;
+
+}
+
+
+/* =====================================================
+   MULTIPLE CHOICE
+===================================================== */
+
+.answer-options {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+}
+
+
+.answer-option {
+
+    padding: 18px;
+
+    border: 1px solid #dce5e5;
+
+    border-radius: 8px;
+
+    background: white;
+
+    color: #183638;
+
+    text-align: left;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+.answer-option:hover {
+
+    border-color: #23877e;
+
+    background: #f2f8f7;
+
+}
+
+
+.answer-option.selected {
+
+    border-color: #23877e;
+
+    background: #e6f2f0;
+
+}
+
+
+/* =====================================================
+   CLOZE
+===================================================== */
+
+.cloze-text {
+
+    font-size: 19px;
+
+    line-height: 2.2;
+
+}
+
+
+.cloze-input {
+
+    width: 160px;
+
+    padding: 7px;
+
+    border: none;
+
+    border-bottom: 2px solid #23877e;
+
+    font-size: 17px;
+
+    text-align: center;
+
+    outline: none;
+
+}
+
+
+/* =====================================================
+   FEEDBACK
+===================================================== */
+
+#exercise-feedback {
+
+    margin-top: 25px;
+
+    padding: 15px;
+
+    border-radius: 7px;
+
+    display: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+
+#exercise-feedback.correct {
+
+    display: block;
+
+    background: #e6f6ed;
+
+    color: #21834c;
+
+}
+
+
+#exercise-feedback.incorrect {
+
+    display: block;
+
+    background: #fff0ed;
+
+    color: #c64b37;
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.practice-navigation {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+}
+
+
+.practice-navigation button {
+
+    padding: 13px 20px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #183638;
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+.practice-navigation button:disabled {
+
+    opacity: 0.35;
+
+    cursor: not-allowed;
+
+}
+
+
+#check-answer {
+
+    background: #23877e;
+
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.empty-state {
+
+    padding: 70px 20px;
+
+    text-align: center;
+
+}
+
+
+.empty-state h2 {
+
+    margin-bottom: 12px;
+
+}
+
+
+.empty-state p {
+
+    color: #758687;
+
+    line-height: 1.6;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width: 650px) {
+
+    .practice-container {
+
+        margin: 25px auto;
+
+    }
+
+    .practice-header {
+
+        align-items: flex-start;
+
+    }
+
+    .practice-header h1 {
+
+        font-size: 25px;
+
+    }
+
+    #exercise-container {
+
+        padding: 22px;
+
+    }
+
+    .answer-options {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .practice-navigation {
+
+        flex-wrap: wrap;
+
+    }
+
+    .practice-navigation button {
+
+        flex: 1;
+
+        padding: 12px 8px;
+
+    }
+
+}
