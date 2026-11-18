@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Word Ladder | Academia Poliglota</title>
+
+    <link rel="stylesheet" href="css/word-ladder.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header>
+            <a href="../index.html">← Games</a>
+            <span>ACADEMIA POLIGLOTA</span>
+            <h1>Word Ladder</h1>
+            <p>Guess the word. Climb the ladder.</p>
+        </header>
+
+
+        <section id="setup-screen" class="panel">
+
+            <h2>Select your unit</h2>
+
+            <select id="unit-select">
+
+                <option value="">Choose a unit</option>
+
+                <option value="1">Unit 1</option>
+                <option value="2">Unit 2</option>
+                <option value="3">Unit 3</option>
+                <option value="4">Unit 4</option>
+                <option value="5">Unit 5</option>
+                <option value="6">Unit 6</option>
+                <option value="7">Unit 7</option>
+                <option value="8">Unit 8</option>
+                <option value="9">Unit 9</option>
+                <option value="10">Unit 10</option>
+                <option value="11">Unit 11</option>
+                <option value="12">Unit 12</option>
+
+            </select>
+
+            <button id="start-btn">START GAME</button>
+
+            <p id="status"></p>
+
+        </section>
+
+
+        <section id="game-screen" class="panel" hidden>
+
+            <div class="game-info">
+
+                <span id="unit-label">UNIT 01</span>
+
+                <span id="word-progress">WORD 1</span>
+
+                <span id="score">0 PTS</span>
+
+            </div>
+
+
+            <div class="ladder" id="ladder"></div>
+
+
+            <div class="attempts">
+
+                <span>ATTEMPTS</span>
+
+                <div id="lives"></div>
+
+            </div>
+
+
+            <div id="word-tiles" class="word-tiles"></div>
+
+
+            <div class="hint-box">
+
+                <b>HINT</b>
+
+                <p id="hint"></p>
+
+            </div>
+
+
+            <div id="keyboard" class="keyboard"></div>
+
+            <div id="feedback"></div>
+
+            <button id="next-btn" hidden>
+                NEXT WORD
+            </button>
+
+        </section>
+
+
+        <section id="result-screen" class="panel" hidden>
+
+            <h2>Game completed!</h2>
+
+            <div id="final-result"></div>
+
+            <button onclick="location.reload()">
+                PLAY AGAIN
+            </button>
+
+        </section>
+
+    </main>
+
+    <script src="js/word-ladder.js"></script>
+
+</body>
+</html>
