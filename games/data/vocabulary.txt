@@ -1,0 +1,52 @@
+Unit 1: Companies
+1. company   
+2. business   
+3. headquarters   
+4. branch   
+5. department   
+6. employee   
+7. employer   
+8. staff   
+9. colleague   
+10. manager
+11. director   
+12. owner   
+13. founder   
+14. partner   
+15. client   
+16. customer   
+17. supplier   
+18. competitor   
+19. industry   
+20. sector
+21. market   
+22. profit   
+23. revenue   
+24. cost   
+25. budget   
+26. investment   
+27. shareholder   
+28. subsidiary   
+29. multinational   
+30. enterprise
+31. organization   
+32. structure   
+33. team   
+34. workforce   
+35. role   
+36. responsibility   
+37. policy   
+38. strategy   
+39. objective   
+40. target
+41. growth   
+42. expansion   
+43. merger   
+44. acquisition   
+45. brand   
+46. productivity   
+47. turnover   
+48. annual report   
+49. company profile   
+50. specialize
+ 
