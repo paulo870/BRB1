@@ -255,6 +255,14 @@ function applyZoom() {
     slideImage.style.height =
         (slideImage.naturalHeight * currentScale) + "px";
 
+    // Detect whether the image exceeds the visible area
+    const isOverflowing =
+        slideImage.offsetWidth > slideContainer.clientWidth ||
+        slideImage.offsetHeight > slideContainer.clientHeight;
+
+    // Enable top-left alignment when scrolling is necessary
+    slideContainer.classList.toggle("is-zoomed", isOverflowing);
+
     resizeEditCanvas();
 }
 
