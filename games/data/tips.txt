@@ -1,0 +1,13 @@
+# WORD LADDER
+# Format: UNIT|WORD|DEFINITION
+
+1|COMPANY|An organisation that sells products or provides services.
+1|BUSINESS|An activity involving the buying and selling of goods or services.
+1|HEADQUARTERS|The main office of an organisation.
+1|BRANCH|An office or location belonging to a larger organisation.
+1|DEPARTMENT|A section of an organisation responsible for a particular activity.
+1|EMPLOYEE|A person who works for an organisation.
+1|EMPLOYER|A person or organisation that gives someone a job.
+1|MANAGER|A person responsible for controlling or organising a team.
+1|DIRECTOR|A senior person responsible for managing an organisation.
+1|FOUNDER|A person who establishes a company or organisation.
