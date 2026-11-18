@@ -663,39 +663,124 @@ window.addEventListener("load", function() {
 <!-- ==========================
      GAMES HUB
 ========================== -->
+<!-- =====================================================
+     GAMES ENVIRONMENT
+===================================================== -->
 
-<div id="games-hub">
+<div id="games-environment">
 
-    <div class="game-card" data-game="hangman">
-        Hangman
-    </div>
+    <!-- UNIT SELECTION -->
+    <section id="games-unit-screen" class="games-screen">
 
-    <div class="game-card" data-game="poliglota-around">
-        Poliglota Around
-    </div>
+        <div class="games-header">
+            <span class="games-label">ACADEMIA POLIGLOTA</span>
+            <h1>Select Your Unit</h1>
+            <p>Choose one of the 12 units before starting a game.</p>
+        </div>
 
-    <div class="game-card" data-game="scattergories">
-        Scattergories
-    </div>
+        <div id="games-unit-grid">
 
-    <div class="game-card" data-game="trivia">
-        Trivia
-    </div>
+            <button class="games-unit-card" data-unit="1">Unit 01</button>
+            <button class="games-unit-card" data-unit="2">Unit 02</button>
+            <button class="games-unit-card" data-unit="3">Unit 03</button>
+            <button class="games-unit-card" data-unit="4">Unit 04</button>
+            <button class="games-unit-card" data-unit="5">Unit 05</button>
+            <button class="games-unit-card" data-unit="6">Unit 06</button>
+            <button class="games-unit-card" data-unit="7">Unit 07</button>
+            <button class="games-unit-card" data-unit="8">Unit 08</button>
+            <button class="games-unit-card" data-unit="9">Unit 09</button>
+            <button class="games-unit-card" data-unit="10">Unit 10</button>
+            <button class="games-unit-card" data-unit="11">Unit 11</button>
+            <button class="games-unit-card" data-unit="12">Unit 12</button>
+
+        </div>
+
+        <button id="games-exit-btn">Return to Presentation</button>
+
+    </section>
+
+
+    <!-- GAMES HUB -->
+    <section id="games-hub" class="games-screen">
+
+        <div class="games-header">
+            <span class="games-label">ACADEMIA POLIGLOTA</span>
+            <h1>Games Hub</h1>
+
+            <p>
+                Selected unit:
+                <strong id="selected-game-unit-label">Unit 01</strong>
+            </p>
+        </div>
+
+        <button id="change-game-unit-btn">Change Unit</button>
+
+        <div id="games-card-grid">
+
+            <button class="game-card" data-game="poliglotaaround">
+                <span class="game-card-number">01</span>
+                <span class="game-card-title">Poliglota Around</span>
+                <span class="game-card-description">
+                    Explore vocabulary and challenge yourself.
+                </span>
+            </button>
+
+            <button class="game-card" data-game="hangman">
+                <span class="game-card-number">02</span>
+                <span class="game-card-title">Hangman</span>
+                <span class="game-card-description">
+                    Guess the word before time runs out.
+                </span>
+                <span class="game-coming-soon">Coming soon</span>
+            </button>
+
+            <button class="game-card" data-game="scattergories">
+                <span class="game-card-number">03</span>
+                <span class="game-card-title">Scattergories</span>
+                <span class="game-card-description">
+                    Think fast and find words in different categories.
+                </span>
+                <span class="game-coming-soon">Coming soon</span>
+            </button>
+
+            <button class="game-card" data-game="trivia">
+                <span class="game-card-number">04</span>
+                <span class="game-card-title">Trivia</span>
+                <span class="game-card-description">
+                    Test your knowledge and earn points.
+                </span>
+                <span class="game-coming-soon">Coming soon</span>
+            </button>
+
+        </div>
+
+        <button id="games-hub-exit-btn">Return to Presentation</button>
+
+    </section>
+
+
+    <!-- GAME VIEWER -->
+    <section id="game-viewer">
+
+        <div class="game-viewer-header">
+
+            <span id="game-viewer-unit-label">UNIT 01</span>
+
+            <button id="hide-game-btn">
+                ✕ Close Game
+            </button>
+
+        </div>
+
+        <iframe
+            id="game-frame"
+            title="Poliglota Learning Game"
+            allow="autoplay; fullscreen"
+        ></iframe>
+
+    </section>
 
 </div>
-<!-- ==========================
-     GAME VIEWER
-========================== -->
-
-<div id="game-viewer">
-
-    <iframe id="game-frame"></iframe>
-
-</div>
-
-<button id="hide-game-btn">
-    Close Game
-</button>
 <script src="js/script.js"></script>
 </body>
 </html>
