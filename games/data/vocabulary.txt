@@ -51,3 +51,54 @@
 49. company
 50. specialize
  
+# Unit 1: Companies
+1. contact   
+2. network   
+3. colleague   
+4. client   
+5. customer  
+6. supplier   
+7. business  
+8. contact   
+9. email    
+10. mobile 
+11. extension   
+12. switchboard   
+13. receptionist   
+14. operator   
+15. voicemail   
+16. message   
+17. appointment   
+18. meeting   
+19. schedule   
+20. calendar
+21. availability   
+22. introduce   
+23. introduction   
+24. greet   
+25. greeting   
+26. handshake   
+27. formal   
+28. informal   
+29. first name   
+30. surname
+31. title   
+32. position   
+33. job title   
+34. department   
+35. office   
+36. head office   
+37. branch office   
+38. relationship   
+39. professional   
+40. networking
+41. follow up   
+42. touch   
+43. call    
+44. through   
+45. hold   
+46. spell   
+47. pronounce   
+48. confirm   
+49. cancel   
+50. reschedule
