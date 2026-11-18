@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mind Box | Academia Poliglota</title>
+
+    <link rel="stylesheet" href="css/mind-box.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header>
+
+            <a href="../index.html">← Games</a>
+
+            <span>ACADEMIA POLIGLOTA</span>
+
+            <h1>Mind Box</h1>
+
+            <p>Think. Choose. Challenge your brain.</p>
+
+        </header>
+
+
+        <section id="setup-screen" class="panel">
+
+            <h2>Select your unit</h2>
+
+            <select id="unit-select">
+
+                <option value="">Choose a unit</option>
+
+                <option value="1">Unit 1</option>
+                <option value="2">Unit 2</option>
+                <option value="3">Unit 3</option>
+                <option value="4">Unit 4</option>
+                <option value="5">Unit 5</option>
+                <option value="6">Unit 6</option>
+                <option value="7">Unit 7</option>
+                <option value="8">Unit 8</option>
+                <option value="9">Unit 9</option>
+                <option value="10">Unit 10</option>
+                <option value="11">Unit 11</option>
+                <option value="12">Unit 12</option>
+
+            </select>
+
+            <button id="start-btn">
+                START CHALLENGE
+            </button>
+
+            <p id="status"></p>
+
+        </section>
+
+
+        <section id="game-screen" class="panel" hidden>
+
+            <div class="brain-header">
+
+                <div class="brain">
+
+                    <svg viewBox="0 0 100 100">
+
+                        <path
+                            d="M50 12
+                               C25 2 15 25 22 40
+                               C5 55 22 80 40 78
+                               C45 92 55 92 60 78
+                               C80 82 95 58 78 40
+                               C85 20 68 2 50 12Z"
+                            fill="#03aaa2"
+                        />
+
+                        <path
+                            d="M50 12 V82"
+                            stroke="white"
+                            stroke-width="3"
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <div class="progress-info">
+
+                    <span id="question-number">
+                        QUESTION 1
+                    </span>
+
+                    <div class="progress-bar">
+
+                        <div id="progress"></div>
+
+                    </div>
+
+                    <strong id="score">
+                        0 POINTS
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div id="question"></div>
+
+            <div id="options" class="options"></div>
+
+            <div id="feedback"></div>
+
+        </section>
+
+
+        <section id="result-screen" class="panel" hidden>
+
+            <h2>Challenge completed!</h2>
+
+            <div id="final-score"></div>
+
+            <button onclick="location.reload()">
+                PLAY AGAIN
+            </button>
+
+        </section>
+
+    </main>
+
+    <script src="js/mind-box.js"></script>
+
+</body>
+</html>
