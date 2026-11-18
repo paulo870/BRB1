@@ -677,7 +677,7 @@ let selectedGameUnit = null;
 // AVAILABLE GAME FILES
 
 const availableGames = {
-    poliglotaaround: "poliglotaaround/poliglotaaround.html",
+    poliglotaaround: "poliglotaaround.html",
     hangman: "word-ladder.html",
     scattergories: "categories.html",
     trivia: "mind-box.html"
