@@ -1529,3 +1529,24 @@ function updateCursor() {
         drawingCanvas.style.cursor = "pointer";
     }
 }
+// ==========================
+// SIDEBAR TOGGLE
+// ==========================
+
+const sidebarToggle = document.getElementById("sidebar-toggle");
+
+sidebarToggle.addEventListener("click", function() {
+
+    document.body.classList.toggle("sidebar-hidden");
+
+    const isHidden =
+        document.body.classList.contains("sidebar-hidden");
+
+    sidebarToggle.textContent = isHidden ? "›" : "‹";
+
+    sidebarToggle.setAttribute(
+        "aria-label",
+        isHidden ? "Show sidebar" : "Hide sidebar"
+    );
+
+});
