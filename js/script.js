@@ -646,27 +646,157 @@ videoBtn.addEventListener("click", function(e) {
 window.addEventListener("click", () => {
     videoListContainer.style.display = "none";
 });
-const gamesBtn =
-    document.getElementById("games-btn");
+/* =========================================================
+   GAMES ENVIRONMENT
+========================================================= */
 
-const gamesHub =
-    document.getElementById("games-hub");
+const gamesBtn = document.getElementById("games-btn");
 
-const gameCards =
-    document.querySelectorAll(".game-card");
+const gamesEnvironment = document.getElementById("games-environment");
 
-  // ==========================
-// GAMES BUTTON
-// ==========================
+const gamesUnitScreen = document.getElementById("games-unit-screen");
+const gamesHub = document.getElementById("games-hub");
+const gameViewer = document.getElementById("game-viewer");
+
+const gameFrame = document.getElementById("game-frame");
+
+const gameCards = document.querySelectorAll(".game-card");
+const gameUnitCards = document.querySelectorAll(".games-unit-card");
+
+const selectedGameUnitLabel = document.getElementById("selected-game-unit-label");
+const gameViewerUnitLabel = document.getElementById("game-viewer-unit-label");
+
+const changeGameUnitBtn = document.getElementById("change-game-unit-btn");
+const gamesExitBtn = document.getElementById("games-exit-btn");
+const gamesHubExitBtn = document.getElementById("games-hub-exit-btn");
+const hideGameBtn = document.getElementById("hide-game-btn");
+
+let selectedGameUnit = null;
+
+
+// AVAILABLE GAME FILES
+
+const availableGames = {
+    poliglotaaround: "poliglotaaround.html"
+};
+
+
+// OPEN GAMES ENVIRONMENT
 
 gamesBtn.addEventListener("click", function(e) {
 
     e.preventDefault();
     e.stopPropagation();
 
-    window.location.href = "https://play.poliglotaangola.com/";
+    gamesEnvironment.classList.add("active");
+
+    gamesUnitScreen.classList.add("active");
+    gamesHub.classList.remove("active");
+    gameViewer.classList.remove("active");
 
 });
+
+
+// SELECT UNIT
+
+gameUnitCards.forEach(button => {
+
+    button.addEventListener("click", function() {
+
+        selectedGameUnit = Number(this.dataset.unit);
+
+        sessionStorage.setItem(
+            "poliglotaSelectedGameUnit",
+            selectedGameUnit
+        );
+
+        selectedGameUnitLabel.textContent =
+            `Unit ${String(selectedGameUnit).padStart(2, "0")}`;
+
+        gamesUnitScreen.classList.remove("active");
+        gamesHub.classList.add("active");
+
+    });
+
+});
+
+
+// CHANGE UNIT
+
+changeGameUnitBtn.addEventListener("click", function() {
+
+    gameViewer.classList.remove("active");
+    gamesHub.classList.remove("active");
+    gamesUnitScreen.classList.add("active");
+
+});
+
+
+// OPEN GAME
+
+gameCards.forEach(card => {
+
+    card.addEventListener("click", function() {
+
+        const gameName = this.dataset.game;
+
+        const gameFile = availableGames[gameName];
+
+        if (!gameFile) {
+            return;
+        }
+
+        if (!selectedGameUnit) {
+            gamesHub.classList.remove("active");
+            gamesUnitScreen.classList.add("active");
+            return;
+        }
+
+        const gameUrl =
+            `games/${gameFile}?unit=${selectedGameUnit}`;
+
+        gameFrame.src = gameUrl;
+
+        gameViewerUnitLabel.textContent =
+            `UNIT ${String(selectedGameUnit).padStart(2, "0")}`;
+
+        gamesHub.classList.remove("active");
+        gameViewer.classList.add("active");
+
+    });
+
+});
+
+
+// CLOSE GAME AND RETURN TO HUB
+
+hideGameBtn.addEventListener("click", function() {
+
+    gameFrame.src = "about:blank";
+
+    gameViewer.classList.remove("active");
+    gamesHub.classList.add("active");
+
+});
+
+
+// RETURN TO PRESENTATION
+
+function closeGamesEnvironment() {
+
+    gameFrame.src = "about:blank";
+
+    gamesEnvironment.classList.remove("active");
+
+    gamesUnitScreen.classList.remove("active");
+    gamesHub.classList.remove("active");
+    gameViewer.classList.remove("active");
+
+}
+
+gamesExitBtn.addEventListener("click", closeGamesEnvironment);
+
+gamesHubExitBtn.addEventListener("click", closeGamesEnvironment);
 
 // ==========================
 // DRAWING TARGET SYSTEM (NEW CORE FIX)
