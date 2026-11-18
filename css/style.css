@@ -3612,3 +3612,26 @@ body:not(.sidebar-hidden) #sidebar-toggle {
         left: 56px;
     }
 }
+/* =========================================================
+   NAVIGATION BUTTONS — HOVER TO REVEAL
+   ========================================================= */
+
+#prev-btn,
+#next-btn {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+/* Show buttons when hovering over them */
+
+#prev-btn:hover,
+#next-btn:hover {
+    opacity: 1;
+}
+
+/* Keep buttons visible when selected using the keyboard */
+
+#prev-btn:focus-visible,
+#next-btn:focus-visible {
+    opacity: 1;
+}
