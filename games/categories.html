@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Categories | Academia Poliglota</title>
+
+    <link rel="stylesheet" href="css/categories.css">
+</head>
+
+<body>
+
+    <main class="game-container">
+
+        <header class="game-header">
+            <a href="../index.html" class="back-btn">← Back</a>
+
+            <div>
+                <span class="eyebrow">ACADEMIA POLIGLOTA</span>
+                <h1>Categories</h1>
+                <p>One letter. Five categories. Think fast!</p>
+            </div>
+        </header>
+
+
+        <!-- SETUP -->
+
+        <section id="setup-screen" class="panel">
+
+            <h2>Player Setup</h2>
+
+            <label>
+                Number of players
+
+                <select id="player-count">
+                    <option value="2">2 Players</option>
+                    <option value="3">3 Players</option>
+                    <option value="4">4 Players</option>
+                </select>
+            </label>
+
+            <div id="player-fields"></div>
+
+            <label>
+                Round duration
+
+                <select id="round-duration">
+                    <option value="60">60 seconds</option>
+                    <option value="90">90 seconds</option>
+                    <option value="120">120 seconds</option>
+                </select>
+            </label>
+
+            <button id="start-btn" class="primary-btn">
+                START GAME
+            </button>
+
+        </section>
+
+
+        <!-- GAME -->
+
+        <section id="game-screen" class="panel" hidden>
+
+            <div class="game-top">
+
+                <div>
+                    <span class="eyebrow">CURRENT LETTER</span>
+                    <div id="current-letter">A</div>
+                </div>
+
+                <div class="timer-box">
+                    <span>TIME LEFT</span>
+                    <strong id="timer">60</strong>
+                </div>
+
+            </div>
+
+            <div class="categories-grid">
+
+                <label>
+                    NAME
+                    <input data-category="name" placeholder="A name...">
+                </label>
+
+                <label>
+                    PLACE
+                    <input data-category="place" placeholder="A place...">
+                </label>
+
+                <label>
+                    ANIMAL
+                    <input data-category="animal" placeholder="An animal...">
+                </label>
+
+                <label>
+                    OBJECT
+                    <input data-category="object" placeholder="An object...">
+                </label>
+
+                <label>
+                    FOOD
+                    <input data-category="food" placeholder="A food...">
+                </label>
+
+            </div>
+
+            <button id="finish-btn" class="primary-btn">
+                FINISH ROUND
+            </button>
+
+        </section>
+
+
+        <!-- VALIDATION -->
+
+        <section id="validation-screen" class="panel" hidden>
+
+            <h2>Teacher Validation</h2>
+
+            <div id="validation-content"></div>
+
+            <button id="next-round-btn" class="primary-btn">
+                NEXT ROUND
+            </button>
+
+        </section>
+
+
+        <!-- RESULTS -->
+
+        <section id="results-screen" class="panel" hidden>
+
+            <h2>Final Results</h2>
+
+            <div id="results-content"></div>
+
+            <button onclick="location.reload()" class="primary-btn">
+                PLAY AGAIN
+            </button>
+
+        </section>
+
+    </main>
+
+    <script src="js/categories.js"></script>
+
+</body>
+</html>
