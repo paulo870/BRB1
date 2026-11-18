@@ -3635,3 +3635,30 @@ body:not(.sidebar-hidden) #sidebar-toggle {
 #next-btn:focus-visible {
     opacity: 1;
 }
+/* =========================================================
+   ZOOM AND SCROLL FIX
+   ========================================================= */
+
+/* Allow scrolling in both directions */
+.slide-container {
+    overflow: auto !important;
+    scroll-behavior: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent the image from shrinking */
+#slide-image {
+    flex-shrink: 0;
+}
+
+/* When zoomed, start from the top-left corner */
+.slide-container.is-zoomed .slide-wrapper {
+    width: max-content;
+    height: max-content;
+
+    min-width: 100%;
+    min-height: 100%;
+
+    justify-content: flex-start;
+    align-items: flex-start;
+}
