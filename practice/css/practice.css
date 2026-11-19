@@ -1532,13 +1532,14 @@ body {
 
 }
 /* =====================================
-   TABLE CLOZE - PROFESSIONAL DESIGN
+   TABLE CLOZE - COMPACT RESPONSIVE DESIGN
 ===================================== */
 
 .engine-table-wrapper {
     width: 100%;
+    max-width: 100%;
     overflow-x: auto;
-    margin: 25px 0;
+    margin: 18px 0;
     border: 1px solid #d5e0e3;
     border-radius: 8px;
 }
@@ -1546,38 +1547,41 @@ body {
 .engine-table-cloze {
     width: 100%;
     border-collapse: collapse;
+    table-layout: auto;
     background: #ffffff;
-    font-size: 15px;
+    font-size: 14px;
 }
 
-/* TABLE HEADER */
+/* HEADER */
 
 .engine-table-cloze thead th {
+    padding: 11px 14px;
     background: #183638;
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 700;
     text-align: left;
-    padding: 15px 18px;
     border: 1px solid #d5e0e3;
 }
 
-/* ALL TABLE CELLS */
+/* ALL CELLS */
 
 .engine-table-cloze th,
 .engine-table-cloze td {
+    padding: 10px 14px;
     border: 1px solid #d5e0e3;
-    padding: 15px 18px;
     vertical-align: middle;
+    line-height: 1.5;
 }
 
 /* ROW LABELS */
 
 .engine-table-cloze tbody th {
+    width: 28%;
     background: #f1f6f6;
     color: #183638;
-    font-weight: 600;
+    font-weight: 650;
     text-align: left;
-    width: 25%;
+    white-space: normal;
 }
 
 /* ANSWER CELLS */
@@ -1593,44 +1597,65 @@ body {
     background: #f8fbfb;
 }
 
-/* INPUT FIELDS */
+/* ANSWER INPUTS */
 
 .engine-table-cloze-input {
-    width: 150px;
+    display: inline-block;
+    width: 125px;
     max-width: 100%;
-    padding: 8px 10px;
-    border: none;
-    border-bottom: 2px solid #a8bec0;
-    border-radius: 0;
-    background: transparent;
-    outline: none;
-    font-size: 15px;
+    min-width: 65px;
+    padding: 5px 7px;
+    margin: 2px 3px;
+    border: 1px solid #cbdada;
+    border-radius: 5px;
+    background: #ffffff;
     color: #183638;
-    transition: border-color 0.2s ease;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
 }
-
-/* INPUT FOCUS */
 
 .engine-table-cloze-input:focus {
-    border-bottom-color: #168b83;
-    background: #f0f9f8;
+    border-color: #23877e;
+    box-shadow: 0 0 0 2px rgba(35, 135, 126, 0.1);
 }
 
-/* RESPONSIVE */
+/* TABLE QUESTION TEXT */
 
-@media (max-width: 600px) {
+.engine-table-cloze tbody td {
+    white-space: normal;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .engine-table-wrapper {
+        margin: 12px 0;
+        overflow-x: auto;
+    }
 
     .engine-table-cloze {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .engine-table-cloze th,
     .engine-table-cloze td {
-        padding: 10px;
+        padding: 8px 7px;
+        line-height: 1.4;
+    }
+
+    .engine-table-cloze tbody th {
+        width: 32%;
     }
 
     .engine-table-cloze-input {
-        width: 110px;
+        width: 100%;
+        min-width: 0;
+        max-width: 110px;
+        padding: 6px 4px;
+        margin: 3px 0;
+        font-size: 12px;
     }
 
 }
