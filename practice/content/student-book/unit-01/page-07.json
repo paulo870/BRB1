@@ -9,7 +9,7 @@
             "type": "writing",
             "title": "writing",
             "instructions": "Complete these sentences with the words below ",
-            "text": "Company names: provide | revenue | based | employee | operates | specializes | subsidiary | competitor | produce | exporter",
+            "text": "provide | revenue | based | employee | operates | specializes | subsidiary | competitor | produce | exporter",
             
             "questions": [
                 {
@@ -18,26 +18,91 @@
                     "answer": ["produce"]
                 },
                 {
-                    "type": "short-answer",
-                    "question": "This company makes tyres for cars and other vehicles. It is based in France, but it has more than 111,000 employees all over the world. It is also well known for its red and green travel guides.",
-                    "answer": "Michelin"
+                    "type": "cloze",
+                    "text": "Other companies {{blank}} or Offer services.",
+                    "answer": ["provide"]
                 },
                 {
-                    "type": "short-answer",
-                    "question": "It is a Swedish company and operates in 37 countries. It specializes in low-price household products, including furniture, bathrooms and kitchens.",
-                    "answer": "IKEA"
+                    "type": "cloze",
+                    "text": "If you {{blank}} in a product or service, it's your main activity.",
+                    "answer": ["specialize"]
                 },
                 {
-                    "type": "short-answer",
-                    "question": "It is a subsidiary of Unilever. The company makes ice cream and frozen yoghurt, and its main competitor is Häagen-Dazs.",
-                    "answer": "Ben & Jerry's"
+                    "type": "cloze",
+                    "text": "If you work for a company, you are an {{blank}}.",
+                    "answer": ["employee"]
                 },
                 {
-                    "type": "short-answer",
-                    "question": "This company produces many different electrical and electronic products, such as TVs, computers and mobile phones. It is South Korea's largest company and exporter.",
-                    "answer": "Samsung"
-                }
+                    "type": "cloze",
+                    "text": "Your company is {{blank}} in the town or City where it has its head office.",
+                    "answer": ["based"]
+                },
+                {
+                    "type": "cloze",
+                    "text": "If you work in a {{blank}} your company is part of a bigger group.",
+                    "answer": ["subsidiary"]
+                },
+                {
+                    "type": "cloze",
+                    "text": "Your company {{blank}} in a country where it sells or makes its products.",
+                    "answer": ["operates"]
+                },
+                {
+                    "type": "cloze",
+                    "text": "A company in the same business as you is your{{blank}}.",
+                    "answer": ["competitor"]
+                },
+                {
+                    "type": "cloze",
+                    "text": "A company that sells its products in other countries is an {{blank}}",
+                    "answer": ["exporter"]
+                },
+                {
+                    "type": "cloze",
+                    "text": "Your {{blank}} is the money you receive for your products or services.",
+                    "answer": ["revenue"]
+                },
+               
             ]
         }
+
+         {
+            "id": "activity-02",
+            "type": "writing",
+            "title": "writing",
+            "instructions": " Complete this text with words below. Sometimes you need to change the form.",
+            "text": "Company names: provide | based | employee | operates | specializes | subsidiary | competitor | produce",
+            
+            "questions": [
+                {
+                    "type": "cloze",
+                    "text": "Skoda {{blank}} cars and other vehicles. It is a {{blank}} of Volkswagen (VW) Group and it is the third oldest car maker in the world. It's {{blank}} in the Czech Republic, but it is a global company. It {{blank}} in 103 markets and has more than 25,000 {{blank}} worldwide.
+                   Skoda has the advantages of a central European location and technology from the VW Group. For this reason, its costs are lower than many of its {{blank}}, and it {{blank}} in cars which Offer good value for money.
+                    When the company started, it produced bicycles. Today, it continues to {{blank}} support services to the Tour de France and Tour of Britain cycle races.",
+
+                    "answer": [
+                        "produces",
+                        "subsidiary",
+                        "based",
+                        "operates",
+                        "employees",
+                        "competitors",
+                        "specializes",
+                        "provide",
+                    
+                    ]
+                },
+               
+        
+
+
+
+
+
+
+
+
+
+        
     ]
 }
