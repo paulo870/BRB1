@@ -45,6 +45,7 @@ async function loadInteractivePage() {
 
     const contentPath =
         `content/${book}/${unitFolder}/${pageFile}`;
+   console.log("Interactive content URL:", new URL(contentPath, window.location.href).href);
 
     try {
 
