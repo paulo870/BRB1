@@ -87,11 +87,11 @@
                         "competitors",
                         "specializes",
                         "provide"
-                ]
-        }
-    },
-
-  {
+              ]
+                }
+            ]
+        },
+        {
             "id": "activity-03",
             "type": "cloze",
              "title": "ASSA ABLOY Group",
