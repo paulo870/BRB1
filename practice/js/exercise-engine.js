@@ -30,8 +30,7 @@ const ExerciseEngine = (() => {
     }
 
 
-    function createQuestion(question, index) {
-
+function createQuestion(question, index, displayNumber) {
         const type = question.type;
 
         const id = `question-${index}`;
@@ -384,9 +383,12 @@ else if (type === "table-cloze") {
                 data-question-index="${index}"
             >
 
-                <h3>
-                    ${index + 1}. ${escapeHTML(question.question || "")}
-                </h3>
+               <h3>
+    <span class="engine-question-number">${displayNumber}.</span>
+    <span class="engine-question-text">
+        ${escapeHTML(question.question || "")}
+    </span>
+</h3>
 
                 ${content}
 
@@ -474,15 +476,19 @@ else if (type === "table-cloze") {
         }
 
 
-        const questions = (activity.questions || []).map(
-            (question, questionIndex) => {
+       const questions = (activity.questions || []).map(
+    (question, questionIndex) => {
 
-                const globalIndex = `${index}-${questionIndex}`;
+        const globalIndex = `${index}-${questionIndex}`;
 
-                return createQuestion(question, globalIndex);
+        return createQuestion(
+            question,
+            globalIndex,
+            questionIndex + 1
+        );
 
-            }
-        ).join("");
+    }
+).join("");
 
 
         return `
