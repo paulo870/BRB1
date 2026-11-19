@@ -256,6 +256,89 @@
 
         </footer>
 
+        <!-- =================================
+     INTERACTIVE RESULTS MODAL
+================================== -->
+
+<div class="results-modal-overlay"
+     id="results-modal"
+     aria-hidden="true">
+
+    <div class="results-modal"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="results-title">
+
+        <button class="results-close-btn"
+                id="results-close-btn"
+                aria-label="Close results">
+            &times;
+        </button>
+
+        <div class="results-icon" id="results-icon">
+            ✓
+        </div>
+
+        <span class="results-eyebrow">
+            INTERACTIVE PAGE COMPLETED
+        </span>
+
+        <h2 id="results-title">
+            Your Results
+        </h2>
+
+        <div class="results-score">
+            <strong id="results-percentage">0%</strong>
+            <span>Overall Score</span>
+        </div>
+
+        <div class="results-progress-track">
+            <div id="results-progress-bar"></div>
+        </div>
+
+        <div class="results-summary">
+
+            <div class="results-stat correct-stat">
+
+                <span class="results-stat-icon">✓</span>
+
+                <strong id="results-correct">0</strong>
+
+                <span>Correct</span>
+
+            </div>
+
+            <div class="results-stat incorrect-stat">
+
+                <span class="results-stat-icon">×</span>
+
+                <strong id="results-incorrect">0</strong>
+
+                <span>Incorrect</span>
+
+            </div>
+
+        </div>
+
+        <p class="results-message" id="results-message">
+            Keep practising. Every attempt helps you improve.
+        </p>
+
+        <div class="results-actions">
+
+            <button id="results-retry-btn">
+                Try Again
+            </button>
+
+            <button id="results-close-action">
+                Continue
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
     </section>
 
 </div>
