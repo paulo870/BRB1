@@ -1659,3 +1659,63 @@ body {
     }
 
 }
+/* =====================================
+   QUESTION HEADING ALIGNMENT
+===================================== */
+
+.engine-question h3 {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.engine-question-number {
+    flex-shrink: 0;
+    color: #183638;
+    font-weight: 700;
+}
+
+.engine-question-text {
+    flex: 1;
+    min-width: 0;
+}
+/* =====================================
+   TABLE CLOZE - MOBILE FIT
+===================================== */
+
+@media (max-width: 600px) {
+
+    .engine-table-wrapper {
+        width: 100%;
+        overflow-x: hidden;
+        margin: 12px 0;
+    }
+
+    .engine-table-cloze {
+        width: 100%;
+        table-layout: fixed;
+        font-size: 12px;
+    }
+
+    .engine-table-cloze th,
+    .engine-table-cloze td {
+        padding: 7px 5px;
+        overflow-wrap: anywhere;
+    }
+
+    .engine-table-cloze tbody th {
+        width: 32%;
+    }
+
+    .engine-table-cloze-input {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 5px 2px;
+        font-size: 12px;
+    }
+
+}
