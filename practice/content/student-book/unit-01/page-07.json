@@ -61,10 +61,10 @@
                     "type": "cloze",
                     "text": "Your {{blank}} is the money you receive for your products or services.",
                     "answer": ["revenue"]
-                },
+                }
                
             ]
-        }
+        },
 
          {
             "id": "activity-02",
@@ -86,21 +86,10 @@
                         "employees",
                         "competitors",
                         "specializes",
-                        "provide",
+                        "provide"
                     
                     ]
                 },
-               
-        
-
-
-
-
-
-
-
-
-
-        
+                     
     ]
 }
