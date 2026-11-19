@@ -1,3 +1,48 @@
+/* =================================
+   PRACTICE ZONE NAVIGATION
+================================= */
+
+const practiceHome = document.getElementById("practice-home");
+
+const freePracticeView = document.getElementById("free-practice-view");
+
+const interactivePageView = document.getElementById("interactive-page-view");
+
+
+document.getElementById("free-practice-btn").addEventListener("click", () => {
+
+    practiceHome.style.display = "none";
+
+    freePracticeView.style.display = "block";
+
+});
+
+
+document.getElementById("interactive-page-btn").addEventListener("click", () => {
+
+    practiceHome.style.display = "none";
+
+    interactivePageView.style.display = "block";
+
+});
+
+
+document.getElementById("free-practice-back").addEventListener("click", () => {
+
+    freePracticeView.style.display = "none";
+
+    practiceHome.style.display = "block";
+
+});
+
+
+document.getElementById("interactive-page-back").addEventListener("click", () => {
+
+    interactivePageView.style.display = "none";
+
+    practiceHome.style.display = "block";
+
+});
 /* =====================================================
    POLIGLOTA PRACTICE ENGINE
 ===================================================== */
