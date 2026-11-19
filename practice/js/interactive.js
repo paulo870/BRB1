@@ -18,7 +18,29 @@ const showAnswersBtn = document.getElementById(
 const tryAgainBtn = document.getElementById(
     "interactive-try-again-btn"
 );
+/* =========================================
+   RESULTS MODAL ELEMENTS
+========================================= */
 
+const resultsModal = document.getElementById("results-modal");
+
+const resultsCloseBtn = document.getElementById("results-close-btn");
+
+const resultsCloseAction = document.getElementById("results-close-action");
+
+const resultsRetryBtn = document.getElementById("results-retry-btn");
+
+const resultsPercentage = document.getElementById("results-percentage");
+
+const resultsCorrect = document.getElementById("results-correct");
+
+const resultsIncorrect = document.getElementById("results-incorrect");
+
+const resultsProgressBar = document.getElementById("results-progress-bar");
+
+const resultsMessage = document.getElementById("results-message");
+
+const resultsIcon = document.getElementById("results-icon");
 
 const interactiveParams = new URLSearchParams(window.location.search);
 
@@ -39,6 +61,77 @@ const pageFile = `page-${String(page).padStart(2, "0")}.json`;
 
 
 let interactiveActivities = [];
+
+   /* =========================================
+   RESULTS MODAL FUNCTIONS
+========================================= */
+
+function openResultsModal(result) {
+
+    const percentage = result.total > 0
+        ? Math.round((result.correct / result.total) * 100)
+        : 0;
+
+    const incorrect = result.total - result.correct;
+
+    resultsPercentage.textContent = `${percentage}%`;
+
+    resultsCorrect.textContent = result.correct;
+
+    resultsIncorrect.textContent = incorrect;
+
+    resultsProgressBar.style.width = `${percentage}%`;
+
+    if (percentage === 100) {
+
+        resultsMessage.textContent =
+            "Outstanding! You answered every question correctly.";
+
+        resultsIcon.textContent = "★";
+
+    } else if (percentage >= 80) {
+
+        resultsMessage.textContent =
+            "Excellent work! You have demonstrated a strong understanding.";
+
+        resultsIcon.textContent = "✓";
+
+    } else if (percentage >= 60) {
+
+        resultsMessage.textContent =
+            "Good progress! Review your mistakes and keep improving.";
+
+        resultsIcon.textContent = "✓";
+
+    } else {
+
+        resultsMessage.textContent =
+            "Keep practising. Every attempt is an opportunity to improve.";
+
+        resultsIcon.textContent = "↗";
+
+    }
+
+    resultsModal.classList.add("active");
+
+    resultsModal.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+
+    resultsCloseBtn.focus();
+
+}
+
+
+function closeResultsModal() {
+
+    resultsModal.classList.remove("active");
+
+    resultsModal.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = "";
+
+}
 
 
 /* =========================================
@@ -110,9 +203,9 @@ checkInteractiveBtn.addEventListener("click", () => {
         interactiveActivities
     );
 
-    alert(
-        `You got ${result.correct} out of ${result.total} questions correct.`
-    );
+    if (result.total === 0) return;
+
+    openResultsModal(result);
 
 });
 
@@ -145,7 +238,45 @@ tryAgainBtn.addEventListener("click", () => {
 
 });
 
+/* =========================================
+   RESULTS MODAL CONTROLS
+========================================= */
 
+resultsCloseBtn.addEventListener("click", closeResultsModal);
+
+resultsCloseAction.addEventListener("click", closeResultsModal);
+
+resultsModal.addEventListener("click", (event) => {
+
+    if (event.target === resultsModal) {
+        closeResultsModal();
+    }
+
+});
+
+document.addEventListener("keydown", (event) => {
+
+    if (
+        event.key === "Escape" &&
+        resultsModal.classList.contains("active")
+    ) {
+        closeResultsModal();
+    }
+
+});
+
+
+/* =========================================
+   RESULTS RETRY
+========================================= */
+
+resultsRetryBtn.addEventListener("click", () => {
+
+    closeResultsModal();
+
+    ExerciseEngine.reset(interactiveContainer);
+
+});
 /* =========================================
    INITIALIZE
 ========================================= */
