@@ -1,1 +1,43 @@
-
+{
+    "book": "student-book",
+    "unit": 1,
+    "page": 7,
+    "title": "Unit 1 - Page 7",
+    "activities": [
+        {
+            "id": "activity-01",
+            "type": "writing",
+            "title": "writing",
+            "instructions": "Complete these sentences with the words above ",
+            "text": "Company names: provide | revenue | based | employee | operates | specializes | subsidiary | competitor | produce | exporter",
+            
+            "questions": [
+                {
+                    "type": "cloze",
+                    "question": "Some companies make or {{blank}} goods.",
+                    "answer": ["produce"]
+                },
+                {
+                    "type": "short-answer",
+                    "question": "This company makes tyres for cars and other vehicles. It is based in France, but it has more than 111,000 employees all over the world. It is also well known for its red and green travel guides.",
+                    "answer": "Michelin"
+                },
+                {
+                    "type": "short-answer",
+                    "question": "It is a Swedish company and operates in 37 countries. It specializes in low-price household products, including furniture, bathrooms and kitchens.",
+                    "answer": "IKEA"
+                },
+                {
+                    "type": "short-answer",
+                    "question": "It is a subsidiary of Unilever. The company makes ice cream and frozen yoghurt, and its main competitor is Häagen-Dazs.",
+                    "answer": "Ben & Jerry's"
+                },
+                {
+                    "type": "short-answer",
+                    "question": "This company produces many different electrical and electronic products, such as TVs, computers and mobile phones. It is South Korea's largest company and exporter.",
+                    "answer": "Samsung"
+                }
+            ]
+        }
+    ]
+}
