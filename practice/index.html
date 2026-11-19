@@ -16,19 +16,105 @@
 
 <body>
 
-    <div class="practice-container">
+ <div class="practice-container">
 
-        <!-- HEADER -->
+    <!-- =================================
+         PRACTICE HOME
+    ================================== -->
+
+    <section id="practice-home">
+
+        <header class="practice-header">
+
+            <div>
+                <span class="brand">ACADEMIA POLIGLOTA</span>
+
+                <h1>Practice Zone</h1>
+
+                <p>
+                    Choose how you want to practise today.
+                </p>
+            </div>
+
+            <div class="page-information">
+                <span id="unit-label">UNIT 01</span>
+                <strong id="page-label">PAGE 06</strong>
+            </div>
+
+        </header>
+
+
+        <div class="practice-options">
+
+            <!-- FREE PRACTICE -->
+
+            <button class="practice-option"
+                    id="free-practice-btn">
+
+                <span class="practice-option-number">01</span>
+
+                <span class="practice-option-icon">✦</span>
+
+                <strong>Free Practice</strong>
+
+                <p>
+                    Explore additional activities based on
+                    the content of this page.
+                </p>
+
+                <span class="practice-option-link">
+                    Start practising →
+                </span>
+
+            </button>
+
+
+            <!-- INTERACTIVE PAGE -->
+
+            <button class="practice-option"
+                    id="interactive-page-btn">
+
+                <span class="practice-option-number">02</span>
+
+                <span class="practice-option-icon">▤</span>
+
+                <strong>Interactive Page</strong>
+
+                <p>
+                    Complete the original book exercises
+                    digitally and check your answers.
+                </p>
+
+                <span class="practice-option-link">
+                    Open interactive page →
+                </span>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         FREE PRACTICE
+    ================================== -->
+
+    <section id="free-practice-view" style="display:none;">
+
+        <button class="practice-back-btn"
+                id="free-practice-back">
+            ← Back to Practice Zone
+        </button>
+
 
         <header class="practice-header">
 
             <div>
 
-                <span class="brand">
-                    ACADEMIA POLIGLOTA
-                </span>
+                <span class="brand">ACADEMIA POLIGLOTA</span>
 
-                <h1>Practice Zone</h1>
+                <h1>Free Practice</h1>
 
                 <p id="practice-description">
                     Improve your English through interactive exercises.
@@ -38,9 +124,9 @@
 
             <div class="page-information">
 
-                <span id="unit-label">UNIT 01</span>
+                <span id="free-unit-label">UNIT 01</span>
 
-                <strong id="page-label">PAGE 06</strong>
+                <strong id="free-page-label">PAGE 06</strong>
 
             </div>
 
@@ -77,9 +163,7 @@
         <main id="exercise-container">
 
             <div class="loading-message">
-
                 Loading practice activities...
-
             </div>
 
         </main>
@@ -103,7 +187,78 @@
 
         </footer>
 
-    </div>
+    </section>
+
+
+    <!-- =================================
+         INTERACTIVE PAGE
+    ================================== -->
+
+    <section id="interactive-page-view" style="display:none;">
+
+        <button class="practice-back-btn"
+                id="interactive-page-back">
+            ← Back to Practice Zone
+        </button>
+
+
+        <header class="practice-header">
+
+            <div>
+
+                <span class="brand">ACADEMIA POLIGLOTA</span>
+
+                <h1>Interactive Page</h1>
+
+                <p>
+                    Complete the exercises and check your answers.
+                </p>
+
+            </div>
+
+            <div class="page-information">
+
+                <span id="interactive-unit-label">UNIT 01</span>
+
+                <strong id="interactive-page-label">PAGE 06</strong>
+
+            </div>
+
+        </header>
+
+
+        <!-- INTERACTIVE EXERCISES -->
+
+        <main id="interactive-exercise-container">
+
+            <div class="loading-message">
+                Loading interactive page...
+            </div>
+
+        </main>
+
+
+        <!-- INTERACTIVE CONTROLS -->
+
+        <footer class="interactive-navigation">
+
+            <button id="interactive-check-btn">
+                Check Answers
+            </button>
+
+            <button id="show-all-answers-btn">
+                Show All Answers
+            </button>
+
+            <button id="interactive-try-again-btn">
+                Try Again
+            </button>
+
+        </footer>
+
+    </section>
+
+</div>
 
 
     <script src="js/practice-data.js"></script>
