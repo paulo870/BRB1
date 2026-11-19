@@ -18,27 +18,27 @@
             "questions": [
                 {
                     "type": "short-answer",
-                    "question": "1. This company provides many different Internet services, including news, online shopping and email. Most of its revenue comes from advertising on its website. Its head office is in Sunnyvale, California.",
+                    "question": "This company provides many different Internet services, including news, online shopping and email. Most of its revenue comes from advertising on its website. Its head office is in Sunnyvale, California.",
                     "answer": "Yahoo!"
                 },
                 {
                     "type": "short-answer",
-                    "question": "2. This company makes tyres for cars and other vehicles. It is based in France, but it has more than 111,000 employees all over the world. It is also well known for its red and green travel guides.",
+                    "question": "This company makes tyres for cars and other vehicles. It is based in France, but it has more than 111,000 employees all over the world. It is also well known for its red and green travel guides.",
                     "answer": "Michelin"
                 },
                 {
                     "type": "short-answer",
-                    "question": "3. It is a Swedish company and operates in 37 countries. It specializes in low-price household products, including furniture, bathrooms and kitchens.",
+                    "question": "It is a Swedish company and operates in 37 countries. It specializes in low-price household products, including furniture, bathrooms and kitchens.",
                     "answer": "IKEA"
                 },
                 {
                     "type": "short-answer",
-                    "question": "4. It is a subsidiary of Unilever. The company makes ice cream and frozen yoghurt, and its main competitor is Häagen-Dazs.",
+                    "question": "It is a subsidiary of Unilever. The company makes ice cream and frozen yoghurt, and its main competitor is Häagen-Dazs.",
                     "answer": "Ben & Jerry's"
                 },
                 {
                     "type": "short-answer",
-                    "question": "5. This company produces many different electrical and electronic products, such as TVs, computers and mobile phones. It is South Korea's largest company and exporter.",
+                    "question": "This company produces many different electrical and electronic products, such as TVs, computers and mobile phones. It is South Korea's largest company and exporter.",
                     "answer": "Samsung"
                 }
             ]
