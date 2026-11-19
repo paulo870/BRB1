@@ -90,6 +90,57 @@
                     ]
                 }
             ]
+
+  {
+            "id": "activity-03",
+            "type": "cloze",
+             "title": "ASSA ABLOY Group",
+    "instructions": "Listen and complete the information about the ASSA ABLOY Group.",
+    "media": {
+        "type": "audio",
+        "src": "root/audios/student-book-audios/page07_Track_1.1",
+        "controls": true,
+        "download": false,
+        "playbackSpeed": [0.75, 1, 1.25, 1.5]
+    },
+    "questions": [
+        {
+            "type": "table-cloze",
+            "columns": [
+                "Name of group",
+                "ASSA ABLOY"
+            ],
+            "rows": [
+                {
+                    "label": "Products",
+                    "text": "l{{blank}} and s{{blank}}s{{blank}}"
+                },
+                {
+                    "label": "Competitors",
+                    "text": "E{{blank}}C{{blank}}Ingersoll-Rand, and Master Lock,"
+                },
+                {
+                    "label": "Nationality",
+                    "text": "S{{blank}}"
+                },
+                {
+                    "label": "Number of employees",
+                    "text": "{{blank}},000"
+                },
+                {
+                    "label": "Revenue",
+                    "text": "€{{blank}}billion"
+                },
+                {
+                    "label": "International operations",
+                    "text": "over{{blank}}countries,{{blank}}companies"
+                },
+                {
+                    "label": "Name of the subsidiary",
+                    "text": "B{{blank}}"
+                }
+            ]
         }
     ]
 }
+
