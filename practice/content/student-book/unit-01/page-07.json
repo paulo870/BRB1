@@ -134,7 +134,7 @@
                             "label": "Name of the subsidiary",
                             "text": "{{blank}}"
                         }
-                    ]
+                    ],
                      "answer": [
                          "locks",
                          "security",
@@ -146,7 +146,7 @@
                          "5",
                          "70",
                          "150",
-                         "besam",
+                         "besam"
                      ]
                 }
             ]
