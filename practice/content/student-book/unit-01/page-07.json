@@ -14,7 +14,8 @@
             "questions": [
                 {
                     "type": "cloze",
-                    "question": "Some companies make or {{blank}} goods.",
+                    "question": "Complete the sentence.",
+                    "text"_ "Some companies make or {{blank}} goods.",
                     "answer": ["produce"]
                 },
                 {
