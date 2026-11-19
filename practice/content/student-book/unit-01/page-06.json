@@ -12,7 +12,7 @@
             "text": "Company names: Yahoo! | Michelin | IKEA | Ben & Jerry's | Samsung",
             "media": {
                 "type": "image",
-                "src": "practice/media/images/page6",
+                "src": "media/images/page6",
                 "alt": "Five companies identified by letters"
             },
             "questions": [
