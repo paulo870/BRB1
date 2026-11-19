@@ -1531,3 +1531,106 @@ body {
     }
 
 }
+/* =====================================
+   TABLE CLOZE - PROFESSIONAL DESIGN
+===================================== */
+
+.engine-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin: 25px 0;
+    border: 1px solid #d5e0e3;
+    border-radius: 8px;
+}
+
+.engine-table-cloze {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 15px;
+}
+
+/* TABLE HEADER */
+
+.engine-table-cloze thead th {
+    background: #183638;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 15px 18px;
+    border: 1px solid #d5e0e3;
+}
+
+/* ALL TABLE CELLS */
+
+.engine-table-cloze th,
+.engine-table-cloze td {
+    border: 1px solid #d5e0e3;
+    padding: 15px 18px;
+    vertical-align: middle;
+}
+
+/* ROW LABELS */
+
+.engine-table-cloze tbody th {
+    background: #f1f6f6;
+    color: #183638;
+    font-weight: 600;
+    text-align: left;
+    width: 25%;
+}
+
+/* ANSWER CELLS */
+
+.engine-table-cloze tbody td {
+    background: #ffffff;
+    color: #344b4d;
+}
+
+/* ALTERNATING ROWS */
+
+.engine-table-cloze tbody tr:nth-child(even) td {
+    background: #f8fbfb;
+}
+
+/* INPUT FIELDS */
+
+.engine-table-cloze-input {
+    width: 150px;
+    max-width: 100%;
+    padding: 8px 10px;
+    border: none;
+    border-bottom: 2px solid #a8bec0;
+    border-radius: 0;
+    background: transparent;
+    outline: none;
+    font-size: 15px;
+    color: #183638;
+    transition: border-color 0.2s ease;
+}
+
+/* INPUT FOCUS */
+
+.engine-table-cloze-input:focus {
+    border-bottom-color: #168b83;
+    background: #f0f9f8;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+
+    .engine-table-cloze {
+        font-size: 13px;
+    }
+
+    .engine-table-cloze th,
+    .engine-table-cloze td {
+        padding: 10px;
+    }
+
+    .engine-table-cloze-input {
+        width: 110px;
+    }
+
+}
