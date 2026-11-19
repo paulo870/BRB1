@@ -89,10 +89,27 @@ const checkBtn =
     document.getElementById("check-answer");
 
 
+// Main Practice Zone
 document.getElementById("unit-label").textContent =
     `UNIT ${String(unit).padStart(2, "0")}`;
 
 document.getElementById("page-label").textContent =
+    `PAGE ${page}`;
+
+
+// Free Practice
+document.getElementById("free-unit-label").textContent =
+    `UNIT ${String(unit).padStart(2, "0")}`;
+
+document.getElementById("free-page-label").textContent =
+    `PAGE ${page}`;
+
+
+// Interactive Page
+document.getElementById("interactive-unit-label").textContent =
+    `UNIT ${String(unit).padStart(2, "0")}`;
+
+document.getElementById("interactive-page-label").textContent =
     `PAGE ${page}`;
 
 
