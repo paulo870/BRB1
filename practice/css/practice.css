@@ -538,3 +538,261 @@ body {
     }
 
 }
+/* =====================================================
+   PRACTICE ZONE HOME
+===================================================== */
+
+#practice-home {
+    animation: practiceFadeIn 0.35s ease;
+}
+
+.practice-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 45px;
+}
+
+.practice-option {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 290px;
+    padding: 35px;
+    border: 1px solid #e0eaea;
+    border-radius: 14px;
+    background: #ffffff;
+    color: #183638;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.practice-option:hover {
+    transform: translateY(-5px);
+    border-color: #23877e;
+    box-shadow: 0 12px 30px rgba(24, 54, 56, 0.09);
+}
+
+.practice-option-number {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    color: #b8caca;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.practice-option-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    margin-bottom: 28px;
+    border-radius: 12px;
+    background: #e6f2f0;
+    color: #23877e;
+    font-size: 27px;
+}
+
+.practice-option strong {
+    margin-bottom: 12px;
+    font-size: 23px;
+}
+
+.practice-option p {
+    max-width: 330px;
+    margin: 0;
+    color: #758687;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.practice-option-link {
+    margin-top: auto;
+    padding-top: 25px;
+    color: #23877e;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.practice-back-btn {
+    margin-bottom: 30px;
+    padding: 11px 16px;
+    border: 1px solid #dce7e7;
+    border-radius: 6px;
+    background: white;
+    color: #183638;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.practice-back-btn:hover {
+    background: #e6f2f0;
+    border-color: #23877e;
+}
+
+
+/* =====================================================
+   INTERACTIVE PAGE
+===================================================== */
+
+#interactive-page-view {
+    animation: practiceFadeIn 0.35s ease;
+}
+
+#interactive-exercise-container {
+    min-height: 380px;
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.04);
+}
+
+
+/* =====================================================
+   INTERACTIVE NAVIGATION
+===================================================== */
+
+.interactive-navigation {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.interactive-navigation button {
+    padding: 14px 22px;
+    border: none;
+    border-radius: 6px;
+    background: #183638;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.interactive-navigation button:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+#interactive-check-btn {
+    background: #23877e;
+}
+
+#show-all-answers-btn {
+    background: #e6f2f0;
+    color: #23877e;
+}
+
+#interactive-try-again-btn {
+    background: #183638;
+}
+
+
+/* =====================================================
+   INTERACTIVE ANSWER FEEDBACK
+===================================================== */
+
+.interactive-question {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid #e0eaea;
+    border-radius: 8px;
+}
+
+.interactive-question.correct {
+    border-color: #21834c;
+    background: #f0faf4;
+}
+
+.interactive-question.incorrect {
+    border-color: #c64b37;
+    background: #fff5f2;
+}
+
+.interactive-feedback {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.interactive-feedback.correct {
+    color: #21834c;
+}
+
+.interactive-feedback.incorrect {
+    color: #c64b37;
+}
+
+.correct-answer {
+    margin-top: 8px;
+    color: #21834c;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes practiceFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVE PRACTICE ZONE
+===================================================== */
+
+@media(max-width: 650px) {
+
+    .practice-options {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 25px;
+    }
+
+    .practice-option {
+        min-height: 250px;
+        padding: 25px;
+    }
+
+    .practice-option strong {
+        font-size: 21px;
+    }
+
+    #interactive-exercise-container {
+        padding: 22px;
+    }
+
+    .interactive-navigation {
+        flex-direction: column;
+    }
+
+    .interactive-navigation button {
+        width: 100%;
+    }
+
+}
