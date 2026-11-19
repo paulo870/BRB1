@@ -19,13 +19,13 @@ const tryAgainBtn = document.getElementById(
 );
 
 
-const params = new URLSearchParams(window.location.search);
+const interactiveParams = new URLSearchParams(window.location.search);
 
-const book = params.get("book") || "student-book";
+const book = interactiveParams.get("book") || "student-book";
 
-const unit = Number(params.get("unit") || 1);
+const unit = Number(interactiveParams.get("unit") || 1);
 
-const page = Number(params.get("page") || 1);
+const page = Number(interactiveParams.get("page") || 1);
 
 
 const unitFolder = `unit-${String(unit).padStart(2, "0")}`;
