@@ -132,9 +132,22 @@
                         },
                         {
                             "label": "Name of the subsidiary",
-                            "text": "B{{blank}}"
+                            "text": "{{blank}}"
                         }
                     ]
+                     "answer": [
+                         "locks",
+                         "security",
+                         "systems",
+                         "eastern",
+                         "company",
+                         "swedish",
+                         "43",
+                         "5",
+                         "70",
+                         "150",
+                         "besam",
+                     ]
                 }
             ]
         }
