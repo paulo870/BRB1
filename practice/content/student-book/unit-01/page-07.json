@@ -93,7 +93,7 @@
             "instructions": "Listen and complete the information about the ASSA ABLOY Group.",
             "media": {
                 "type": "audio",
-                "src": "root/audios/student-book-audios/page07_Track_1.1",
+                "src": "root/audios/student-book-audios/unit_1/page07_Track_1.1",
                 "controls": true,
                 "download": false,
                 "playbackSpeed": [0.75, 1, 1.25, 1.5]
