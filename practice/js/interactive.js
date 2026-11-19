@@ -22,7 +22,11 @@ const tryAgainBtn = document.getElementById(
 
 const interactiveParams = new URLSearchParams(window.location.search);
 
-const book = interactiveParams.get("book") || "student-book";
+const requestedBook = interactiveParams.get("book");
+
+const book = requestedBook === "student" || !requestedBook
+    ? "student-book"
+    : requestedBook;
 
 const unit = Number(interactiveParams.get("unit") || 1);
 
