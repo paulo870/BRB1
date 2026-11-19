@@ -205,7 +205,79 @@ const ExerciseEngine = (() => {
 
         }
 
+/* =====================================
+   TABLE CLOZE
+===================================== */
 
+else if (type === "table-cloze") {
+
+    let blankIndex = 0;
+
+    const headers = question.columns || [];
+
+    const rows = (question.rows || []).map(row => {
+
+        let cellContent = "";
+
+        const parts = String(row.text ?? "").split("{{blank}}");
+
+        parts.forEach((part, index) => {
+
+            cellContent += escapeHTML(part);
+
+            if (index < parts.length - 1) {
+
+                cellContent += `
+                    <input
+                        type="text"
+                        class="engine-cloze-input engine-table-cloze-input"
+                        data-blank="${blankIndex++}"
+                        autocomplete="off"
+                        aria-label="Answer ${blankIndex}"
+                    >
+                `;
+
+            }
+
+        });
+
+        return `
+            <tr>
+                <th scope="row">
+                    ${escapeHTML(row.label)}
+                </th>
+
+                <td>
+                    ${cellContent}
+                </td>
+            </tr>
+        `;
+
+    }).join("");
+
+    content = `
+        <div class="engine-table-wrapper">
+
+            <table class="engine-table-cloze">
+
+                <thead>
+                    <tr>
+                        ${headers.map(header => `
+                            <th>${escapeHTML(header)}</th>
+                        `).join("")}
+                    </tr>
+                </thead>
+
+                <tbody>
+                    ${rows}
+                </tbody>
+
+            </table>
+
+        </div>
+    `;
+
+}
         /* =====================================
            MATCHING
         ===================================== */
@@ -517,16 +589,16 @@ const ExerciseEngine = (() => {
         }
 
 
-        if (type === "cloze") {
-
-            return Array.from(
-                questionElement.querySelectorAll(
-                    ".engine-cloze-input"
-                )
-            ).map(input => input.value);
-
-        }
-
+       if (
+    type === "cloze" ||
+    type === "table-cloze"
+) {
+    return Array.from(
+        questionElement.querySelectorAll(
+            ".engine-cloze-input"
+        )
+    ).map(input => input.value);
+}
 
         if (type === "matching") {
 
@@ -596,17 +668,20 @@ const ExerciseEngine = (() => {
         }
 
 
-        if (
-            question.type === "cloze" ||
-            question.type === "matching" ||
-            question.type === "ordering"
-        ) {
+       if (
+    question.type === "cloze" ||
+    question.type === "table-cloze" ||
+    question.type === "matching" ||
+    question.type === "ordering"
+) {
 
             return userAnswer.length === expected.length &&
                 userAnswer.every((answer, index) => {
 
-                    if (question.type === "cloze") {
-
+if (
+    question.type === "cloze" ||
+    question.type === "table-cloze"
+) {
                         return normalize(answer) ===
                             normalize(expected[index]);
 
