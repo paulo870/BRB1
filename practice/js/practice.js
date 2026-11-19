@@ -594,21 +594,4 @@ if (exercises.length > 0) {
     loadExercise();
 
 }
-Symbols
-Find definitions and references for functions and other symbols in this file by clicking a symbol below or in the code.
 
-Filter symbols
-r
-R
-func
-loadExercise
-func
-renderAudio
-func
-renderCloze
-func
-renderMultipleChoice
-func
-renderListenChoice
-func
-showFeedback
