@@ -37,6 +37,24 @@ function saveCurrentState(bookType, unit, pageNum) {
     localStorage.setItem("pptkb1State", JSON.stringify({ bookType, unit, pageNum }));
 }
 // ==========================
+// SAVE ACTIVE ENVIRONMENT
+// ==========================
+
+function saveEnvironmentState(environment, iframeSrc = "") {
+
+    localStorage.setItem("pptkb1Environment", JSON.stringify({
+        environment,
+        iframeSrc
+    }));
+
+}
+
+function clearEnvironmentState() {
+
+    localStorage.removeItem("pptkb1Environment");
+
+}
+// ==========================
 // DROPDOWN TOGGLE
 // ==========================
 dropdownBtns.forEach(btn => {
@@ -395,31 +413,155 @@ homeBtn.addEventListener("click", function(e) {
     loadHome();
 });
 
-window.addEventListener("load", () => {
-    const navigationEntries = performance.getEntriesByType("navigation");
-    const isReload = navigationEntries.length > 0 && navigationEntries[0].type === "reload";
+// ==========================
+// RESTORE PREVIOUS SESSION
+// ==========================
 
-    if (isReload) {
-        // Page was refreshed → restore previous state if exists
-        const savedState = localStorage.getItem("pptkb1State");
-        if (savedState) {
-            const { bookType, unit, pageNum } = JSON.parse(savedState);
-            if (bookType === "student") {
-                loadStudentUnit(unit);
-                currentIndex = currentImages.findIndex(src => src.includes(`page${pageNum}.jpg`));
-                if (currentIndex >= 0) loadImage(currentImages[currentIndex]);
-            } else if (bookType === "activity") {
-                loadActivityUnit(unit);
-                currentIndex = currentImages.findIndex(src => src.includes(`page${pageNum}.jpg`));
-                if (currentIndex >= 0) loadImage(currentImages[currentIndex]);
-            }
-        } else {
-            loadHome(); // fallback if nothing saved
-        }
-    } else {
-        // First time opening → always Home
+window.addEventListener("load", () => {
+
+    const navigationEntries = performance.getEntriesByType("navigation");
+
+    const isReload =
+        navigationEntries.length > 0 &&
+        navigationEntries[0].type === "reload";
+
+    if (!isReload) {
+
         loadHome();
+        return;
+
     }
+
+    // RESTORE PRESENTATION PAGE
+
+    const savedState = localStorage.getItem("pptkb1State");
+
+    if (savedState) {
+
+        const { bookType, unit, pageNum } = JSON.parse(savedState);
+
+        if (bookType === "student") {
+
+            loadStudentUnit(unit);
+
+        } else if (bookType === "activity") {
+
+            loadActivityUnit(unit);
+
+        }
+
+        const savedIndex = currentImages.findIndex(src =>
+            src.includes(`page${pageNum}.jpg`)
+        );
+
+        if (savedIndex >= 0) {
+
+            currentIndex = savedIndex;
+            loadImage(currentImages[currentIndex]);
+
+        }
+
+    } else {
+
+        loadHome();
+
+    }
+
+
+    // RESTORE ACTIVE ENVIRONMENT
+
+    const savedEnvironment = localStorage.getItem("pptkb1Environment");
+
+    if (!savedEnvironment) return;
+
+    let environmentState;
+
+    try {
+
+        environmentState = JSON.parse(savedEnvironment);
+
+    } catch (error) {
+
+        clearEnvironmentState();
+        return;
+
+    }
+
+
+    // RESTORE PRACTICE
+
+    if (environmentState.environment === "practice") {
+
+        practiceFrame.src = environmentState.iframeSrc;
+
+        practiceEnvironment.classList.add("active");
+
+        const page = getCurrentPracticePage();
+
+        if (page) {
+
+            practicePageLabel.textContent =
+                `${page.book.toUpperCase()} BOOK | ` +
+                `UNIT ${String(page.unit).padStart(2, "0")} | ` +
+                `PAGE ${page.page}`;
+
+        }
+
+    }
+
+
+    // RESTORE GAMES
+
+    if (environmentState.environment === "games") {
+
+        gamesEnvironment.classList.add("active");
+
+        const savedGameState = environmentState.iframeSrc;
+
+        const savedUnit = sessionStorage.getItem(
+            "poliglotaSelectedGameUnit"
+        );
+
+        if (savedUnit) {
+
+            selectedGameUnit = Number(savedUnit);
+
+            selectedGameUnitLabel.textContent =
+                `Unit ${String(selectedGameUnit).padStart(2, "0")}`;
+
+            gameViewerUnitLabel.textContent =
+                `UNIT ${String(selectedGameUnit).padStart(2, "0")}`;
+
+        }
+
+        if (savedGameState === "unit-screen") {
+
+            gamesUnitScreen.classList.add("active");
+            gamesHub.classList.remove("active");
+            gameViewer.classList.remove("active");
+
+        }
+
+        else if (savedGameState === "hub") {
+
+            gamesUnitScreen.classList.remove("active");
+            gamesHub.classList.add("active");
+            gameViewer.classList.remove("active");
+
+        }
+
+        else {
+
+            gamesUnitScreen.classList.remove("active");
+            gamesHub.classList.remove("active");
+            gameViewer.classList.add("active");
+
+            gameFrame.src = savedGameState;
+
+        }
+
+    }
+
 });
 
 // ==========================
@@ -699,6 +841,8 @@ gamesBtn.addEventListener("click", function(e) {
     e.preventDefault();
     e.stopPropagation();
 
+    saveEnvironmentState("games", "unit-screen");
+
     gamesEnvironment.classList.add("active");
 
     gamesUnitScreen.classList.add("active");
@@ -715,6 +859,7 @@ gameUnitCards.forEach(button => {
     button.addEventListener("click", function() {
 
         selectedGameUnit = Number(this.dataset.unit);
+        saveEnvironmentState("games", "hub");
 
         sessionStorage.setItem(
             "poliglotaSelectedGameUnit",
@@ -735,6 +880,7 @@ gameUnitCards.forEach(button => {
 // CHANGE UNIT
 
 changeGameUnitBtn.addEventListener("click", function() {
+        saveEnvironmentState("games", "unit-screen");
 
     gameViewer.classList.remove("active");
     gamesHub.classList.remove("active");
@@ -767,6 +913,7 @@ gameCards.forEach(card => {
             `games/${gameFile}?unit=${selectedGameUnit}`;
 
         gameFrame.src = gameUrl;
+        saveEnvironmentState("games", gameUrl);
 
         gameViewerUnitLabel.textContent =
             `UNIT ${String(selectedGameUnit).padStart(2, "0")}`;
@@ -784,6 +931,7 @@ gameCards.forEach(card => {
 hideGameBtn.addEventListener("click", function() {
 
     gameFrame.src = "about:blank";
+        saveEnvironmentState("games", "hub");
 
     gameViewer.classList.remove("active");
     gamesHub.classList.add("active");
@@ -794,6 +942,7 @@ hideGameBtn.addEventListener("click", function() {
 // RETURN TO PRESENTATION
 
 function closeGamesEnvironment() {
+        clearEnvironmentState();
 
     gameFrame.src = "about:blank";
 
@@ -1664,6 +1813,7 @@ practiceBtn.addEventListener("click", function(e) {
         `&page=${page.page}`;
 
     practiceFrame.src = practiceUrl;
+    saveEnvironmentState("practice", practiceUrl);
 
     practicePageLabel.textContent =
 
@@ -1683,6 +1833,7 @@ practiceBtn.addEventListener("click", function(e) {
 hidePracticeBtn.addEventListener("click", function() {
 
     practiceFrame.src = "about:blank";
+        clearEnvironmentState();
 
     practiceEnvironment.classList.remove("active");
 
