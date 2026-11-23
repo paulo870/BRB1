@@ -716,57 +716,105 @@ if (
        CHECK ALL ANSWERS
     ========================================= */
 
-    function checkAll(container, activities) {
+   function checkAll(container, activities) {
 
-        let correctCount = 0;
+    let correctCount = 0;
+    let totalCount = 0;
 
-        let totalCount = 0;
+    container.querySelectorAll(
+        ".engine-question"
+    ).forEach(element => {
 
+        const [activityIndex, questionIndex] =
+            element.dataset.questionIndex.split("-").map(Number);
 
-        container.querySelectorAll(
-            ".engine-question"
-        ).forEach(element => {
+        const question =
+            activities[activityIndex].questions[questionIndex];
 
-            const [activityIndex, questionIndex] =
-                element.dataset.questionIndex.split("-").map(Number);
+        const answer = getAnswer(element, question);
 
-            const question =
-                activities[activityIndex].questions[questionIndex];
+        const feedback = element.querySelector(
+            ".engine-question-feedback"
+        );
 
-            const answer = getAnswer(element, question);
+        element.classList.remove("correct", "incorrect");
 
-            const correct = check(question, answer);
+        /* =====================================
+           TABLE CLOZE — COUNT EACH BLANK
+        ===================================== */
 
-            const feedback = element.querySelector(
-                ".engine-question-feedback"
+        if (question.type === "table-cloze") {
+
+            const inputs = element.querySelectorAll(
+                ".engine-table-cloze-input"
             );
 
-            element.classList.remove("correct", "incorrect");
+            const expected = question.answer;
+
+            let questionCorrect = 0;
+
+            inputs.forEach((input, index) => {
+
+                const correct =
+                    normalize(input.value) ===
+                    normalize(expected[index]);
+
+                input.classList.remove("correct", "incorrect");
+
+                input.classList.add(
+                    correct ? "correct" : "incorrect"
+                );
+
+                if (correct) {
+                    questionCorrect++;
+                    correctCount++;
+                }
+
+                totalCount++;
+
+            });
 
             element.classList.add(
-                correct ? "correct" : "incorrect"
+                questionCorrect === inputs.length
+                    ? "correct"
+                    : "incorrect"
             );
 
-            feedback.textContent = correct
-                ? "✓ Correct!"
-                : answer === null
-                    ? "Please answer this question."
-                    : "✗ Incorrect. Try again or reveal the answer.";
+            feedback.textContent =
+                `${questionCorrect}/${inputs.length} correct`;
 
-            if (correct) correctCount++;
+            return;
 
-            totalCount++;
+        }
 
-        });
+        /* =====================================
+           ALL OTHER EXERCISE TYPES
+        ===================================== */
 
+        const correct = check(question, answer);
 
-        return {
-            correct: correctCount,
-            total: totalCount
-        };
+        element.classList.add(
+            correct ? "correct" : "incorrect"
+        );
 
-    }
+        feedback.textContent = correct
+            ? "✓ Correct!"
+            : answer === null
+                ? "Please answer this question."
+                : "✗ Incorrect. Try again or reveal the answer.";
 
+        if (correct) correctCount++;
+
+        totalCount++;
+
+    });
+
+    return {
+        correct: correctCount,
+        total: totalCount
+    };
+
+}
 
     /* =========================================
        SHOW ALL ANSWERS
