@@ -273,13 +273,22 @@ function applyZoom() {
     slideImage.style.height =
         (slideImage.naturalHeight * currentScale) + "px";
 
-    // Detect whether the image exceeds the visible area
     const isOverflowing =
         slideImage.offsetWidth > slideContainer.clientWidth ||
         slideImage.offsetHeight > slideContainer.clientHeight;
 
-    // Enable top-left alignment when scrolling is necessary
     slideContainer.classList.toggle("is-zoomed", isOverflowing);
+
+    // Keep the enlarged page centred in the visible area
+    slideContainer.scrollLeft = Math.max(
+        0,
+        (slideImage.offsetWidth - slideContainer.clientWidth) / 2
+    );
+
+    slideContainer.scrollTop = Math.max(
+        0,
+        (slideImage.offsetHeight - slideContainer.clientHeight) / 2
+    );
 
     resizeEditCanvas();
 }
