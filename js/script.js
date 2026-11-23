@@ -76,6 +76,9 @@ window.addEventListener("click", () => {
 // LOAD IMAGE FUNCTION
 // ==========================
 function autoFitImage() {
+        slideContainer.classList.remove("is-zoomed");
+    slideContainer.scrollLeft = 0;
+    slideContainer.scrollTop = 0;
     const containerWidth = slideContainer.clientWidth;
     const containerHeight = slideContainer.clientHeight;
     const imgWidth = slideImage.naturalWidth;
