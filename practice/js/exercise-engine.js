@@ -384,11 +384,9 @@ else if (type === "table-cloze") {
             >
 
                <h3>
-    <span class="engine-question-number">${displayNumber}.</span>
-    <span class="engine-question-text">
-        ${escapeHTML(question.question || "")}
-    </span>
-</h3>
+                <h3 class="engine-question-heading">
+                    <span class="engine-question-number">${displayNumber}.</span><span class="engine-question-text">${escapeHTML(question.question || "")}</span>
+                </h3>
 
                 ${content}
 
