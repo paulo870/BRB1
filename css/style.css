@@ -3170,9 +3170,11 @@ select:focus-visible {
     position: fixed;
     inset: 0;
     z-index: 10000;
-    background:
-        radial-gradient(circle at 50% 0%, #123c3b 0%, transparent 55%),
-        linear-gradient(135deg, #071817, #091f20 60%, #061313);
+  background: linear-gradient(
+    180deg,
+    rgba(22, 91, 116, 0.97),
+    rgba(13, 57, 73, 0.98)
+);
     color: #ffffff;
     overflow-y: auto;
     font-family: inherit;
@@ -3789,7 +3791,11 @@ body:not(.sidebar-hidden) #sidebar-toggle {
 
     padding: 0 25px;
 
-    background: #183638;
+    background: linear-gradient(
+    180deg,
+    rgba(22, 91, 116, 0.97),
+    rgba(13, 57, 73, 0.98)
+);
 
     color: white;
 
