@@ -3714,7 +3714,11 @@ body:not(.sidebar-hidden) #sidebar-toggle {
 
 #practice-btn:hover {
 
-    background: #245456;
+    background: linear-gradient(
+    180deg,
+    rgba(22, 91, 116, 0.97),
+    rgba(13, 57, 73, 0.98)
+);
 
     transform: translateY(-2px);
 
