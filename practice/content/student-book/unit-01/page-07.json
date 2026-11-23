@@ -11,7 +11,8 @@
             "instructions": "Complete these sentences with the words below",
             "text": "provide | revenue | based | employee | operates | specializes | subsidiary | competitor | produce | exporter",
             "questions": [
-                { "type": "cloze",
+                { 
+                    "type": "cloze",
                     "text": "Some companies make or {{blank}} goods.",
                     "answer": ["produce"]
                 },
@@ -107,15 +108,15 @@
                     "rows": [
                         {
                             "label": "Products",
-                            "text": "l{{blank}} and s{{blank}}s{{blank}}"
+                            "text": "{{blank}} and {{blank}}{{blank}}"
                         },
                         {
                             "label": "Competitors",
-                            "text": "E{{blank}}C{{blank}} Ingersoll-Rand, and Master Lock"
+                            "text": "{{blank}}{{blank}} Ingersoll-Rand, and Master Lock"
                         },
                         {
                             "label": "Nationality",
-                            "text": "S{{blank}}"
+                            "text": "{{blank}}"
                         },
                         {
                             "label": "Number of employees",
