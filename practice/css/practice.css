@@ -2180,3 +2180,29 @@ body {
     }
 
 }
+/* =====================================
+   CLOZE INPUT FEEDBACK
+===================================== */
+
+.engine-cloze-input.correct {
+    background-color: #e6f7ec !important;
+    border: 2px solid #28a745 !important;
+    color: #176b32 !important;
+}
+
+.engine-cloze-input.incorrect {
+    background-color: #fdeaea !important;
+    border: 2px solid #dc3545 !important;
+    color: #a71d2a !important;
+}
+
+/* Correct answer displayed after wrong input */
+
+.engine-cloze-correct-answer {
+    display: inline-block;
+    margin-left: 6px;
+    margin-bottom: 4px;
+    color: #218838;
+    font-size: 0.85em;
+    font-weight: 600;
+}
