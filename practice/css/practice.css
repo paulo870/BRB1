@@ -2015,255 +2015,188 @@ body {
     }
 
 }
+
 /* =====================================================
-   FREE PRACTICE — PREMIUM LEARNING DESIGN
+   FREE PRACTICE — PREMIUM PRACTICE ZONE CARD
 ===================================================== */
 
-/* MAIN FREE PRACTICE HEADER */
+.practice-option:nth-child(1) {
 
-body:has(#exercise-container) .practice-header {
-    padding: 28px 0;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #dce8e9;
-}
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
 
-body:has(#exercise-container) .brand {
-    color: #165b74;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2.5px;
-}
+    min-height: 310px;
+    padding: 35px;
 
-body:has(#exercise-container) .practice-header h1 {
-    margin-top: 14px;
-    color: #123c4b;
-    font-size: 34px;
-    font-weight: 750;
-    letter-spacing: -1px;
-}
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #edf5f7 100%
+        );
 
-body:has(#exercise-container) .practice-header p {
-    color: #71858b;
-    line-height: 1.8;
+    border: 1px solid #d6e7eb;
+    border-radius: 5px;
+
+    box-shadow:
+        0 12px 30px rgba(22, 91, 116, 0.09);
+
+    transition: all 0.3s ease;
 }
 
 
-/* PAGE INFORMATION */
+/* Decorative background element */
 
-body:has(#exercise-container) .page-information {
-    padding: 17px 22px;
-    background: #ffffff;
-    border: 1px solid #dce8e9;
-    border-radius: 8px;
+.practice-option:nth-child(1)::before {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: -1;
+
+    width: 250px;
+    height: 250px;
+
+    right: -85px;
+    bottom: -105px;
+
+    border: 1px solid rgba(22, 91, 116, 0.12);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 25px rgba(22, 91, 116, 0.035),
+        0 0 0 50px rgba(22, 91, 116, 0.025);
 }
 
-body:has(#exercise-container) .page-information strong {
-    color: #165b74;
-    font-size: 15px;
-}
 
+/* Left accent */
 
-/* PROGRESS AREA */
+.practice-option:nth-child(1)::after {
 
-body:has(#exercise-container) .progress-section {
-    margin-bottom: 35px;
-    padding: 20px 24px;
-    background: #eaf2f4;
-    border-radius: 8px;
-}
+    content: "";
 
-body:has(#exercise-container) .progress-information {
-    color: #315c69;
-    font-weight: 600;
-}
+    position: absolute;
 
-body:has(#exercise-container) .progress-track {
-    height: 8px;
-    background: #d2e1e5;
-}
+    top: 0;
+    left: 0;
 
-body:has(#exercise-container) #progress-bar {
+    width: 6px;
+    height: 100%;
+
     background: linear-gradient(
-        90deg,
-        #165b74,
-        #2795ae
+        180deg,
+        #48a6a0,
+        #165b74
     );
 }
 
 
-/* MAIN EXERCISE WORKSPACE */
+/* Icon */
 
-body:has(#exercise-container) #exercise-container {
-    min-height: 420px;
-    padding: 38px;
-    background: #ffffff;
-    border: 1px solid #e1eaec;
-    border-top: 4px solid #165b74;
-    border-radius: 8px;
-    box-shadow: 0 8px 28px rgba(18, 60, 75, 0.045);
-}
+.practice-option:nth-child(1) .practice-option-icon {
 
+    width: 65px;
+    height: 65px;
 
-/* EXERCISE TYPE LABEL */
+    margin-bottom: 25px;
 
-body:has(#exercise-container) .exercise-type {
-    padding: 8px 13px;
-    background: #e7f1f4;
+    background: linear-gradient(
+        145deg,
+        #dceef0,
+        #c6e2e5
+    );
+
     color: #165b74;
-    border-radius: 4px;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1.2px;
+
+    border: 1px solid #c5dfe3;
+    border-radius: 50%;
+
+    font-size: 29px;
+
+    box-shadow:
+        0 5px 15px rgba(22, 91, 116, 0.08);
 }
 
 
-/* EXERCISE TITLE AND INSTRUCTIONS */
+/* Title */
 
-body:has(#exercise-container) .exercise-title {
-    margin-top: 25px;
+.practice-option:nth-child(1) strong {
+
     color: #123c4b;
-    font-size: 27px;
+
+    font-size: 25px;
     font-weight: 750;
+
+    margin-bottom: 14px;
+
     letter-spacing: -0.5px;
 }
 
-body:has(#exercise-container) .exercise-instructions {
-    color: #71858b;
+
+/* Description */
+
+.practice-option:nth-child(1) p {
+
+    max-width: 330px;
+
+    color: #647e85;
+
     font-size: 14px;
-    line-height: 1.9;
+    line-height: 1.85;
 }
 
 
-/* AUDIO */
+/* Action link */
 
-body:has(#exercise-container) .exercise-audio {
-    margin: 25px 0;
-    border-radius: 8px;
+.practice-option:nth-child(1) .practice-option-link {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #165b74;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    transition: gap 0.25s ease;
 }
 
 
-/* ANSWER INPUTS */
+/* Hover */
 
-body:has(#exercise-container) .answer-input {
-    padding: 16px;
-    background: #f8fbfc;
-    border: 1px solid #dce8e9;
-    border-radius: 6px;
-    color: #183638;
-    transition: border-color 0.2s, background 0.2s;
-}
+.practice-option:nth-child(1):hover {
 
-body:has(#exercise-container) .answer-input:focus {
-    background: #ffffff;
-    border-color: #165b74;
-    box-shadow: 0 0 0 3px rgba(22, 91, 116, 0.08);
+    transform: translateY(-6px);
+
+    border-color: #83b8c2;
+
+    box-shadow:
+        0 20px 40px rgba(22, 91, 116, 0.15);
 }
 
 
-/* MULTIPLE CHOICE OPTIONS */
+.practice-option:nth-child(1):hover .practice-option-link {
 
-body:has(#exercise-container) .answer-option {
-    padding: 19px;
-    background: #f8fbfc;
-    border: 1px solid #dce8e9;
-    border-radius: 6px;
-    color: #31515b;
-    transition: 0.2s ease;
-}
+    gap: 17px;
 
-body:has(#exercise-container) .answer-option:hover {
-    background: #edf5f7;
-    border-color: #165b74;
-}
-
-body:has(#exercise-container) .answer-option.selected {
-    background: #e5f1f4;
-    border-color: #165b74;
-    color: #123c4b;
 }
 
 
-/* CLOZE EXERCISES */
-
-body:has(#exercise-container) .cloze-text {
-    color: #31515b;
-    line-height: 2.5;
-}
-
-body:has(#exercise-container) .cloze-input {
-    border-bottom-color: #165b74;
-    color: #123c4b;
-}
-
-
-/* FEEDBACK */
-
-body:has(#exercise-container) #exercise-feedback {
-    padding: 18px 20px;
-    border-radius: 6px;
-}
-
-
-/* NAVIGATION */
-
-body:has(#exercise-container) .practice-navigation {
-    margin-top: 30px;
-}
-
-body:has(#exercise-container) .practice-navigation button {
-    min-height: 46px;
-    padding: 13px 22px;
-    background: #123c4b;
-    border-radius: 5px;
-    transition: 0.2s ease;
-}
-
-body:has(#exercise-container) .practice-navigation button:hover:not(:disabled) {
-    background: #165b74;
-    transform: translateY(-2px);
-}
-
-body:has(#exercise-container) #check-answer {
-    background: linear-gradient(
-        180deg,
-        rgba(22, 91, 116, 0.97),
-        rgba(13, 57, 73, 0.98)
-    );
-}
-
-
-/* EMPTY STATE */
-
-body:has(#exercise-container) .empty-state {
-    padding: 75px 25px;
-    background: #f8fbfc;
-    border-radius: 8px;
-}
-
-body:has(#exercise-container) .empty-state h2 {
-    color: #123c4b;
-}
-
-body:has(#exercise-container) .empty-state p {
-    color: #71858b;
-    line-height: 1.8;
-}
-
-
-/* MOBILE */
+/* Mobile */
 
 @media (max-width: 650px) {
 
-    body:has(#exercise-container) .practice-header h1 {
-        font-size: 27px;
-    }
+    .practice-option:nth-child(1) {
 
-    body:has(#exercise-container) #exercise-container {
-        padding: 22px;
-    }
+        min-height: 270px;
+        padding: 28px;
 
-    body:has(#exercise-container) .progress-section {
-        padding: 16px;
     }
 
 }
