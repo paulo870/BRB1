@@ -2234,3 +2234,31 @@ body {
     font-size: 0.85em;
     font-weight: 600;
 }
+/* =====================================================
+   INTERACTIVE PAGE — QUESTION HEADING
+===================================================== */
+
+#interactive-exercise-container .engine-question-heading {
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    align-items: baseline !important;
+    gap: 8px !important;
+    width: 100%;
+    margin: 0 0 16px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+#interactive-exercise-container .engine-question-heading
+.engine-question-number {
+    display: inline !important;
+    flex: 0 0 auto !important;
+    white-space: nowrap;
+}
+
+#interactive-exercise-container .engine-question-heading
+.engine-question-text {
+    display: inline !important;
+    flex: 1 1 auto !important;
+    min-width: 0;
+}
