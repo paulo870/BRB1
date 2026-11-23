@@ -35,8 +35,8 @@ function createQuestion(question, index, displayNumber) {
 
         const id = `question-${index}`;
 
-        let content = "";
-
+let content = "";
+let questionHeading = escapeHTML(question.question || "");
 
         /* =====================================
            MULTIPLE CHOICE
@@ -172,38 +172,29 @@ function createQuestion(question, index, displayNumber) {
            CLOZE
         ===================================== */
 
-        else if (type === "cloze") {
+     else if (type === "cloze") {
 
-            let blankIndex = 0;
+    let blankIndex = 0;
 
-            const sentence = question.text.replace(
-                /\{\{blank\}\}/g,
-                () => {
+    questionHeading = question.text.replace(
+        /\{\{blank\}\}/g,
+        () => {
 
-                    return `
-
-                        <input
-                            type="text"
-                            class="engine-cloze-input"
-                            data-blank="${blankIndex++}"
-                            autocomplete="off"
-                        >
-
-                    `;
-
-                }
-            );
-
-            content = `
-
-                <div class="engine-cloze-text">
-                    ${sentence}
-                </div>
-
+            return `
+                <input
+                    type="text"
+                    class="engine-cloze-input"
+                    data-blank="${blankIndex++}"
+                    autocomplete="off"
+                >
             `;
 
         }
+    );
 
+    content = "";
+
+}
 /* =====================================
    TABLE CLOZE
 ===================================== */
@@ -385,8 +376,16 @@ else if (type === "table-cloze") {
 
                <h3>
                 <h3 class="engine-question-heading">
-                    <span class="engine-question-number">${displayNumber}.</span><span class="engine-question-text">${escapeHTML(question.question || "")}</span>
-                </h3>
+
+    <span class="engine-question-number">
+        ${displayNumber}.
+    </span>
+
+    <span class="engine-question-text">
+        ${questionHeading}
+    </span>
+
+</h3>
 
                 ${content}
 
