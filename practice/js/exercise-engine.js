@@ -743,50 +743,101 @@ if (
            TABLE CLOZE — COUNT EACH BLANK
         ===================================== */
 
-        if (question.type === "table-cloze") {
+       /* =====================================
+   CLOZE + TABLE CLOZE
+   COUNT AND CHECK EACH BLANK
+===================================== */
 
-            const inputs = element.querySelectorAll(
-                ".engine-table-cloze-input"
+if (
+    question.type === "cloze" ||
+    question.type === "table-cloze"
+) {
+
+    const inputs = element.querySelectorAll(
+        ".engine-cloze-input"
+    );
+
+    const expected = Array.isArray(question.answer)
+        ? question.answer
+        : [question.answer];
+
+    let questionCorrect = 0;
+
+    inputs.forEach((input, index) => {
+
+        const correctAnswer = expected[index] ?? "";
+
+        const isCorrect =
+            normalize(input.value) ===
+            normalize(correctAnswer);
+
+        /* Remove previous feedback */
+
+        input.classList.remove(
+            "correct",
+            "incorrect"
+        );
+
+        const previousLabel = input.nextElementSibling;
+
+        if (
+            previousLabel &&
+            previousLabel.classList.contains(
+                "engine-cloze-correct-answer"
+            )
+        ) {
+            previousLabel.remove();
+        }
+
+        /* Apply visual feedback */
+
+        input.classList.add(
+            isCorrect ? "correct" : "incorrect"
+        );
+
+        if (isCorrect) {
+
+            questionCorrect++;
+
+            correctCount++;
+
+        } else {
+
+            /* Show the correct answer */
+
+            const answerLabel = document.createElement("span");
+
+            answerLabel.className =
+                "engine-cloze-correct-answer";
+
+            answerLabel.textContent =
+                `Correct answer: ${correctAnswer}`;
+
+            input.insertAdjacentElement(
+                "afterend",
+                answerLabel
             );
-
-            const expected = question.answer;
-
-            let questionCorrect = 0;
-
-            inputs.forEach((input, index) => {
-
-                const correct =
-                    normalize(input.value) ===
-                    normalize(expected[index]);
-
-                input.classList.remove("correct", "incorrect");
-
-                input.classList.add(
-                    correct ? "correct" : "incorrect"
-                );
-
-                if (correct) {
-                    questionCorrect++;
-                    correctCount++;
-                }
-
-                totalCount++;
-
-            });
-
-            element.classList.add(
-                questionCorrect === inputs.length
-                    ? "correct"
-                    : "incorrect"
-            );
-
-            feedback.textContent =
-                `${questionCorrect}/${inputs.length} correct`;
-
-            return;
 
         }
 
+        totalCount++;
+
+    });
+
+    /* Mark the complete question */
+
+    element.classList.add(
+        questionCorrect === inputs.length
+            ? "correct"
+            : "incorrect"
+    );
+
+    feedback.textContent =
+        `${questionCorrect}/${inputs.length} correct`;
+
+    return;
+
+}
         /* =====================================
            ALL OTHER EXERCISE TYPES
         ===================================== */
