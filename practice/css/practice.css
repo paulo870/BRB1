@@ -701,7 +701,32 @@ body {
     background: #183638;
 }
 
+/* =====================================================
+   INTERACTIVE QUESTION HEADING ALIGNMENT
+===================================================== */
 
+#interactive-exercise-container .engine-question h3 {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: baseline !important;
+    justify-content: flex-start;
+    gap: 9px;
+    width: 100%;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+#interactive-exercise-container .engine-question-number {
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+    white-space: nowrap;
+}
+
+#interactive-exercise-container .engine-question-text {
+    display: inline !important;
+    flex: 1 1 auto !important;
+    min-width: 0;
+}
 /* =====================================================
    INTERACTIVE ANSWER FEEDBACK
 ===================================================== */
