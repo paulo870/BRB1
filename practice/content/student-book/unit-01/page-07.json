@@ -11,8 +11,7 @@
             "instructions": "Complete these sentences with the words below",
             "text": "provide | revenue | based | employee | operates | specializes | subsidiary | competitor | produce | exporter",
             "questions": [
-                {
-                    "type": "cloze",
+                { "type": "cloze",
                     "text": "Some companies make or {{blank}} goods.",
                     "answer": ["produce"]
                 },
