@@ -1833,26 +1833,6 @@ body {
 }
 
 
-/* Interactive icon */
-
-.practice-option:nth-child(2) .practice-option-icon {
-
-    width: 64px;
-    height: 64px;
-
-    margin-bottom: 25px;
-
-    border-radius: 50%;
-
-    background: rgba(255,255,255,0.12);
-
-    color: #ffd36a;
-
-    border: 1px solid rgba(255,255,255,0.2);
-
-    font-size: 30px;
-}
-
 
 /* Interactive title */
 
