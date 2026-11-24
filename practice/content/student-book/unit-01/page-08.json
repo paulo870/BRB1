@@ -13,7 +13,7 @@
             "questions": [
                 { 
                    "id": 1,
-            "statement": "Gazprom produces energy.",
+            "question": "Gazprom produces energy.",
             "answer": true,
             
         }
