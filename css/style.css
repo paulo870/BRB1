@@ -3988,41 +3988,25 @@ body:not(.sidebar-hidden) #sidebar-toggle {
     }
 }
 /* =========================================================
-   SCROLLABLE SIDEBAR
+   SCROLLABLE SIDEBAR — INVISIBLE SCROLLBAR
 ========================================================= */
 
 .control-bar {
     overflow-y: auto;
     overflow-x: hidden;
+
     height: 100vh;
     height: 100dvh;
+
     box-sizing: border-box;
 
-    scrollbar-width: thin;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
     -webkit-overflow-scrolling: touch;
 }
 
-/* Keep sidebar content accessible on mobile */
-@media (max-width: 600px) {
-    .control-bar {
-        overflow-y: auto;
-        overflow-x: hidden;
-        height: 100vh;
-        height: 100dvh;
-        padding-bottom: 15px;
-    }
-}
-
-/* Optional: subtle scrollbar */
 .control-bar::-webkit-scrollbar {
-    width: 4px;
-}
-
-.control-bar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.35);
-    border-radius: 10px;
-}
-
-.control-bar::-webkit-scrollbar-track {
-    background: transparent;
+    display: none;
+    width: 0;
 }
