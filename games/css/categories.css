@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
 
-/* =====================================================
-   POLIGLOTA CATEGORIES
-===================================================== */
-
 :root {
     --ink: #071b20;
     --panel: #0d292e;
@@ -12,13 +8,9 @@
     --teal2: #087d79;
     --red: #ff4136;
     --muted: #9bb6b7;
-    --line: rgba(181, 225, 222, .16);
+    --line: rgba(181,225,222,.16);
     --white: #f5fbfa;
 }
-
-/* =====================================================
-   RESET & BASE
-===================================================== */
 
 * {
     box-sizing: border-box;
@@ -31,14 +23,13 @@
 body {
     margin: 0;
     min-height: 100vh;
-    background:
-        radial-gradient(
-            circle at 50% -10%,
-            #16464a 0,
-            #071b20 54%
-        );
-    font-family: 'DM Sans', sans-serif;
+    background: radial-gradient(
+        circle at 50% -10%,
+        #16464a 0,
+        #071b20 54%
+    );
     color: var(--white);
+    font-family: 'DM Sans', sans-serif;
 }
 
 button,
@@ -47,325 +38,561 @@ select {
     font: inherit;
 }
 
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+
 /* =====================================================
-   MAIN CONTAINER
+   APP SHELL
 ===================================================== */
 
-.game-container {
-    width: min(1100px, 94%);
+.app-shell {
+    width: min(1180px, 100%);
     margin: 0 auto;
-    padding: 30px 0 55px;
+    padding: 22px 28px 40px;
 }
+
 
 /* =====================================================
    HEADER
 ===================================================== */
 
-.game-header {
-    display: grid;
-    grid-template-columns: 1fr auto;
+.topbar {
+    display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 28px;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 18px;
 }
 
-.back-btn {
-    display: inline-flex;
+.brand {
+    display: flex;
     align-items: center;
-    gap: 8px;
-    width: fit-content;
-    color: var(--muted);
-    text-decoration: none;
+    gap: 11px;
+    font-family: Manrope, sans-serif;
     font-size: 13px;
-    font-weight: 700;
-    transition: color .2s ease;
+    font-weight: 800;
+    letter-spacing: .16em;
 }
 
-.back-btn:hover {
+.brand b {
     color: var(--teal);
 }
 
-.game-header > div {
-    grid-column: 1 / -1;
+.brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    color: var(--teal2);
+    font-size: 22px;
+    font-weight: 900;
+    box-shadow: inset 0 0 0 5px #b9d0cf;
+}
+
+.unit-pill {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .13em;
+    color: #a9e7e2;
+    border: 1px solid rgba(32,180,173,.45);
+    background: rgba(32,180,173,.1);
+    padding: 9px 13px;
+    border-radius: 99px;
+}
+
+
+/* =====================================================
+   GENERAL
+===================================================== */
+
+.screen {
+    padding: 52px 0 20px;
 }
 
 .eyebrow {
-    display: inline-block;
-    color: var(--teal);
     font-size: 10px;
     font-weight: 800;
-    letter-spacing: 2px;
+    letter-spacing: .2em;
+    color: var(--teal);
     text-transform: uppercase;
 }
 
-.game-header h1 {
-    margin: 7px 0;
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(30px, 5vw, 42px);
-    font-weight: 800;
-    letter-spacing: -1.5px;
+h1,
+h2 {
+    font-family: Manrope, sans-serif;
+    margin: 10px 0 12px;
+    letter-spacing: -.04em;
 }
 
-.game-header p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 14px;
+h1 {
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.05;
 }
+
+h1 span {
+    color: var(--teal);
+}
+
+h2 {
+    font-size: 25px;
+}
+
+.intro {
+    max-width: 600px;
+    color: #b4c9c9;
+    line-height: 1.65;
+    margin: 0 0 28px;
+}
+
 
 /* =====================================================
-   PANELS
+   SETUP
 ===================================================== */
 
-.panel {
-    background:
-        linear-gradient(
-            145deg,
-            rgba(18, 54, 59, .98),
-            rgba(13, 41, 46, .98)
-        );
+.setup-card {
+    max-width: 660px;
+    padding: 25px;
+    background: linear-gradient(
+        145deg,
+        rgba(18,54,59,.95),
+        rgba(9,34,39,.95)
+    );
     border: 1px solid var(--line);
     border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 18px 50px rgba(0, 0, 0, .22);
+    box-shadow: 0 22px 70px #0003;
 }
 
-.panel h2 {
-    margin: 0 0 24px;
-    font-family: 'Manrope', sans-serif;
-    font-size: 21px;
+.setup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.field span {
+    font-size: 10px;
+    letter-spacing: .14em;
+    color: #a6c1c1;
     font-weight: 800;
 }
 
-/* =====================================================
-   FORM ELEMENTS
-===================================================== */
-
-label {
-    display: block;
-    margin-bottom: 18px;
-    color: var(--white);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .3px;
-}
-
-input,
-select {
+select,
+.player-input {
     width: 100%;
-    display: block;
-    margin-top: 9px;
-    padding: 13px 15px;
-    border: 1px solid var(--line);
+    background: #071f24;
+    color: #fff;
+    border: 1px solid #285258;
     border-radius: 10px;
+    padding: 13px 14px;
     outline: none;
-    background: rgba(7, 27, 32, .75);
-    color: var(--white);
-    font-size: 14px;
-    transition: border-color .2s, box-shadow .2s;
 }
 
-input::placeholder {
-    color: #789597;
-}
-
-input:focus,
-select:focus {
+select:focus,
+.player-input:focus {
     border-color: var(--teal);
-    box-shadow: 0 0 0 3px rgba(32, 180, 173, .12);
-}
-
-select {
-    cursor: pointer;
 }
 
 select option {
     background: var(--panel);
-    color: var(--white);
+    color: white;
 }
 
-/* =====================================================
-   PLAYER SETUP
-===================================================== */
 
-#setup-screen {
-    max-width: 680px;
-    margin: 0 auto;
-}
+/* PLAYER FIELDS */
 
-#setup-screen h2 {
-    margin-bottom: 25px;
-}
-
-#player-fields {
+.player-fields {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-top: 17px;
 }
 
-#player-fields label {
-    margin-bottom: 0;
+.player-fields label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    color: #a6c1c1;
+    font-size: 11px;
+    font-weight: 700;
 }
+
+.player-fields input {
+    width: 100%;
+    background: #071f24;
+    color: #fff;
+    border: 1px solid #285258;
+    border-radius: 10px;
+    padding: 13px 14px;
+    outline: none;
+}
+
+.player-fields input:focus {
+    border-color: var(--teal);
+}
+
+.vocab-status {
+    font-size: 12px;
+    color: #9fc3c2;
+    margin: 19px 0 15px;
+    line-height: 1.6;
+}
+
 
 /* =====================================================
    BUTTONS
 ===================================================== */
 
+.primary-btn,
+.quiet-btn {
+    border: 0;
+    border-radius: 10px;
+    font-weight: 800;
+    letter-spacing: .06em;
+    transition: .2s;
+}
+
 .primary-btn {
-    width: 100%;
-    display: block;
-    margin-top: 18px;
-    padding: 16px 20px;
-    border: none;
-    border-radius: 11px;
-    background: linear-gradient(
-        135deg,
-        var(--teal),
-        var(--teal2)
-    );
-    color: white;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 1.2px;
-    cursor: pointer;
-    transition: transform .2s, filter .2s, box-shadow .2s;
-    box-shadow: 0 8px 22px rgba(8, 125, 121, .2);
+    background: var(--teal);
+    color: #032629;
+    padding: 15px 20px;
+    box-shadow: 0 8px 25px #20b4ad24;
 }
 
 .primary-btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.12);
-    box-shadow: 0 12px 26px rgba(8, 125, 121, .3);
+    background: #54d3cb;
+    transform: translateY(-1px);
 }
 
-.primary-btn:active {
-    transform: translateY(0);
+.primary-btn span {
+    float: right;
+    margin-left: 20px;
+    font-size: 18px;
 }
+
+.setup-card > .primary-btn {
+    width: 100%;
+}
+
+.quiet-btn {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: #b7cece;
+    padding: 10px 14px;
+    font-size: 11px;
+}
+
 
 /* =====================================================
-   GAME HEADER / LETTER / TIMER
+   GAME HEADER
 ===================================================== */
 
-.game-top {
+.game-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.game-heading h1 {
+    font-size: 34px;
+    margin-bottom: 0;
+}
+
+
+/* =====================================================
+   GAME LAYOUT
+===================================================== */
+
+.game-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, .8fr);
+    gap: 20px;
+    align-items: stretch;
+}
+
+
+/* =====================================================
+   MAIN CATEGORIES PANEL
+===================================================== */
+
+.categories-panel,
+.timer-panel,
+.validation-card {
+    background: linear-gradient(
+        145deg,
+        rgba(15,48,53,.96),
+        rgba(8,31,36,.96)
+    );
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 24px;
+    min-width: 0;
+}
+
+
+/* LETTER AREA */
+
+.letter-heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    margin-bottom: 30px;
-    padding-bottom: 22px;
+    padding-bottom: 20px;
     border-bottom: 1px solid var(--line);
+    margin-bottom: 22px;
 }
 
 #current-letter {
-    margin-top: 5px;
-    color: var(--teal);
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(65px, 10vw, 90px);
-    font-weight: 800;
+    font-family: Manrope, sans-serif;
+    font-size: clamp(75px, 10vw, 105px);
     line-height: 1;
-    text-shadow: 0 8px 30px rgba(32, 180, 173, .18);
-}
-
-.timer-box {
-    min-width: 125px;
-    padding: 15px 22px;
-    border: 1px solid rgba(32, 180, 173, .25);
-    border-radius: 14px;
-    background: rgba(7, 27, 32, .65);
-    text-align: center;
-}
-
-.timer-box span {
-    display: block;
-    margin-bottom: 5px;
-    color: var(--muted);
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-}
-
-.timer-box strong {
+    font-weight: 900;
     color: var(--teal);
-    font-family: 'Manrope', sans-serif;
-    font-size: 36px;
-    font-weight: 800;
-    line-height: 1;
+    text-shadow: 0 8px 30px #20b4ad24;
+    margin-top: 8px;
 }
+
+.letter-instruction {
+    max-width: 190px;
+    color: #b5d0d0;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: right;
+}
+
 
 /* =====================================================
-   CATEGORIES GRID
+   CATEGORY INPUTS
 ===================================================== */
 
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
+    gap: 13px;
 }
 
 .categories-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
     margin: 0;
-    padding: 16px;
+    padding: 15px;
     border: 1px solid var(--line);
-    border-radius: 13px;
-    background: rgba(7, 27, 32, .42);
-    color: var(--teal);
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    transition: border-color .2s, background .2s;
+    border-radius: 11px;
+    background: #09242a;
+    color: #a6c1c1;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .13em;
+    transition: border-color .2s;
 }
 
 .categories-grid label:hover {
-    border-color: rgba(32, 180, 173, .4);
-    background: rgba(7, 27, 32, .65);
+    border-color: rgba(32,180,173,.4);
 }
 
 .categories-grid input {
-    margin-top: 10px;
-    background: rgba(18, 54, 59, .65);
-    color: var(--white);
-    font-weight: 500;
+    width: 100%;
+    min-width: 0;
+    background: #071f24;
+    color: #fff;
+    border: 1px solid #285258;
+    border-radius: 9px;
+    padding: 12px;
+    outline: none;
+    font-size: 13px;
     letter-spacing: 0;
+}
+
+.categories-grid input::placeholder {
+    color: #779597;
+}
+
+.categories-grid input:focus {
+    border-color: var(--teal);
 }
 
 .categories-grid label:last-child {
     grid-column: 1 / -1;
 }
 
+
+/* FINISH ROUND */
+
+.finish-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+
 /* =====================================================
-   VALIDATION SCREEN
+   TIMER PANEL
 ===================================================== */
 
-#validation-screen h2,
-#results-screen h2 {
-    margin-bottom: 25px;
+.timer-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.timer-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 16px;
+}
+
+.timer-heading h2 {
+    margin: 5px 0 0;
+}
+
+
+/* TIMER CIRCLE */
+
+.timer-circle {
+    width: min(220px, 100%);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 9px solid rgba(32,180,173,.12);
+    background:
+        radial-gradient(
+            circle,
+            #123b40 0%,
+            #09252b 72%
+        );
+    box-shadow:
+        inset 0 0 35px rgba(0,0,0,.2),
+        0 15px 45px #0003;
+    display: grid;
+    place-items: center;
+    margin: 30px auto 22px;
+    position: relative;
+}
+
+.timer-circle::before {
+    content: "";
+    position: absolute;
+    inset: -9px;
+    border-radius: 50%;
+    border: 2px solid rgba(32,180,173,.35);
+    pointer-events: none;
+}
+
+.timer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.timer-content strong {
+    font-family: Manrope, sans-serif;
+    font-size: 58px;
+    line-height: 1;
+    font-weight: 800;
+    color: var(--teal);
+}
+
+.timer-content span {
+    color: #9bb6b7;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .2em;
+}
+
+.timer-note {
+    text-align: center;
+    color: #8eaaaa;
+    font-size: 11px;
+    line-height: 1.65;
+    padding: 0 8px;
+}
+
+.timer-divider {
+    height: 1px;
+    background: var(--line);
+    margin: 24px 0;
+}
+
+
+/* CATEGORY SUMMARY */
+
+.category-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.category-summary > .eyebrow {
+    margin-bottom: 3px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #b5d0d0;
+    font-size: 12px;
+}
+
+.summary-row strong {
+    color: #b8f2ed;
+    font-family: Manrope, sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   VALIDATION
+===================================================== */
+
+.validation-screen h1 {
+    margin-bottom: 12px;
+}
+
+.validation-card {
+    max-width: 800px;
 }
 
 .validation-player {
-    margin-bottom: 18px;
-    padding: 20px;
+    margin-bottom: 17px;
+    padding: 17px;
+    background: #09242a;
     border: 1px solid var(--line);
-    border-radius: 14px;
-    background: rgba(7, 27, 32, .4);
+    border-radius: 12px;
 }
 
 .validation-player h3 {
-    margin: 0 0 14px;
+    margin: 0 0 13px;
     color: var(--teal);
-    font-family: 'Manrope', sans-serif;
+    font-family: Manrope, sans-serif;
     font-size: 16px;
-    font-weight: 800;
 }
 
 .validation-row {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    gap: 15px;
-    padding: 12px 0;
+    gap: 12px;
+    padding: 11px 0;
     border-bottom: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 13px;
+    color: #b5d0d0;
+    font-size: 12px;
 }
 
 .validation-row:last-child {
@@ -374,10 +601,10 @@ select option {
 
 .validation-row b {
     color: var(--white);
-    font-weight: 700;
 }
 
-/* Validation checkboxes */
+
+/* VALIDATION CHECKBOX */
 
 .validation-row label {
     display: flex;
@@ -394,86 +621,129 @@ select option {
     height: 21px;
     margin: 0;
     padding: 0;
-    border: 1px solid rgba(155, 182, 183, .5);
+    border: 1px solid #31575b;
     border-radius: 6px;
-    background: var(--ink);
+    background: #071f24;
     cursor: pointer;
-    transition: background .2s, border-color .2s;
 }
 
 .validation-row input[type="checkbox"]:checked {
+    background: var(--teal);
     border-color: var(--teal);
-    background: var(--teal2);
 }
 
 .validation-row input[type="checkbox"]:checked::after {
     content: "✓";
     display: block;
-    color: white;
+    color: #032629;
     font-size: 14px;
     font-weight: 900;
     text-align: center;
     line-height: 19px;
 }
 
+
 /* =====================================================
    RESULTS
 ===================================================== */
+
+.result-screen {
+    text-align: center;
+    max-width: 700px;
+    margin: auto;
+}
+
+.result-screen .intro {
+    margin: 0 auto 25px;
+}
+
+.final-scores {
+    display: grid;
+    gap: 10px;
+    margin: 20px auto 25px;
+    text-align: left;
+}
 
 .result-player {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 15px;
-    padding: 17px 5px;
-    border-bottom: 1px solid var(--line);
+    background: #0d3035;
+    border: 1px solid var(--line);
+    padding: 16px 19px;
+    border-radius: 12px;
     color: var(--white);
     font-size: 14px;
     font-weight: 800;
 }
 
-.result-player:last-child {
-    border-bottom: none;
-}
-
 .result-player span:last-child {
-    color: var(--teal);
+    color: #a9e8e2;
     white-space: nowrap;
 }
+
+.result-screen > .primary-btn {
+    min-width: 220px;
+}
+
 
 /* =====================================================
    RESPONSIVE
 ===================================================== */
 
-@media (max-width: 700px) {
+@media(max-width: 800px) {
 
-    .game-container {
-        width: min(100% - 28px, 600px);
-        padding-top: 20px;
+    .game-layout {
+        grid-template-columns: 1fr;
     }
 
-    .panel {
-        padding: 22px;
-        border-radius: 16px;
+    .timer-panel {
+        order: 2;
     }
 
-    .game-header {
-        margin-bottom: 22px;
+    .screen {
+        padding-top: 35px;
     }
 
-    .game-header h1 {
-        font-size: 32px;
+    .timer-circle {
+        width: 190px;
     }
 
 }
 
-@media (max-width: 520px) {
 
-    .panel {
+@media(max-width: 520px) {
+
+    .app-shell {
+        padding: 15px 14px 28px;
+    }
+
+    .setup-grid,
+    .player-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .setup-card,
+    .categories-panel,
+    .timer-panel,
+    .validation-card {
         padding: 18px;
     }
 
-    #player-fields,
+    .game-heading h1 {
+        font-size: 27px;
+    }
+
+    .brand {
+        font-size: 10px;
+    }
+
+    .unit-pill {
+        font-size: 9px;
+        padding: 8px 9px;
+    }
+
     .categories-grid {
         grid-template-columns: 1fr;
     }
@@ -482,33 +752,25 @@ select option {
         grid-column: auto;
     }
 
-    .game-top {
+    .letter-heading {
         align-items: center;
     }
 
     #current-letter {
-        font-size: 65px;
+        font-size: 75px;
     }
 
-    .timer-box {
-        min-width: 105px;
-        padding: 13px 15px;
+    .letter-instruction {
+        max-width: 145px;
+        font-size: 11px;
     }
 
-    .timer-box strong {
-        font-size: 30px;
+    .timer-circle {
+        width: 175px;
     }
 
-    .validation-player {
-        padding: 15px;
-    }
-
-    .validation-row {
-        font-size: 12px;
-    }
-
-    .result-player {
-        font-size: 13px;
+    .timer-content strong {
+        font-size: 50px;
     }
 
 }
