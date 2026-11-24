@@ -773,8 +773,13 @@ if (
         const [activityIndex, questionIndex] =
             element.dataset.questionIndex.split("-").map(Number);
 
-        const question =
-            activities[activityIndex].questions[questionIndex];
+        const originalQuestion =
+    activities[activityIndex].questions[questionIndex];
+
+const question = {
+    ...originalQuestion,
+    type: originalQuestion.type || activities[activityIndex].type
+};
 
         const answer = getAnswer(element, question);
 
@@ -1007,8 +1012,13 @@ totalCount++;
             const [activityIndex, questionIndex] =
                 element.dataset.questionIndex.split("-").map(Number);
 
-            const question =
-                activities[activityIndex].questions[questionIndex];
+            const originalQuestion =
+    activities[activityIndex].questions[questionIndex];
+
+const question = {
+    ...originalQuestion,
+    type: originalQuestion.type || activities[activityIndex].type
+};
 
             const answerBox = element.querySelector(
                 ".engine-correct-answer"
