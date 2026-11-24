@@ -1207,7 +1207,7 @@ activityDropdownLinks.forEach(link => {
 let currentTool = null;
 function setTool(tool) {
 
-    // toggle OFF
+    // Toggle selected tool OFF
     if (currentTool === tool) {
 
         currentTool = null;
@@ -1215,10 +1215,20 @@ function setTool(tool) {
     } else {
 
         currentTool = tool;
+
     }
+
+    // Enable touch drawing only when a tool is selected
+    [editCanvas, whiteboardCanvas].forEach(canvas => {
+
+        canvas.style.touchAction =
+            currentTool ? "none" : "pan-x pan-y";
+
+    });
 
     updateToolUI();
     updateCursor();
+
 }
 const penTool = document.getElementById("pen-tool");
 const eraserTool = document.getElementById("eraser-tool");
@@ -1452,21 +1462,63 @@ function stopDrawing() {
 }
 
 // ==========================
-// EDIT CANVAS EVENTS
+// POINTER EVENTS — PC AND ANDROID
 // ==========================
 
-editCanvas.addEventListener("mousedown", (e) => {
-    startDrawing(e, editCanvas);
-});
+function attachDrawingEvents(canvas) {
 
-editCanvas.addEventListener("mousemove", (e) => {
-    moveDrawing(e, editCanvas);
-});
+    // Start drawing
+    canvas.addEventListener("pointerdown", (e) => {
 
-editCanvas.addEventListener("mouseup", stopDrawing);
+        if (!currentTool) return;
 
-editCanvas.addEventListener("mouseleave", stopDrawing);
+        e.preventDefault();
 
+        canvas.setPointerCapture(e.pointerId);
+
+        startDrawing(e, canvas);
+
+    });
+
+    // Continue drawing
+    canvas.addEventListener("pointermove", (e) => {
+
+        if (!drawing) return;
+
+        e.preventDefault();
+
+        moveDrawing(e, canvas);
+
+    });
+
+    // Finish drawing
+    function finishDrawing(e) {
+
+        if (!drawing) return;
+
+        drawing = false;
+
+        if (canvas.hasPointerCapture(e.pointerId)) {
+            canvas.releasePointerCapture(e.pointerId);
+        }
+
+    }
+
+    canvas.addEventListener("pointerup", finishDrawing);
+
+    canvas.addEventListener("pointercancel", finishDrawing);
+
+    canvas.addEventListener("lostpointercapture", () => {
+        drawing = false;
+    });
+
+}
+
+
+// Attach events to both canvases
+attachDrawingEvents(editCanvas);
+
+attachDrawingEvents(whiteboardCanvas);
 // ==========================
 // WHITEBOARD EVENTS
 // ==========================
@@ -1750,11 +1802,16 @@ document.addEventListener("click", (e) => {
 // DRAG TEXT BOX (NEW FEATURE)
 // ==========================
 function enableDrag(el) {
+
     let offsetX = 0;
     let offsetY = 0;
     let dragging = false;
 
-    el.addEventListener("mousedown", (e) => {
+    el.addEventListener("pointerdown", (e) => {
+
+        // Don't interfere with editing text
+        if (e.target !== el) return;
+
         dragging = true;
 
         const rect = el.getBoundingClientRect();
@@ -1762,22 +1819,41 @@ function enableDrag(el) {
         offsetX = e.clientX - rect.left;
         offsetY = e.clientY - rect.top;
 
+        el.setPointerCapture(e.pointerId);
+
         document.body.style.userSelect = "none";
+
     });
 
-    document.addEventListener("mousemove", (e) => {
+    el.addEventListener("pointermove", (e) => {
+
         if (!dragging) return;
 
-        const parentRect = el.parentElement.getBoundingClientRect();
+        e.preventDefault();
 
-        el.style.left = (e.clientX - parentRect.left - offsetX) + "px";
-        el.style.top = (e.clientY - parentRect.top - offsetY) + "px";
+        const parentRect =
+            el.parentElement.getBoundingClientRect();
+
+        el.style.left =
+            (e.clientX - parentRect.left - offsetX) + "px";
+
+        el.style.top =
+            (e.clientY - parentRect.top - offsetY) + "px";
+
     });
 
-    document.addEventListener("mouseup", () => {
+    function stopDragging() {
+
         dragging = false;
+
         document.body.style.userSelect = "auto";
-    });
+
+    }
+
+    el.addEventListener("pointerup", stopDragging);
+
+    el.addEventListener("pointercancel", stopDragging);
+
 }
 // ==========================
 // INITIAL SETUP
