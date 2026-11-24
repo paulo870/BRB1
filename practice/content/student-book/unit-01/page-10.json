@@ -11,7 +11,7 @@
             "instructions": "Listen to Gianluca introducing himself to Carmen at a conference. Make notes about the following information.",
             "media": {
                 "type": "audio",
-                "src": "../audios/student-book-audios/unit_1/page9_Track_1.4.mp3",
+                "src": "../audios/student-book-audios/unit_1/page10_Track_1.4.mp3",
                 "controls": true,
                 "download": false,
                 "playbackSpeed": [0.75, 1, 1.25, 1.5]
@@ -36,6 +36,13 @@
             "type": "cloze",
             "title": "Introducing Yourself",
             "instructions": "Complete what Gianluca says. Then listen again and check your answers.",
+              "media": {
+                "type": "audio",
+                "src": "../audios/student-book-audios/unit_1/page10_Track_1.4.mp3",
+                "controls": true,
+                "download": false,
+                "playbackSpeed": [0.75, 1, 1.25, 1.5]
+            },
             "questions": [
                 {
                     "text": "Excuse me. {{blank}} this seat free?",
@@ -80,6 +87,13 @@
             "type": "matching",
             "title": "Matching Questions and Responses",
             "instructions": "Match questions 1–8 in Exercise 3 to Carmen's responses a–h. Then listen and check your answers.",
+              "media": {
+                "type": "audio",
+                "src": "../audios/student-book-audios/unit_1/page10_Track_1.4.mp3",
+                "controls": true,
+                "download": false,
+                "playbackSpeed": [0.75, 1, 1.25, 1.5]
+            },
             "questions": [
                 {
                     "question": "Match each question to the correct response.",
