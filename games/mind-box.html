@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#071b20">
 
     <title>Mind Box | Academia Poliglota</title>
 
@@ -12,186 +13,304 @@
 
 <body>
 
-    <main class="container">
+    <main class="app-shell">
+
+        <!-- HEADER -->
 
         <header class="topbar">
 
-            <a href="../index.html" class="back-link">← Games</a>
-
             <div class="brand">
                 <span class="brand-mark">P</span>
-                <span>ACADEMIA POLIGLOTA</span>
+                <span>POLIGLOTA <b>MIND BOX</b></span>
             </div>
 
-            <span id="unit-pill" class="unit-pill">UNIT</span>
+            <div class="header-actions">
 
-            <h1>Mind Box</h1>
+                <a href="../index.html" class="back-link">
+                    ← GAMES
+                </a>
 
-            <p>Think. Choose. Challenge your brain.</p>
+                <span id="unit-pill" class="unit-pill">
+                    LOADING UNIT…
+                </span>
+
+            </div>
 
         </header>
 
 
         <!-- SETUP SCREEN -->
 
-        <section id="setup-screen" class="panel setup-screen">
+        <section id="setup-screen" class="screen setup-screen">
 
-            <div class="section-heading">
-                <span class="eyebrow">GAME SETUP</span>
-                <h2>Ready to challenge your mind?</h2>
-                <p>Choose your players and set the number of rounds.</p>
+            <div class="eyebrow">
+                ACADEMIA POLIGLOTA · CLASSROOM GAME
             </div>
 
+            <h1>Challenge your <span>mind.</span></h1>
 
-            <div class="setup-grid">
+            <p class="intro">
+                Think carefully, choose your answers and collect points.
+                Test your knowledge in this Mind Box challenge.
+            </p>
 
-                <div class="setup-field">
 
-                    <label for="player-count">Number of players</label>
+            <div class="setup-card">
 
-                    <select id="player-count">
-                        <option value="1">1 Player</option>
-                        <option value="2">2 Players</option>
-                        <option value="3">3 Players</option>
-                        <option value="4">4 Players</option>
-                    </select>
+                <div class="setup-grid">
+
+                    <label class="field">
+
+                        <span>NUMBER OF PLAYERS</span>
+
+                        <select id="player-count">
+
+                            <option value="1">1 Player</option>
+                            <option value="2">2 Players</option>
+                            <option value="3">3 Players</option>
+                            <option value="4">4 Players</option>
+
+                        </select>
+
+                    </label>
+
+
+                    <label class="field">
+
+                        <span>NUMBER OF ROUNDS</span>
+
+                        <select id="round-count">
+
+                            <option value="3">3 Rounds</option>
+                            <option value="5" selected>5 Rounds</option>
+                            <option value="8">8 Rounds</option>
+
+                        </select>
+
+                    </label>
 
                 </div>
 
 
-                <div class="setup-field">
+                <div class="players-section">
 
-                    <label for="round-count">Number of rounds</label>
+                    <div class="section-label">
+                        PLAYER INFORMATION
+                    </div>
 
-                    <select id="round-count">
-                        <option value="3">3 Rounds</option>
-                        <option value="5" selected>5 Rounds</option>
-                        <option value="8">8 Rounds</option>
-                    </select>
+                    <div id="player-fields" class="player-fields"></div>
 
                 </div>
 
+
+                <p id="vocab-status" class="status-message"></p>
+
+
+                <button id="start-btn" class="primary-btn">
+                    START CHALLENGE <span>→</span>
+                </button>
+
             </div>
-
-
-            <div class="players-section">
-
-                <h3>Players</h3>
-
-                <div id="player-fields"></div>
-
-            </div>
-
-
-            <p id="vocab-status" class="status-message"></p>
-
-            <button id="start-btn" class="primary-btn">
-                START CHALLENGE
-            </button>
 
         </section>
 
 
         <!-- GAME SCREEN -->
 
-        <section id="game-screen" class="panel game-screen" hidden>
+        <section id="game-screen" class="screen game-screen" hidden>
 
-            <div class="game-topbar">
+            <div class="game-heading">
 
                 <div>
-                    <span class="eyebrow">MIND BOX CHALLENGE</span>
-                    <h2 id="round-title">ROUND 1</h2>
+                    <div class="eyebrow">MIND BOX CHALLENGE</div>
+                    <h1>Think. Choose. <span>Win.</span></h1>
                 </div>
 
                 <button id="end-game-btn" class="secondary-btn">
-                    End Game
+                    END GAME
                 </button>
 
             </div>
 
 
-            <div class="brain-header">
-
-                <div class="brain">
-
-                    <svg viewBox="0 0 100 100">
-
-                        <path
-                            d="M50 12
-                               C25 2 15 25 22 40
-                               C5 55 22 80 40 78
-                               C45 92 55 92 60 78
-                               C80 82 95 58 78 40
-                               C85 20 68 2 50 12Z"
-                            fill="#20b4ad"
-                        />
-
-                        <path
-                            d="M50 12 V82"
-                            stroke="white"
-                            stroke-width="3"
-                        />
-
-                    </svg>
-
-                </div>
+            <div class="game-layout">
 
 
-                <div class="progress-info">
+                <!-- MAIN QUESTION PANEL -->
 
-                    <span id="question-number">QUESTION 1</span>
+                <section class="question-panel">
 
-                    <div class="progress-bar">
-                        <div id="progress"></div>
+
+                    <!-- ROUND AND PROGRESS -->
+
+                    <div class="question-top">
+
+                        <div class="round-information">
+
+                            <div class="eyebrow">CURRENT ROUND</div>
+
+                            <h2 id="round-title">ROUND 1</h2>
+
+                        </div>
+
+
+                        <div class="brain">
+
+                            <svg viewBox="0 0 100 100">
+
+                                <path
+                                    d="M50 12
+                                       C25 2 15 25 22 40
+                                       C5 55 22 80 40 78
+                                       C45 92 55 92 60 78
+                                       C80 82 95 58 78 40
+                                       C85 20 68 2 50 12Z"
+                                    fill="#20b4ad"
+                                />
+
+                                <path
+                                    d="M50 12 V82"
+                                    stroke="white"
+                                    stroke-width="3"
+                                />
+
+                            </svg>
+
+                        </div>
+
                     </div>
 
-                    <strong id="score">0 POINTS</strong>
 
-                </div>
+                    <div class="progress-info">
+
+                        <div class="progress-labels">
+
+                            <span id="question-number">
+                                QUESTION 1
+                            </span>
+
+                            <strong id="score">
+                                0 POINTS
+                            </strong>
+
+                        </div>
+
+                        <div class="progress-bar">
+                            <div id="progress"></div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- CURRENT PLAYER -->
+
+                    <div id="current-player" class="current-player">
+                        PLAYER'S TURN
+                    </div>
+
+
+                    <!-- QUESTION -->
+
+                    <div class="question-area">
+
+                        <div class="eyebrow">
+                            YOUR QUESTION
+                        </div>
+
+                        <div id="question">
+                        </div>
+
+                    </div>
+
+
+                    <!-- ANSWER OPTIONS -->
+
+                    <div id="options" class="options"></div>
+
+
+                    <!-- FEEDBACK -->
+
+                    <div id="feedback" class="feedback"></div>
+
+
+                    <!-- NEXT TURN -->
+
+                    <button id="next-btn" class="primary-btn next-btn" hidden>
+                        NEXT TURN <span>→</span>
+                    </button>
+
+                </section>
+
+
+                <!-- SCOREBOARD PANEL -->
+
+                <aside class="score-panel">
+
+                    <div class="score-head">
+
+                        <div>
+                            <div class="eyebrow">LIVE GAME</div>
+                            <h2>Scoreboard</h2>
+                        </div>
+
+                        <span class="score-badge">MIND BOX</span>
+
+                    </div>
+
+
+                    <div id="score-list" class="score-list"></div>
+
+
+                    <div class="score-divider"></div>
+
+
+                    <div class="game-guide">
+
+                        <div class="eyebrow">HOW TO PLAY</div>
+
+                        <p>
+                            Read the question carefully and select
+                            the correct answer.
+                        </p>
+
+                        <p>
+                            Every correct answer earns
+                            <strong>100 points.</strong>
+                        </p>
+
+                    </div>
+
+
+                    <div class="score-note">
+                        Take your time, think carefully and keep
+                        challenging yourself.
+                    </div>
+
+                </aside>
 
             </div>
-
-
-            <div id="current-player" class="current-player">
-                PLAYER'S TURN
-            </div>
-
-
-            <div id="question"></div>
-
-            <div id="options" class="options"></div>
-
-            <div id="feedback"></div>
-
-
-            <div class="score-panel">
-
-                <h3>LIVE SCOREBOARD</h3>
-
-                <div id="score-list"></div>
-
-            </div>
-
-
-            <button id="next-btn" class="primary-btn next-btn" hidden>
-                NEXT TURN
-            </button>
 
         </section>
 
 
         <!-- RESULT SCREEN -->
 
-        <section id="result-screen" class="panel result-screen" hidden>
+        <section id="result-screen" class="screen result-screen" hidden>
 
-            <span class="eyebrow">CHALLENGE COMPLETED</span>
+            <div class="eyebrow">CHALLENGE COMPLETED</div>
 
-            <h2>Final Results</h2>
+            <h1>Brilliant <span>effort!</span></h1>
 
-            <div id="final-scores"></div>
+            <p class="intro">
+                Here are the final results of your Mind Box challenge.
+            </p>
+
+
+            <div id="final-scores" class="final-scores"></div>
+
 
             <button id="play-again-btn" class="primary-btn">
-                PLAY AGAIN
+                PLAY AGAIN <span>↻</span>
             </button>
 
         </section>
