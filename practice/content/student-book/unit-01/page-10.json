@@ -1,1 +1,124 @@
 
+{
+    "book": "student-book",
+    "unit": 1,
+    "page": 10,
+    "title": "Unit 1 - Page 10",
+    "activities": [
+        {
+            "id": "activity-01",
+            "type": "short-answer",
+            "title": "Meeting Someone at a Conference",
+            "instructions": "Listen to Gianluca introducing himself to Carmen at a conference. Make notes about the following information.",
+           "media": {
+        "type": "audio",
+        "src": "../audios/student-book-audios/unit_1/page9_Track_1.4.mp3",
+        "controls": true,
+        "download": false,
+        "playbackSpeed": [0.75, 1, 1.25, 1.5]
+    },
+            "questions": [
+                {
+                    "text": "1. What is Carmen's nationality?",
+                    "answer": "argentinian"
+                },
+                {
+                    "text": "2. What is Carmen's job?",
+                    "answer": "journalist"
+                },
+                {
+                    "text": "3. Why is Carmen at the conference?",
+                    "answer": "research an article"
+                }
+            ]
+        }
+ {
+            "id": "activity-02",
+            "type": "cloze",
+            "title": "Introducing Yourself",
+            "instructions": "Complete what Gianluca says. Then listen again and check your answers.",
+            "questions": [
+                {
+                    "text": "Excuse me. {{blank}} this seat free?",
+                    "answer": ["Is"]
+                },
+                {
+                    "text": "Thanks very much. Can I {{blank}} myself? I'm Gianluca Donatelli.",
+                    "answer": ["introduce"]
+                },
+                {
+                    "text": "Nice to meet you {{blank}}, Carmen. Where are you {{blank}}?",
+                    "answer": ["too", "from"]
+                },
+                {
+                    "text": "And {{blank}} do you work for?",
+                    "answer": ["who"]
+                },
+                {
+                    "text": "Oh really? And what do you {{blank}}?",
+                    "answer": ["do"]
+                },
+                {
+                    "text": "So {{blank}} are you at this conference?",
+                    "answer": ["why"]
+                },
+                {
+                    "text": "That's interesting. A friend of mine works for an Italian service provider. Can I introduce {{blank}} to {{blank}}?",
+                    "answer": ["you", "him"]
+                },
+                {
+                    "text": "Roberto. Can you come here a minute? This is ... Sorry, what's your name {{blank}}?",
+                    "answer": ["again"]
+                },
+                {
+                    "text": "Roberto. {{blank}} is Carmen. She's writing an article on Internet service providers.",
+                    "answer": ["This"]
+                }
+            ]
+        }
+ "id": "activity-01",
+            "type": "matching",
+            "title": "Matching Questions and Responses",
+            "instructions": "Match questions 1–8 in Exercise 3 to Carmen's responses a–h. Then listen and check your answers.",
+            "questions": [
+                {
+                    "text": "Match each question to the correct response.",
+                    "pairs": [
+                        {
+                            "left": "1. Excuse me. Is this seat free?",
+                            "right": "c. Yes, it is."
+                        },
+                        {
+                            "left": "2. Thanks very much. Can I introduce myself? I'm Gianluca Donatelli.",
+                            "right": "d. Nice to meet you. I'm Carmen Sanchez."
+                        },
+                        {
+                            "left": "3. Nice to meet you too, Carmen. Where are you from?",
+                            "right": "h. I'm from Argentina."
+                        },
+                        {
+                            "left": "4. And who do you work for?",
+                            "right": "f. I don't work for a company. I'm self-employed."
+                        },
+                        {
+                            "left": "5. Oh really? And what do you do?",
+                            "right": "a. I'm a journalist."
+                        },
+                        {
+                            "left": "6. So why are you at this conference?",
+                            "right": "e. I'm here to research an article on Internet service providers."
+                        },
+                        {
+                            "left": "7. That's interesting. A friend of mine works for an Italian service provider. Can I introduce you to him?",
+                            "right": "g. Yes, of course. That would be nice."
+                        },
+                        {
+                            "left": "8. Roberto. Can you come here a minute? This is ... Sorry, what's your name again?",
+                            "right": "b. Carmen. Carmen Sanchez."
+                        }
+                    ]
+                }
+
+      
+    ]
+}
