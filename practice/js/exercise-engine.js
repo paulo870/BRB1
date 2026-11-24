@@ -37,7 +37,43 @@ function createQuestion(question, index, displayNumber) {
 
 let content = "";
 let questionHeading = escapeHTML(question.question || "");
+function createSentenceChoice(question, index) {
 
+    const sentenceHTML = question.parts.map((part, partIndex) => {
+
+        // Normal text
+        if (typeof part === "string") {
+            return escapeHTML(part);
+        }
+
+        // Choice dropdown
+        const optionsHTML = part.options.map(option => `
+            <option value="${escapeHTML(option)}">
+                ${escapeHTML(option)}
+            </option>
+        `).join("");
+
+        return `
+            <select
+                class="engine-sentence-choice"
+                data-part-index="${partIndex}"
+                data-answer="${escapeHTML(part.answer)}"
+            >
+                <option value="">Choose...</option>
+                ${optionsHTML}
+            </select>
+        `;
+
+    }).join("");
+
+    return `
+        <div class="engine-question" data-question-index="${index}">
+            <div class="engine-sentence-choice-text">
+                ${sentenceHTML}
+            </div>
+        </div>
+    `;
+}
         /* =====================================
            MULTIPLE CHOICE
         ===================================== */
