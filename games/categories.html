@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#071b20">
 
     <title>Categories | Academia Poliglota</title>
 
@@ -12,138 +13,304 @@
 
 <body>
 
-    <main class="game-container">
+    <main class="app-shell">
 
-        <header class="game-header">
-            <a href="../index.html" class="back-btn">← Back</a>
+        <!-- HEADER -->
 
-            <div>
-                <span class="eyebrow">ACADEMIA POLIGLOTA</span>
-                <h1>Categories</h1>
-                <p>One letter. Five categories. Think fast!</p>
+        <header class="topbar">
+
+            <div class="brand">
+                <span class="brand-mark">P</span>
+                <span>POLIGLOTA <b>CATEGORIES</b></span>
             </div>
+
+            <div class="unit-pill" id="unit-pill">
+                LOADING UNIT…
+            </div>
+
         </header>
 
 
-        <!-- SETUP -->
+        <!-- SETUP SCREEN -->
 
-        <section id="setup-screen" class="panel">
+        <section id="setup-screen" class="screen setup-screen">
 
-            <h2>Player Setup</h2>
+            <div class="eyebrow">
+                ACADEMIA POLIGLOTA · CLASSROOM GAME
+            </div>
 
-            <label>
-                Number of players
+            <h1>Ready to <span>play?</span></h1>
 
-                <select id="player-count">
-                    <option value="2">2 Players</option>
-                    <option value="3">3 Players</option>
-                    <option value="4">4 Players</option>
-                </select>
-            </label>
+            <p class="intro">
+                Think fast, find words and challenge your vocabulary.
+                You have five categories and one letter. How many
+                answers can you find before time runs out?
+            </p>
 
-            <div id="player-fields"></div>
 
-            <label>
-                Round duration
+            <div class="setup-card">
 
-                <select id="round-duration">
-                    <option value="60">60 seconds</option>
-                    <option value="90">90 seconds</option>
-                    <option value="120">120 seconds</option>
-                </select>
-            </label>
+                <div class="setup-grid">
 
-            <button id="start-btn" class="primary-btn">
-                START GAME
-            </button>
+                    <label class="field">
+
+                        <span>NUMBER OF PLAYERS</span>
+
+                        <select id="player-count">
+                            <option value="2">2 players</option>
+                            <option value="3">3 players</option>
+                            <option value="4">4 players</option>
+                        </select>
+
+                    </label>
+
+
+                    <label class="field">
+
+                        <span>ROUND DURATION</span>
+
+                        <select id="round-duration">
+                            <option value="60">60 seconds</option>
+                            <option value="90">90 seconds</option>
+                            <option value="120">120 seconds</option>
+                        </select>
+
+                    </label>
+
+                </div>
+
+
+                <div id="player-fields" class="player-fields"></div>
+
+
+                <div class="vocab-status">
+                    Each player will have the same five categories
+                    and letter.
+                </div>
+
+
+                <button id="start-btn" class="primary-btn">
+                    START GAME <span>→</span>
+                </button>
+
+            </div>
 
         </section>
 
 
-        <!-- GAME -->
+        <!-- GAME SCREEN -->
 
-        <section id="game-screen" class="panel" hidden>
+        <section id="game-screen" class="screen game-screen" hidden>
 
-            <div class="game-top">
+            <div class="game-heading">
 
                 <div>
-                    <span class="eyebrow">CURRENT LETTER</span>
-                    <div id="current-letter">A</div>
-                </div>
-
-                <div class="timer-box">
-                    <span>TIME LEFT</span>
-                    <strong id="timer">60</strong>
+                    <div class="eyebrow">CATEGORIES CHALLENGE</div>
+                    <h1>Find your words!</h1>
                 </div>
 
             </div>
 
-            <div class="categories-grid">
 
-                <label>
-                    NAME
-                    <input data-category="name" placeholder="A name...">
-                </label>
+            <div class="game-layout">
 
-                <label>
-                    PLACE
-                    <input data-category="place" placeholder="A place...">
-                </label>
+                <!-- MAIN GAME PANEL -->
 
-                <label>
-                    ANIMAL
-                    <input data-category="animal" placeholder="An animal...">
-                </label>
+                <section class="categories-panel">
 
-                <label>
-                    OBJECT
-                    <input data-category="object" placeholder="An object...">
-                </label>
+                    <div class="letter-heading">
 
-                <label>
-                    FOOD
-                    <input data-category="food" placeholder="A food...">
-                </label>
+                        <div>
+                            <div class="eyebrow">YOUR LETTER</div>
+                            <div id="current-letter">A</div>
+                        </div>
+
+                        <div class="letter-instruction">
+                            All your answers must begin with this letter.
+                        </div>
+
+                    </div>
+
+
+                    <div class="categories-grid">
+
+                        <label>
+                            NAME
+
+                            <input
+                                data-category="name"
+                                placeholder="A name..."
+                                autocomplete="off"
+                            >
+                        </label>
+
+
+                        <label>
+                            PLACE
+
+                            <input
+                                data-category="place"
+                                placeholder="A place..."
+                                autocomplete="off"
+                            >
+                        </label>
+
+
+                        <label>
+                            ANIMAL
+
+                            <input
+                                data-category="animal"
+                                placeholder="An animal..."
+                                autocomplete="off"
+                            >
+                        </label>
+
+
+                        <label>
+                            OBJECT
+
+                            <input
+                                data-category="object"
+                                placeholder="An object..."
+                                autocomplete="off"
+                            >
+                        </label>
+
+
+                        <label>
+                            FOOD
+
+                            <input
+                                data-category="food"
+                                placeholder="A food..."
+                                autocomplete="off"
+                            >
+                        </label>
+
+                    </div>
+
+
+                    <button id="finish-btn" class="primary-btn finish-btn">
+                        FINISH ROUND <span>→</span>
+                    </button>
+
+                </section>
+
+
+                <!-- TIMER PANEL -->
+
+                <aside class="timer-panel">
+
+                    <div class="timer-heading">
+
+                        <div>
+                            <div class="eyebrow">ROUND TIMER</div>
+                            <h2>Time left</h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="timer-circle">
+
+                        <div class="timer-content">
+
+                            <strong id="timer">60</strong>
+
+                            <span>SECONDS</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="timer-note">
+                        Complete as many categories as possible before
+                        the countdown reaches zero.
+                    </div>
+
+
+                    <div class="timer-divider"></div>
+
+
+                    <div class="category-summary">
+
+                        <div class="eyebrow">YOUR CHALLENGE</div>
+
+                        <div class="summary-row">
+                            <span>Categories</span>
+                            <strong>5</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Points available</span>
+                            <strong>500</strong>
+                        </div>
+
+                    </div>
+
+                </aside>
 
             </div>
 
-            <button id="finish-btn" class="primary-btn">
-                FINISH ROUND
-            </button>
+        </section>
+
+
+        <!-- VALIDATION SCREEN -->
+
+        <section id="validation-screen" class="screen validation-screen" hidden>
+
+            <div class="eyebrow">TEACHER VALIDATION</div>
+
+            <h1>Check the <span>answers.</span></h1>
+
+            <p class="intro">
+                Review each player's answers and select the valid
+                answers to award points.
+            </p>
+
+
+            <div class="validation-card">
+
+                <div id="validation-content"></div>
+
+                <button id="next-round-btn" class="primary-btn">
+                    NEXT ROUND <span>→</span>
+                </button>
+
+            </div>
 
         </section>
 
 
-        <!-- VALIDATION -->
+        <!-- RESULTS SCREEN -->
 
-        <section id="validation-screen" class="panel" hidden>
+        <section id="results-screen" class="screen result-screen" hidden>
 
-            <h2>Teacher Validation</h2>
+            <div class="eyebrow">GAME COMPLETE</div>
 
-            <div id="validation-content"></div>
+            <h1>That's a <span>wrap!</span></h1>
 
-            <button id="next-round-btn" class="primary-btn">
-                NEXT ROUND
-            </button>
-
-        </section>
+            <p class="intro">
+                Here are the final scores for this Categories game.
+            </p>
 
 
-        <!-- RESULTS -->
+            <div class="final-scores" id="results-content"></div>
 
-        <section id="results-screen" class="panel" hidden>
 
-            <h2>Final Results</h2>
-
-            <div id="results-content"></div>
-
-            <button onclick="location.reload()" class="primary-btn">
-                PLAY AGAIN
+            <button
+                onclick="location.reload()"
+                class="primary-btn"
+            >
+                PLAY AGAIN ↻
             </button>
 
         </section>
 
     </main>
+
 
     <script src="js/categories.js"></script>
 
