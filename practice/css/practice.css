@@ -2324,3 +2324,20 @@ body {
     font-weight: 700;
     margin: 0 4px;
 }
+.engine-match-correct-answer {
+    display: block;
+    margin: 6px 0 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #198754;
+}
+
+.engine-match-row select.correct {
+    border: 2px solid #198754;
+    background-color: #eaf7ef;
+}
+
+.engine-match-row select.incorrect {
+    border: 2px solid #dc3545;
+    background-color: #fcebed;
+}
