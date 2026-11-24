@@ -922,10 +922,17 @@ gameCards.forEach(card => {
         }
 
         const gameUrl =
-            `games/${gameFile}?unit=${selectedGameUnit}`;
+    `games/${gameFile}?unit=${selectedGameUnit}`;
 
-        gameFrame.src = gameUrl;
-        saveEnvironmentState("games", gameUrl);
+gameViewer.classList.add("active");
+gamesHub.classList.remove("active");
+
+gameViewerUnitLabel.textContent =
+    `UNIT ${String(selectedGameUnit).padStart(2, "0")}`;
+
+gameFrame.src = gameUrl;
+
+saveEnvironmentState("games", gameUrl);
 
         gameViewerUnitLabel.textContent =
             `UNIT ${String(selectedGameUnit).padStart(2, "0")}`;
