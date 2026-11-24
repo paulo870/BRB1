@@ -1,0 +1,106 @@
+{
+    "book": "student-book",
+    "unit": 1,
+    "page": 9,
+    "title": "Listening - Company Profile",
+    "activities": [
+        {
+            "id": "activity-01",
+            "type": "multiple-choice",
+            "title": "Listening Comprehension",
+            "instructions": "Listen to the recording and answer questions 1–9.",
+            "questions": [
+                {
+                    "question": "How old is the company?",
+                    "options": [
+                        "Option A",
+                        "Option B",
+                        "Option C",
+                        "Option D"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "question": "What products does it produce?",
+                    "options": [
+                        "Option A",
+                        "Option B",
+                        "Option C",
+                        "Option D"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "question": "What is its annual revenue?",
+                    "options": [
+                        "Option A",
+                        "Option B",
+                        "Option C",
+                        "Option D"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "question": "Where is the head office?",
+                    "options": [
+                        "Option A",
+                        "Option B",
+                        "Option C",
+                        "Option D"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "question": "How many factories does it have?",
+                    "options": [
+                        "Option A",
+                        "Option B",
+                        "Option C",
+                        "Option D"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "question": "How many employees does it have?",
+                    "options": [
+                        "Option A",
+                        "Option B",
+                        "Option C",
+                        "Option D"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "question": "Is employee training important for the company?",
+                    "options": [
+                        "Option A",
+                        "Option B",
+                        "Option C",
+                        "Option D"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "question": "Does the company help local communities?",
+                    "options": [
+                        "Option A",
+                        "Option B",
+                        "Option C",
+                        "Option D"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "question": "Is it a green company?",
+                    "options": [
+                        "Option A",
+                        "Option B",
+                        "Option C",
+                        "Option D"
+                    ],
+                    "answer": 0
+                }
+            ]
+        }
+    ]
+}
