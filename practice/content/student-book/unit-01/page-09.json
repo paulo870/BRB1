@@ -9,15 +9,21 @@
             "type": "multiple-choice",
             "title": "Listening Comprehension",
             "instructions": "Listen to the recording and answer questions 1–9.",
+             "media": {
+                "type": "audio",
+                "src": "../audios/student-book-audios/unit_1/page9_Track_1.2.mp3",
+                "controls": true,
+                "download": false,
+                "playbackSpeed": [0.75, 1, 1.25, 1.5]
+            },
             "questions": [
                 {
                     "question": "How old is the company?",
                     "options": [
                         "Option A",
                         "Option B",
-                        "Option C",
-                        "Option D"
-                    ],
+                        "Option C"
+                                        ],
                     "answer": 0
                 },
                 {
@@ -25,9 +31,8 @@
                     "options": [
                         "Option A",
                         "Option B",
-                        "Option C",
-                        "Option D"
-                    ],
+                        "Option C"
+                   ],
                     "answer": 0
                 },
                 {
@@ -35,9 +40,8 @@
                     "options": [
                         "Option A",
                         "Option B",
-                        "Option C",
-                        "Option D"
-                    ],
+                        "Option C"
+                             ],
                     "answer": 0
                 },
                 {
@@ -45,9 +49,8 @@
                     "options": [
                         "Option A",
                         "Option B",
-                        "Option C",
-                        "Option D"
-                    ],
+                        "Option C"
+                          ],
                     "answer": 0
                 },
                 {
@@ -55,8 +58,8 @@
                     "options": [
                         "Option A",
                         "Option B",
-                        "Option C",
-                        "Option D"
+                        "Option C"
+                        
                     ],
                     "answer": 0
                 },
@@ -65,8 +68,8 @@
                     "options": [
                         "Option A",
                         "Option B",
-                        "Option C",
-                        "Option D"
+                        "Option C"
+                     
                     ],
                     "answer": 0
                 },
@@ -75,8 +78,8 @@
                     "options": [
                         "Option A",
                         "Option B",
-                        "Option C",
-                        "Option D"
+                        "Option C"
+                   
                     ],
                     "answer": 0
                 },
@@ -85,8 +88,8 @@
                     "options": [
                         "Option A",
                         "Option B",
-                        "Option C",
-                        "Option D"
+                        "Option C"
+                    
                     ],
                     "answer": 0
                 },
@@ -95,8 +98,8 @@
                     "options": [
                         "Option A",
                         "Option B",
-                        "Option C",
-                        "Option D"
+                        "Option C"
+                    
                     ],
                     "answer": 0
                 }
