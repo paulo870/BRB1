@@ -1,4 +1,3 @@
-
 {
     "book": "student-book",
     "unit": 1,
@@ -10,29 +9,29 @@
             "type": "short-answer",
             "title": "Meeting Someone at a Conference",
             "instructions": "Listen to Gianluca introducing himself to Carmen at a conference. Make notes about the following information.",
-           "media": {
-        "type": "audio",
-        "src": "../audios/student-book-audios/unit_1/page9_Track_1.4.mp3",
-        "controls": true,
-        "download": false,
-        "playbackSpeed": [0.75, 1, 1.25, 1.5]
-    },
+            "media": {
+                "type": "audio",
+                "src": "../audios/student-book-audios/unit_1/page9_Track_1.4.mp3",
+                "controls": true,
+                "download": false,
+                "playbackSpeed": [0.75, 1, 1.25, 1.5]
+            },
             "questions": [
                 {
-                    "text": "1. What is Carmen's nationality?",
+                    "question": "What is Carmen's nationality?",
                     "answer": "argentinian"
                 },
                 {
-                    "text": "2. What is Carmen's job?",
+                    "question": "What is Carmen's job?",
                     "answer": "journalist"
                 },
                 {
-                    "text": "3. Why is Carmen at the conference?",
+                    "question": "Why is Carmen at the conference?",
                     "answer": "research an article"
                 }
             ]
-        }
- {
+        },
+        {
             "id": "activity-02",
             "type": "cloze",
             "title": "Introducing Yourself",
@@ -75,30 +74,31 @@
                     "answer": ["This"]
                 }
             ]
-        }
- "id": "activity-03",
+        },
+        {
+            "id": "activity-03",
             "type": "matching",
             "title": "Matching Questions and Responses",
             "instructions": "Match questions 1–8 in Exercise 3 to Carmen's responses a–h. Then listen and check your answers.",
             "questions": [
                 {
-                    "text": "Match each question to the correct response.",
+                    "question": "Match each question to the correct response.",
                     "pairs": [
                         {
                             "left": "Excuse me. Is this seat free?",
-                            "right": "c. Yes, it is."
-                        },
-                        {
-                            "left": "Thanks very much. Can I introduce myself? I'm Gianluca Donatelli.",
-                            "right": "d. Nice to meet you. I'm Carmen Sanchez."
-                        },
-                        {
-                            "left": "3. Nice to meet you too, Carmen. Where are you from?",
                             "right": "h. I'm from Argentina."
                         },
                         {
-                            "left": "And who do you work for?",
+                            "left": "Thanks very much. Can I introduce myself? I'm Gianluca Donatelli.",
+                            "right": "b. Carmen. Carmen Sanchez."
+                        },
+                        {
+                            "left": "Nice to meet you too, Carmen. Where are you from?",
                             "right": "f. I don't work for a company. I'm self-employed."
+                        },
+                        {
+                            "left": "And who do you work for?",
+                            "right": "c. Yes, it is."
                         },
                         {
                             "left": "Oh really? And what do you do?",
@@ -106,19 +106,29 @@
                         },
                         {
                             "left": "So why are you at this conference?",
-                            "right": "e. I'm here to research an article on Internet service providers."
-                        },
-                        {
-                            "left": "That's interesting. A friend of mine works for an Italian service provider. Can I introduce you to him?",
                             "right": "g. Yes, of course. That would be nice."
                         },
                         {
+                            "left": "That's interesting. A friend of mine works for an Italian service provider. Can I introduce you to him?",
+                            "right": "e. I'm here to research an article on Internet service providers."
+                        },
+                        {
                             "left": "Roberto. Can you come here a minute? This is ... Sorry, what's your name again?",
-                            "right": "b. Carmen. Carmen Sanchez."
+                            "right": "d. Nice to meet you. I'm Carmen Sanchez."
                         }
+                    ],
+                    "answer": [
+                        "c. Yes, it is.",
+                        "d. Nice to meet you. I'm Carmen Sanchez.",
+                        "h. I'm from Argentina.",
+                        "f. I don't work for a company. I'm self-employed.",
+                        "a. I'm a journalist.",
+                        "e. I'm here to research an article on Internet service providers.",
+                        "g. Yes, of course. That would be nice.",
+                        "b. Carmen. Carmen Sanchez."
                     ]
                 }
-
-      
+            ]
+        }
     ]
 }
