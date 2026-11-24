@@ -24,7 +24,7 @@
                         "over 150 years old",
                         "Option C"
                                         ],
-                    "answer": 0
+                    "answer": 1
                 },
                 {
                     "question": "What products does it produce?",
@@ -104,7 +104,7 @@
                     "answer": 0
                 }
             ]
-        }
+        },
 
         {
     "id": "activity-02",
@@ -136,7 +136,7 @@
             "answer": "17.8 billion"
         }
     ]
-}
+},
 
 {
     "id": "activity-03",
@@ -177,12 +177,7 @@
 }
 
 
-
-
         
-
-
-
         
     ]
 }
