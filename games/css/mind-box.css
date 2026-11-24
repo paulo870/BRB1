@@ -43,34 +43,50 @@ button:disabled {
     cursor: not-allowed;
 }
 
-.app-shell {
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.container {
     width: min(1180px, 100%);
     margin: 0 auto;
     padding: 22px 28px 40px;
 }
 
-/* HEADER */
+/* =====================================================
+   HEADER
+===================================================== */
 
 .topbar {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: space-between;
+    gap: 15px;
     border-bottom: 1px solid var(--line);
-    padding: 0 0 18px;
+    padding-bottom: 18px;
+}
+
+.back-link {
+    color: #a8d8d5;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.back-link:hover {
+    color: var(--teal);
 }
 
 .brand {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 11px;
     font-family: Manrope, sans-serif;
     font-size: 13px;
     font-weight: 800;
     letter-spacing: .16em;
-}
-
-.brand b {
-    color: var(--teal);
 }
 
 .brand-mark {
@@ -86,6 +102,10 @@ button:disabled {
     box-shadow: inset 0 0 0 5px #b9d0cf;
 }
 
+.brand span:last-child {
+    white-space: nowrap;
+}
+
 .unit-pill {
     font-size: 11px;
     font-weight: 800;
@@ -97,11 +117,27 @@ button:disabled {
     border-radius: 99px;
 }
 
-/* GENERAL */
+/* Header title and description */
 
-.screen {
-    padding: 52px 0 20px;
+.topbar h1 {
+    grid-column: 1 / -1;
+    font-family: Manrope, sans-serif;
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -.04em;
+    margin: 30px 0 0;
 }
+
+.topbar p {
+    grid-column: 1 / -1;
+    color: #b4c9c9;
+    line-height: 1.65;
+    margin: -7px 0 5px;
+}
+
+/* =====================================================
+   GENERAL
+===================================================== */
 
 .eyebrow {
     font-size: 10px;
@@ -111,37 +147,27 @@ button:disabled {
     text-transform: uppercase;
 }
 
-h1,
-h2 {
+h2,
+h3 {
     font-family: Manrope, sans-serif;
-    margin: 10px 0 12px;
-    letter-spacing: -.04em;
-}
-
-h1 {
-    font-size: clamp(34px, 5vw, 56px);
-    line-height: 1.05;
-}
-
-h1 span {
-    color: var(--teal);
 }
 
 h2 {
     font-size: 25px;
+    letter-spacing: -.04em;
 }
 
-.intro {
-    max-width: 600px;
-    color: #b4c9c9;
-    line-height: 1.65;
-    margin: 0 0 28px;
+[hidden] {
+    display: none !important;
 }
 
-/* SETUP */
+/* =====================================================
+   SETUP SCREEN
+===================================================== */
 
-.setup-card {
+.setup-screen {
     max-width: 660px;
+    margin-top: 30px;
     padding: 25px;
     background: linear-gradient(
         145deg,
@@ -153,23 +179,40 @@ h2 {
     box-shadow: 0 22px 70px #0003;
 }
 
+.section-heading {
+    margin-bottom: 24px;
+}
+
+.section-heading h2 {
+    margin: 10px 0 12px;
+}
+
+.section-heading p {
+    color: #b4c9c9;
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* Setup fields */
+
 .setup-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
 }
 
-.field {
+.setup-field {
     display: flex;
     flex-direction: column;
     gap: 9px;
 }
 
-.field span {
+.setup-field label {
     font-size: 10px;
     letter-spacing: .14em;
     color: #a6c1c1;
     font-weight: 800;
+    text-transform: uppercase;
 }
 
 select,
@@ -188,11 +231,23 @@ select:focus,
     border-color: var(--teal);
 }
 
-.player-fields {
+/* Players */
+
+.players-section {
+    margin-top: 23px;
+}
+
+.players-section h3 {
+    font-size: 13px;
+    margin: 0;
+    color: #d7e9e8;
+}
+
+#player-fields {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-top: 17px;
+    margin-top: 14px;
 }
 
 .player-field {
@@ -204,18 +259,25 @@ select:focus,
     font-weight: 700;
 }
 
-.vocab-status {
+.player-input {
+    margin-top: 2px;
+}
+
+/* Status */
+
+.status-message {
     font-size: 12px;
     color: #9fc3c2;
     margin: 19px 0 15px;
     min-height: 18px;
 }
 
-/* BUTTONS */
+/* =====================================================
+   BUTTONS
+===================================================== */
 
 .primary-btn,
-.secondary-btn,
-.quiet-btn {
+.secondary-btn {
     border: 0;
     border-radius: 10px;
     font-weight: 800;
@@ -235,54 +297,64 @@ select:focus,
     transform: translateY(-1px);
 }
 
-.primary-btn span {
-    float: right;
-    margin-left: 20px;
-    font-size: 18px;
-}
-
-.setup-card > .primary-btn {
+.setup-screen > .primary-btn {
     width: 100%;
 }
 
-.quiet-btn {
-    background: transparent;
-    border: 1px solid var(--line);
-    color: #b7cece;
-    padding: 10px 14px;
+.secondary-btn {
+    padding: 13px 17px;
+    background: #e8fffc;
+    color: #075b59;
     font-size: 11px;
 }
 
-.quiet-btn:hover {
-    border-color: var(--red);
-    color: var(--red);
+.secondary-btn:hover {
+    background: #fff;
 }
 
-/* GAME HEADER */
+/* =====================================================
+   GAME SCREEN
+===================================================== */
 
-.game-heading {
+.game-screen {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, .8fr);
+    grid-template-areas:
+        "heading heading"
+        "brain scoreboard"
+        "player scoreboard"
+        "question scoreboard"
+        "options scoreboard"
+        "feedback scoreboard"
+        "next scoreboard";
+    gap: 16px 20px;
+    align-items: start;
+}
+
+.game-topbar {
+    grid-area: heading;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
 }
 
-.game-heading h1 {
-    font-size: 34px;
-    margin-bottom: 0;
+.game-topbar h2 {
+    font-size: 25px;
+    margin: 8px 0 0;
 }
 
-/* GAME LAYOUT */
+/* =====================================================
+   BRAIN / PROGRESS
+===================================================== */
 
-.game-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1.5fr) minmax(280px, .8fr);
-    gap: 20px;
-    align-items: stretch;
-}
-
-.question-panel,
-.score-panel {
+.brain-header {
+    grid-area: brain;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 20px;
     background: linear-gradient(
         145deg,
         rgba(15,48,53,.96),
@@ -290,24 +362,10 @@ select:focus,
     );
     border: 1px solid var(--line);
     border-radius: 20px;
-    padding: 24px;
     min-width: 0;
 }
 
-.question-panel {
-    display: flex;
-    flex-direction: column;
-}
-
-/* QUESTION PROGRESS */
-
-.question-top {
-    display: flex;
-    align-items: center;
-    gap: 17px;
-}
-
-.brain-icon {
+.brain {
     width: 66px;
     height: 66px;
     flex-shrink: 0;
@@ -315,10 +373,15 @@ select:focus,
     place-items: center;
     border-radius: 18px;
     background: rgba(32,180,173,.12);
-    font-size: 37px;
+    padding: 12px;
 }
 
-.question-progress {
+.brain svg {
+    width: 100%;
+    height: 100%;
+}
+
+.progress-info {
     flex: 1;
     min-width: 0;
 }
@@ -351,10 +414,12 @@ select:focus,
     font-size: 12px;
 }
 
-/* CURRENT PLAYER */
+/* =====================================================
+   CURRENT PLAYER
+===================================================== */
 
 .current-player {
-    margin-top: 22px;
+    grid-area: player;
     padding: 12px;
     background: rgba(32,180,173,.1);
     border: 1px solid rgba(32,180,173,.3);
@@ -366,10 +431,20 @@ select:focus,
     letter-spacing: .13em;
 }
 
-/* QUESTION */
+/* =====================================================
+   QUESTION
+===================================================== */
 
-.question-text {
-    margin: 28px 0;
+#question {
+    grid-area: question;
+    padding: 22px;
+    background: linear-gradient(
+        145deg,
+        rgba(15,48,53,.96),
+        rgba(8,31,36,.96)
+    );
+    border: 1px solid var(--line);
+    border-radius: 16px;
     text-align: center;
     font-family: Manrope, sans-serif;
     font-size: 23px;
@@ -377,9 +452,12 @@ select:focus,
     line-height: 1.5;
 }
 
-/* ANSWERS */
+/* =====================================================
+   ANSWER OPTIONS
+===================================================== */
 
 .options {
+    grid-area: options;
     display: grid;
     gap: 11px;
 }
@@ -439,14 +517,17 @@ select:focus,
     color: white;
 }
 
-/* FEEDBACK */
+/* =====================================================
+   FEEDBACK
+===================================================== */
 
-.feedback {
+#feedback {
+    grid-area: feedback;
     min-height: 24px;
-    margin-top: 20px;
     text-align: center;
     font-size: 13px;
     font-weight: 800;
+    padding: 5px;
 }
 
 .correct-text {
@@ -457,41 +538,32 @@ select:focus,
     color: #ff7770;
 }
 
-.next-btn {
-    width: 100%;
-    margin-top: 15px;
+/* =====================================================
+   SCOREBOARD
+===================================================== */
+
+.game-screen > .score-panel {
+    grid-area: scoreboard;
+    background: linear-gradient(
+        145deg,
+        rgba(15,48,53,.96),
+        rgba(8,31,36,.96)
+    );
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 24px;
+    min-width: 0;
+    height: 100%;
 }
 
-/* SCOREBOARD */
-
-.score-panel {
-    display: flex;
-    flex-direction: column;
-}
-
-.score-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--line);
+.score-panel h3 {
+    font-size: 13px;
+    margin: 0;
     padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
 }
 
-.score-head h2 {
-    margin: 5px 0 0;
-}
-
-.score-unit {
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .1em;
-    color: #a6e8e2;
-    background: #0c4447;
-    padding: 8px 10px;
-    border-radius: 8px;
-}
-
-.score-list {
+#score-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -529,27 +601,41 @@ select:focus,
     white-space: nowrap;
 }
 
-.score-note {
-    font-size: 11px;
-    line-height: 1.55;
-    color: #8eaaaa;
-    margin-top: auto;
-    padding-top: 17px;
+/* =====================================================
+   NEXT TURN
+===================================================== */
+
+.next-btn {
+    grid-area: next;
+    width: 100%;
+    margin-top: 5px;
 }
 
-/* RESULTS */
+/* =====================================================
+   RESULTS
+===================================================== */
 
 .result-screen {
-    text-align: center;
     max-width: 700px;
-    margin: auto;
+    margin: 30px auto 0;
+    padding: 30px;
+    text-align: center;
+    background: linear-gradient(
+        145deg,
+        rgba(18,54,59,.95),
+        rgba(9,34,39,.95)
+    );
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 22px 70px #0003;
 }
 
-.result-screen .intro {
-    margin: 0 auto 25px;
+.result-screen h2 {
+    font-size: 32px;
+    margin: 12px 0 25px;
 }
 
-.final-scores {
+#final-scores {
     display: grid;
     gap: 10px;
     margin: 20px auto 25px;
@@ -560,6 +646,7 @@ select:focus,
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
     background: #0d3035;
     border: 1px solid var(--line);
     padding: 16px 19px;
@@ -572,77 +659,118 @@ select:focus,
 }
 
 .final-row strong {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .final-row span {
     color: #a9e8e2;
     font-weight: 800;
+    white-space: nowrap;
 }
 
 .result-screen > .primary-btn {
     min-width: 220px;
 }
 
-/* RESPONSIVE */
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 
-@media(max-width: 800px) {
+@media (max-width: 800px) {
 
-    .game-layout {
+    .game-screen {
         grid-template-columns: 1fr;
+        grid-template-areas:
+            "heading"
+            "brain"
+            "player"
+            "question"
+            "options"
+            "feedback"
+            "scoreboard"
+            "next";
     }
 
-    .score-panel {
-        order: 2;
-    }
-
-    .screen {
-        padding-top: 35px;
+    .game-screen > .score-panel {
+        height: auto;
     }
 
 }
 
-@media(max-width: 520px) {
+@media (max-width: 520px) {
 
-    .app-shell {
+    .container {
         padding: 15px 14px 28px;
     }
 
-    .setup-grid,
-    .player-fields {
-        grid-template-columns: 1fr;
-    }
-
-    .setup-card,
-    .question-panel,
-    .score-panel {
-        padding: 18px;
-    }
-
-    .game-heading h1 {
-        font-size: 27px;
-    }
-
-    .game-heading {
-        align-items: flex-end;
+    .topbar {
+        grid-template-columns: auto 1fr auto;
+        gap: 8px;
     }
 
     .brand {
-        font-size: 11px;
+        font-size: 10px;
+        letter-spacing: .1em;
+        gap: 6px;
+    }
+
+    .brand-mark {
+        width: 30px;
+        height: 30px;
+        font-size: 19px;
+    }
+
+    .back-link {
+        font-size: 10px;
     }
 
     .unit-pill {
         font-size: 9px;
+        padding: 8px 9px;
     }
 
-    .question-text {
-        font-size: 19px;
+    .topbar h1 {
+        font-size: 36px;
+        margin-top: 25px;
     }
 
-    .brain-icon {
+    .setup-screen,
+    .game-screen > .score-panel,
+    .result-screen {
+        padding: 18px;
+    }
+
+    .setup-grid,
+    #player-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .game-topbar h2 {
+        font-size: 21px;
+    }
+
+    .brain-header {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .brain {
         width: 55px;
         height: 55px;
-        font-size: 30px;
+        padding: 9px;
+    }
+
+    #question {
+        font-size: 19px;
+        padding: 18px;
+    }
+
+    .final-row {
+        padding: 13px;
+    }
+
+    .final-row strong {
+        font-size: 14px;
     }
 
 }
