@@ -2307,3 +2307,20 @@ body {
     outline: 2px solid rgba(32, 180, 173, 0.25);
     border-color: #087d79;
 }
+.engine-sentence-choice.correct {
+    border: 2px solid #20b4ad;
+    background: #e8f8f5;
+}
+
+.engine-sentence-choice.incorrect {
+    border: 2px solid #ff4136;
+    background: #fff0ef;
+}
+
+.engine-sentence-correct-answer {
+    display: inline-block;
+    color: #087d79;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0 4px;
+}
