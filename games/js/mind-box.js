@@ -1,277 +1,239 @@
-(() => {
+<!DOCTYPE html>
+<html lang="en">
 
-    "use strict";
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#071b20">
 
-    const $ = id => document.getElementById(id);
+    <title>Mind Box | Academia Poliglota</title>
 
-    const state = {
-        unit: 0,
-        questions: [],
-        index: 0,
-        score: 0,
-        correct: 0,
-        answered: false
-    };
+    <link rel="stylesheet" href="css/mind-box.css">
+</head>
 
+<body>
 
-    async function loadQuestions(unit) {
+    <main class="app-shell">
 
-        const response = await fetch("data/questions.txt");
+        <header class="topbar">
 
-        if (!response.ok) {
-            throw new Error("Could not load questions.txt");
-        }
-
-        const text = await response.text();
-
-        return text.split(/\r?\n/)
-            .filter(line => line.trim() && !line.startsWith("#"))
-            .map(line => {
-
-                const [
-                    unitNumber,
-                    question,
-                    optionA,
-                    optionB,
-                    optionC,
-                    optionD,
-                    answer
-                ] = line.split("|").map(x => x.trim());
-
-                return {
-                    unit: Number(unitNumber),
-                    question,
-                    options: [
-                        optionA,
-                        optionB,
-                        optionC,
-                        optionD
-                    ],
-                    answer: Number(answer)
-                };
-
-            })
-            .filter(item => {
-
-                return (
-                    item.unit === unit &&
-                    item.question &&
-                    item.options.every(Boolean) &&
-                    item.answer >= 0 &&
-                    item.answer <= 3
-                );
-
-            });
-
-    }
-
-
-    async function startGame() {
-
-        const unit = Number($("unit-select").value);
-
-        if (!unit) {
-            $("status").textContent = "Select a unit first.";
-            return;
-        }
-
-        $("status").textContent = "Loading questions...";
-
-        try {
-
-            state.questions = await loadQuestions(unit);
-
-            if (!state.questions.length) {
-                throw new Error(
-                    "No questions available for this unit."
-                );
-            }
-
-            state.unit = unit;
-            state.index = 0;
-            state.score = 0;
-            state.correct = 0;
-
-            $("setup-screen").hidden = true;
-            $("game-screen").hidden = false;
-
-            showQuestion();
-
-        } catch (error) {
-
-            $("status").textContent = error.message;
-
-        }
-
-    }
-
-
-    function showQuestion() {
-
-        if (state.index >= state.questions.length) {
-            finishGame();
-            return;
-        }
-
-        state.answered = false;
-
-        const item = state.questions[state.index];
-
-        const total = state.questions.length;
-
-        $("question-number").textContent =
-            `QUESTION ${state.index + 1} / ${total}`;
-
-        $("progress").style.width =
-            `${state.index / total * 100}%`;
-
-        $("score").textContent =
-            `${state.score} POINTS`;
-
-        $("question").textContent = item.question;
-
-        $("feedback").textContent = "";
-
-        $("options").innerHTML = item.options.map(
-            (option, index) => `
-
-                <button
-                    class="option"
-                    data-index="${index}"
-                >
-
-                    <span class="option-letter">
-                        ${"ABCD"[index]}
-                    </span>
-
-                    <span>${escapeHTML(option)}</span>
-
-                </button>
-
-            `
-        ).join("");
-
-        $("options").querySelectorAll("button").forEach(button => {
-
-            button.addEventListener("click", () => {
-
-                checkAnswer(Number(button.dataset.index));
-
-            });
-
-        });
-
-    }
-
-
-    function checkAnswer(selected) {
-
-        if (state.answered) return;
-
-        state.answered = true;
-
-        const item = state.questions[state.index];
-
-        const correct = item.answer;
-
-        const buttons = $("options").querySelectorAll("button");
-
-        buttons.forEach(button => {
-
-            button.disabled = true;
-
-            const index = Number(button.dataset.index);
-
-            if (index === correct) {
-                button.classList.add("correct");
-            }
-
-            if (index === selected && selected !== correct) {
-                button.classList.add("wrong");
-            }
-
-        });
-
-        if (selected === correct) {
-
-            state.score += 100;
-
-            state.correct++;
-
-            $("feedback").textContent = "Excellent! +100 points";
-
-            $("feedback").className = "correct-text";
-
-        } else {
-
-            $("feedback").textContent =
-                "Not quite! The correct answer is " +
-                item.options[correct];
-
-            $("feedback").className = "wrong-text";
-
-        }
-
-        $("score").textContent =
-            `${state.score} POINTS`;
-
-        const delay = 1300;
-
-        setTimeout(() => {
-
-            state.index++;
-
-            showQuestion();
-
-        }, delay);
-
-    }
-
-
-    function finishGame() {
-
-        $("game-screen").hidden = true;
-
-        $("result-screen").hidden = false;
-
-        $("progress").style.width = "100%";
-
-        $("final-score").innerHTML = `
-
-            <div class="final-score">
-                ${state.score}
+            <div class="brand">
+                <span class="brand-mark">P</span>
+                <span>POLIGLOTA <b>MINDBOX</b></span>
             </div>
 
-            <p>
-                ${state.correct} correct answers out of
-                ${state.questions.length}
+            <div class="unit-pill" id="unit-pill">
+                LOADING UNIT…
+            </div>
+
+        </header>
+
+
+        <!-- SETUP SCREEN -->
+
+        <section id="setup-screen" class="screen setup-screen">
+
+            <div class="eyebrow">
+                ACADEMIA POLIGLOTA · CLASSROOM GAME
+            </div>
+
+            <h1>Ready to <span>think?</span></h1>
+
+            <p class="intro">
+                Set up the players and rounds. Challenge your knowledge
+                with questions from the selected unit.
             </p>
 
-            <p>
-                Unit ${state.unit}
+
+            <div class="setup-card">
+
+                <div class="setup-grid">
+
+                    <label class="field">
+
+                        <span>NUMBER OF PLAYERS</span>
+
+                        <select id="player-count">
+
+                            <option value="1">1 player</option>
+                            <option value="2" selected>2 players</option>
+                            <option value="3">3 players</option>
+                            <option value="4">4 players</option>
+
+                        </select>
+
+                    </label>
+
+
+                    <label class="field">
+
+                        <span>NUMBER OF ROUNDS</span>
+
+                        <select id="round-count">
+
+                            <option value="3">3 rounds</option>
+                            <option value="5" selected>5 rounds</option>
+                            <option value="8">8 rounds</option>
+
+                        </select>
+
+                    </label>
+
+                </div>
+
+
+                <div id="player-fields" class="player-fields"></div>
+
+
+                <div class="vocab-status" id="vocab-status">
+                    Loading questions...
+                </div>
+
+
+                <button id="start-btn" class="primary-btn" disabled>
+                    START GAME <span>→</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- GAME SCREEN -->
+
+        <section id="game-screen" class="screen game-screen" hidden>
+
+            <div class="game-heading">
+
+                <div>
+
+                    <div class="eyebrow">MIND BOX CHALLENGE</div>
+
+                    <h1 id="round-title">ROUND 1 / 5</h1>
+
+                </div>
+
+                <button class="quiet-btn" id="end-game-btn">
+                    Finish game
+                </button>
+
+            </div>
+
+
+            <div class="game-layout">
+
+                <!-- QUESTION PANEL -->
+
+                <section class="question-panel">
+
+                    <div class="question-top">
+
+                        <div class="brain-icon">
+                            🧠
+                        </div>
+
+                        <div class="question-progress">
+
+                            <div id="question-number">
+                                QUESTION 1 / 10
+                            </div>
+
+                            <div class="progress-bar">
+                                <div id="progress"></div>
+                            </div>
+
+                            <strong id="score">0 POINTS</strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="current-player" class="current-player">
+                        PLAYER'S TURN
+                    </div>
+
+
+                    <div id="question" class="question-text"></div>
+
+
+                    <div id="options" class="options"></div>
+
+
+                    <div id="feedback" class="feedback"></div>
+
+
+                    <button
+                        id="next-btn"
+                        class="primary-btn next-btn"
+                        hidden
+                    >
+                        NEXT TURN →
+                    </button>
+
+                </section>
+
+
+                <!-- SCOREBOARD -->
+
+                <aside class="score-panel">
+
+                    <div class="score-head">
+
+                        <div>
+
+                            <div class="eyebrow">LIVE SCORE</div>
+
+                            <h2>Scoreboard</h2>
+
+                        </div>
+
+                        <span class="score-unit">
+                            +100 PTS
+                        </span>
+
+                    </div>
+
+
+                    <div id="score-list" class="score-list"></div>
+
+
+                    <div class="score-note">
+                        Each correct answer earns 100 points.
+                        The player with the highest score wins.
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULTS SCREEN -->
+
+        <section id="result-screen" class="screen result-screen" hidden>
+
+            <div class="eyebrow">GAME COMPLETE</div>
+
+            <h1>That's a <span>wrap!</span></h1>
+
+            <p class="intro">
+                Final scores for this Mind Box challenge.
             </p>
 
-        `;
+            <div id="final-scores" class="final-scores"></div>
 
-    }
+            <button class="primary-btn" id="play-again-btn">
+                PLAY AGAIN ↻
+            </button>
 
+        </section>
 
-    function escapeHTML(value) {
-
-        return String(value).replace(/[&<>"']/g, char => ({
-            "&": "&amp;",
-            "<": "&lt;",
-            ">": "&gt;",
-            '"': "&quot;",
-            "'": "&#039;"
-        })[char]);
-
-    }
+    </main>
 
 
-    $("start-btn").addEventListener(
-        "click",
-        startGame
-    );
+    <script src="js/mind-box.js"></script>
 
-})();
+</body>
+</html>
