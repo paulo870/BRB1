@@ -29,24 +29,14 @@ const ExerciseEngine = (() => {
 
     }
 
-
-function createQuestion(question, index, displayNumber) {
-        const type = question.type;
-
-        const id = `question-${index}`;
-
-let content = "";
-let questionHeading = escapeHTML(question.question || "");
 function createSentenceChoice(question, index) {
 
-    const sentenceHTML = question.parts.map((part, partIndex) => {
+    const sentenceHTML = question.parts.map(part => {
 
-        // Normal text
         if (typeof part === "string") {
             return escapeHTML(part);
         }
 
-        // Choice dropdown
         const optionsHTML = part.options.map(option => `
             <option value="${escapeHTML(option)}">
                 ${escapeHTML(option)}
@@ -54,11 +44,7 @@ function createSentenceChoice(question, index) {
         `).join("");
 
         return `
-            <select
-                class="engine-sentence-choice"
-                data-part-index="${partIndex}"
-                data-answer="${escapeHTML(part.answer)}"
-            >
+            <select class="engine-sentence-choice">
                 <option value="">Choose...</option>
                 ${optionsHTML}
             </select>
@@ -67,12 +53,20 @@ function createSentenceChoice(question, index) {
     }).join("");
 
     return `
-        <div class="engine-question" data-question-index="${index}">
-            <div class="engine-sentence-choice-text">
-                ${sentenceHTML}
-            </div>
+        <div class="engine-sentence-choice-text">
+            ${sentenceHTML}
         </div>
     `;
+}
+function createQuestion(question, index, displayNumber) {
+        const type = question.type;
+
+        const id = `question-${index}`;
+
+let content = "";
+let questionHeading = escapeHTML(question.question || "");
+if (type === "sentence-choice") {
+    content = createSentenceChoice(question, index);
 }
         /* =====================================
            MULTIPLE CHOICE
@@ -588,7 +582,13 @@ else if (type === "table-cloze") {
     function getAnswer(questionElement, question) {
 
         const type = question.type;
+if (type === "sentence-choice") {
 
+    return Array.from(
+        questionElement.querySelectorAll(".engine-sentence-choice")
+    ).map(select => select.value);
+
+}
 
         if (type === "multiple-choice" || type === "true-false") {
 
@@ -669,7 +669,18 @@ else if (type === "table-cloze") {
     function check(question, userAnswer) {
 
         if (userAnswer === null) return false;
+if (question.type === "sentence-choice") {
 
+    const correctAnswers = question.parts
+        .filter(part => typeof part !== "string")
+        .map(part => part.answer);
+
+    return userAnswer.length === correctAnswers.length &&
+        userAnswer.every((answer, index) =>
+            answer === correctAnswers[index]
+        );
+
+}
         const expected = question.answer;
 
 
@@ -931,7 +942,15 @@ if (
 
 
     function formatAnswer(question) {
+if (question.type === "sentence-choice") {
 
+    return question.parts.map(part =>
+        typeof part === "string"
+            ? part
+            : part.answer
+    ).join("");
+
+}
         const answer = question.answer;
 
         if (question.type === "multiple-choice") {
