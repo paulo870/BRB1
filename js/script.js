@@ -60,62 +60,87 @@ function clearEnvironmentState() {
 
 const controlBar = document.querySelector(".control-bar");
 
-const dropdownPanels = document.querySelectorAll(".dropdown-content");
+const dropdownMap = new Map();
 
-// Move dropdown panels outside the scrollable sidebar
-dropdownPanels.forEach(panel => {
+// Store each panel before moving it outside the sidebar
+dropdownBtns.forEach(btn => {
+
+    const panel = btn.parentElement.querySelector(".dropdown-content");
+
+    if (!panel) return;
+
+    dropdownMap.set(btn, panel);
+
     document.body.appendChild(panel);
+
 });
 
+let activeDropdownButton = null;
+
+
+// Position dropdown beside its corresponding icon
 function positionDropdown(btn, panel) {
 
     const buttonRect = btn.getBoundingClientRect();
-
     const sidebarRect = controlBar.getBoundingClientRect();
 
     const panelHeight = panel.offsetHeight;
 
-    const topPosition = Math.min(
-        Math.max(10, buttonRect.top),
+    const maxTop = Math.max(
+        10,
         window.innerHeight - panelHeight - 10
     );
 
+    const top = Math.min(
+        Math.max(10, buttonRect.top),
+        maxTop
+    );
+
     panel.style.left = sidebarRect.right + "px";
-    panel.style.top = Math.max(10, topPosition) + "px";
+    panel.style.top = top + "px";
+
 }
 
+
+// Close all dropdowns
+function closeDropdowns() {
+
+    document.querySelectorAll(".dropdown").forEach(dropdown => {
+        dropdown.classList.remove("show");
+    });
+
+    dropdownMap.forEach(panel => {
+        panel.classList.remove("dropdown-open");
+    });
+
+    activeDropdownButton = null;
+
+}
+
+
+// Open and close dropdowns
 dropdownBtns.forEach(btn => {
 
     btn.addEventListener("click", (e) => {
 
         e.stopPropagation();
 
-        const parentDropdown = btn.parentElement;
+        const panel = dropdownMap.get(btn);
 
-        const panel = parentDropdown.querySelector(".dropdown-content");
+        if (!panel) return;
 
-        // Close other menus
-        document.querySelectorAll(".dropdown").forEach(dropdown => {
+        const alreadyOpen = panel.classList.contains("dropdown-open");
 
-            dropdown.classList.remove("show");
+        closeDropdowns();
 
-            const otherPanel = dropdown.querySelector(".dropdown-content");
+        if (!alreadyOpen) {
 
-            if (otherPanel) {
-                otherPanel.classList.remove("dropdown-open");
-            }
-
-        });
-
-        // Toggle current menu
-        const isOpening = !panel.classList.contains("dropdown-open");
-
-        if (isOpening) {
-
-            parentDropdown.classList.add("show");
+            btn.parentElement.classList.add("show");
 
             panel.classList.add("dropdown-open");
 
+            activeDropdownButton = btn;
+
             positionDropdown(btn, panel);
 
         }
@@ -124,62 +149,37 @@ dropdownBtns.forEach(btn => {
 
 });
 
-// Keep an open dropdown aligned while the sidebar scrolls
+
+// Close when clicking outside
+window.addEventListener("click", () => {
+    closeDropdowns();
+});
+
+
+// Keep the dropdown positioned while scrolling
 controlBar.addEventListener("scroll", () => {
 
-    dropdownBtns.forEach(btn => {
+    if (!activeDropdownButton) return;
 
-        const parentDropdown = btn.parentElement;
+    const panel = dropdownMap.get(activeDropdownButton);
 
-        if (!parentDropdown.classList.contains("show")) return;
-
-        const panel = document.getElementById(
-            btn.getAttribute("alt") === "Students Book"
-                ? "students-book-dropdown"
-                : "activity-book-dropdown"
-        );
-
-        if (panel) {
-            positionDropdown(btn, panel);
-        }
-
-    });
+    if (panel) {
+        positionDropdown(activeDropdownButton, panel);
+    }
 
 });
 
-// Close menus when clicking elsewhere
-window.addEventListener("click", () => {
 
-    document.querySelectorAll(".dropdown").forEach(dropdown => {
-
-        dropdown.classList.remove("show");
-
-    });
-
-    dropdownPanels.forEach(panel => {
-
-        panel.classList.remove("dropdown-open");
-
-    });
-
-});
-
-// Reposition menus when the window changes size
+// Reposition on window resize
 window.addEventListener("resize", () => {
 
-    dropdownBtns.forEach(btn => {
+    if (!activeDropdownButton) return;
 
-        if (!btn.parentElement.classList.contains("show")) return;
+    const panel = dropdownMap.get(activeDropdownButton);
 
-        const panel = btn.getAttribute("alt") === "Students Book"
-            ? document.getElementById("students-book-dropdown")
-            : document.getElementById("activity-book-dropdown");
-
-        if (panel) {
-            positionDropdown(btn, panel);
-        }
-
-    });
+    if (panel) {
+        positionDropdown(activeDropdownButton, panel);
+    }
 
 });
 
