@@ -58,8 +58,8 @@ function createSentenceChoice(question, index) {
         </div>
     `;
 }
-function createQuestion(question, index, displayNumber) {
-        const type = question.type;
+function createQuestion(question, index, displayNumber, activityType) {
+    const type = question.type || activityType;
 
         const id = `question-${index}`;
 
@@ -508,11 +508,12 @@ else if (type === "table-cloze") {
 
         const globalIndex = `${index}-${questionIndex}`;
 
-        return createQuestion(
-            question,
-            globalIndex,
-            questionIndex + 1
-        );
+       return createQuestion(
+    question,
+    globalIndex,
+    questionIndex + 1,
+    activity.type
+);
 
     }
 ).join("");
