@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Mind Box | Academia Poliglota</title>
@@ -15,11 +14,16 @@
 
     <main class="container">
 
-        <header>
+        <header class="topbar">
 
-            <a href="../index.html">← Games</a>
+            <a href="../index.html" class="back-link">← Games</a>
 
-            <span>ACADEMIA POLIGLOTA</span>
+            <div class="brand">
+                <span class="brand-mark">P</span>
+                <span>ACADEMIA POLIGLOTA</span>
+            </div>
+
+            <span id="unit-pill" class="unit-pill">UNIT</span>
 
             <h1>Mind Box</h1>
 
@@ -28,39 +32,83 @@
         </header>
 
 
-        <section id="setup-screen" class="panel">
+        <!-- SETUP SCREEN -->
 
-            <h2>Select your unit</h2>
+        <section id="setup-screen" class="panel setup-screen">
 
-            <select id="unit-select">
+            <div class="section-heading">
+                <span class="eyebrow">GAME SETUP</span>
+                <h2>Ready to challenge your mind?</h2>
+                <p>Choose your players and set the number of rounds.</p>
+            </div>
 
-                <option value="">Choose a unit</option>
 
-                <option value="1">Unit 1</option>
-                <option value="2">Unit 2</option>
-                <option value="3">Unit 3</option>
-                <option value="4">Unit 4</option>
-                <option value="5">Unit 5</option>
-                <option value="6">Unit 6</option>
-                <option value="7">Unit 7</option>
-                <option value="8">Unit 8</option>
-                <option value="9">Unit 9</option>
-                <option value="10">Unit 10</option>
-                <option value="11">Unit 11</option>
-                <option value="12">Unit 12</option>
+            <div class="setup-grid">
 
-            </select>
+                <div class="setup-field">
 
-            <button id="start-btn">
+                    <label for="player-count">Number of players</label>
+
+                    <select id="player-count">
+                        <option value="1">1 Player</option>
+                        <option value="2">2 Players</option>
+                        <option value="3">3 Players</option>
+                        <option value="4">4 Players</option>
+                    </select>
+
+                </div>
+
+
+                <div class="setup-field">
+
+                    <label for="round-count">Number of rounds</label>
+
+                    <select id="round-count">
+                        <option value="3">3 Rounds</option>
+                        <option value="5" selected>5 Rounds</option>
+                        <option value="8">8 Rounds</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="players-section">
+
+                <h3>Players</h3>
+
+                <div id="player-fields"></div>
+
+            </div>
+
+
+            <p id="vocab-status" class="status-message"></p>
+
+            <button id="start-btn" class="primary-btn">
                 START CHALLENGE
             </button>
-
-            <p id="status"></p>
 
         </section>
 
 
-        <section id="game-screen" class="panel" hidden>
+        <!-- GAME SCREEN -->
+
+        <section id="game-screen" class="panel game-screen" hidden>
+
+            <div class="game-topbar">
+
+                <div>
+                    <span class="eyebrow">MIND BOX CHALLENGE</span>
+                    <h2 id="round-title">ROUND 1</h2>
+                </div>
+
+                <button id="end-game-btn" class="secondary-btn">
+                    End Game
+                </button>
+
+            </div>
+
 
             <div class="brain-header">
 
@@ -75,7 +123,7 @@
                                C45 92 55 92 60 78
                                C80 82 95 58 78 40
                                C85 20 68 2 50 12Z"
-                            fill="#03aaa2"
+                            fill="#20b4ad"
                         />
 
                         <path
@@ -91,22 +139,21 @@
 
                 <div class="progress-info">
 
-                    <span id="question-number">
-                        QUESTION 1
-                    </span>
+                    <span id="question-number">QUESTION 1</span>
 
                     <div class="progress-bar">
-
                         <div id="progress"></div>
-
                     </div>
 
-                    <strong id="score">
-                        0 POINTS
-                    </strong>
+                    <strong id="score">0 POINTS</strong>
 
                 </div>
 
+            </div>
+
+
+            <div id="current-player" class="current-player">
+                PLAYER'S TURN
             </div>
 
 
@@ -116,22 +163,41 @@
 
             <div id="feedback"></div>
 
+
+            <div class="score-panel">
+
+                <h3>LIVE SCOREBOARD</h3>
+
+                <div id="score-list"></div>
+
+            </div>
+
+
+            <button id="next-btn" class="primary-btn next-btn" hidden>
+                NEXT TURN
+            </button>
+
         </section>
 
 
-        <section id="result-screen" class="panel" hidden>
+        <!-- RESULT SCREEN -->
 
-            <h2>Challenge completed!</h2>
+        <section id="result-screen" class="panel result-screen" hidden>
 
-            <div id="final-score"></div>
+            <span class="eyebrow">CHALLENGE COMPLETED</span>
 
-            <button onclick="location.reload()">
+            <h2>Final Results</h2>
+
+            <div id="final-scores"></div>
+
+            <button id="play-again-btn" class="primary-btn">
                 PLAY AGAIN
             </button>
 
         </section>
 
     </main>
+
 
     <script src="js/mind-box.js"></script>
 
