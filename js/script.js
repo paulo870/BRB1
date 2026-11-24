@@ -55,21 +55,132 @@ function clearEnvironmentState() {
 
 }
 // ==========================
-// DROPDOWN TOGGLE
+// DROPDOWN TOGGLE — SCROLL FIX
 // ==========================
-dropdownBtns.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const parentDropdown = btn.parentElement;
-        document.querySelectorAll('.dropdown').forEach(d => {
-            if(d !== parentDropdown) d.classList.remove('show');
-        });
-        parentDropdown.classList.toggle('show');
-    });
+
+const controlBar = document.querySelector(".control-bar");
+
+const dropdownPanels = document.querySelectorAll(".dropdown-content");
+
+// Move dropdown panels outside the scrollable sidebar
+dropdownPanels.forEach(panel => {
+    document.body.appendChild(panel);
 });
 
+function positionDropdown(btn, panel) {
+
+    const buttonRect = btn.getBoundingClientRect();
+
+    const sidebarRect = controlBar.getBoundingClientRect();
+
+    const panelHeight = panel.offsetHeight;
+
+    const topPosition = Math.min(
+        Math.max(10, buttonRect.top),
+        window.innerHeight - panelHeight - 10
+    );
+
+    panel.style.left = sidebarRect.right + "px";
+    panel.style.top = Math.max(10, topPosition) + "px";
+}
+
+dropdownBtns.forEach(btn => {
+
+    btn.addEventListener("click", (e) => {
+
+        e.stopPropagation();
+
+        const parentDropdown = btn.parentElement;
+
+        const panel = parentDropdown.querySelector(".dropdown-content");
+
+        // Close other menus
+        document.querySelectorAll(".dropdown").forEach(dropdown => {
+
+            dropdown.classList.remove("show");
+
+            const otherPanel = dropdown.querySelector(".dropdown-content");
+
+            if (otherPanel) {
+                otherPanel.classList.remove("dropdown-open");
+            }
+
+        });
+
+        // Toggle current menu
+        const isOpening = !panel.classList.contains("dropdown-open");
+
+        if (isOpening) {
+
+            parentDropdown.classList.add("show");
+
+            panel.classList.add("dropdown-open");
+
+            positionDropdown(btn, panel);
+
+        }
+
+    });
+
+});
+
+// Keep an open dropdown aligned while the sidebar scrolls
+controlBar.addEventListener("scroll", () => {
+
+    dropdownBtns.forEach(btn => {
+
+        const parentDropdown = btn.parentElement;
+
+        if (!parentDropdown.classList.contains("show")) return;
+
+        const panel = document.getElementById(
+            btn.getAttribute("alt") === "Students Book"
+                ? "students-book-dropdown"
+                : "activity-book-dropdown"
+        );
+
+        if (panel) {
+            positionDropdown(btn, panel);
+        }
+
+    });
+
+});
+
+// Close menus when clicking elsewhere
 window.addEventListener("click", () => {
-    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('show'));
+
+    document.querySelectorAll(".dropdown").forEach(dropdown => {
+
+        dropdown.classList.remove("show");
+
+    });
+
+    dropdownPanels.forEach(panel => {
+
+        panel.classList.remove("dropdown-open");
+
+    });
+
+});
+
+// Reposition menus when the window changes size
+window.addEventListener("resize", () => {
+
+    dropdownBtns.forEach(btn => {
+
+        if (!btn.parentElement.classList.contains("show")) return;
+
+        const panel = btn.getAttribute("alt") === "Students Book"
+            ? document.getElementById("students-book-dropdown")
+            : document.getElementById("activity-book-dropdown");
+
+        if (panel) {
+            positionDropdown(btn, panel);
+        }
+
+    });
+
 });
 
 // ==========================
