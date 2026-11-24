@@ -9,7 +9,7 @@
             "type": "true or false",
             "title": "True or False",
             "instructions": "Are these sentences about Gazprom, Nestlé and Toyota
-true (T) or false (F)?",
+true (T) or false (F)?";
           
             "questions": [
                 { 
