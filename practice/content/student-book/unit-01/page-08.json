@@ -5,7 +5,7 @@
     "title": "Unit 1 - Page 8",
     "activities": [
         {
-            "id": "activity-01",
+            "id": "activity-03",
             "type": "true-false",
             "title": "True or False",
             "instructions": "Are these sentences about Gazprom, Nestlé and Toyota true or false?",
@@ -43,7 +43,7 @@
             ]
         },
         {
-            "id": "activity-02",
+            "id": "activity-04",
             "type": "sentence-choice",
             "title": "Choose the Correct Word",
             "instructions": "Read the text and choose the correct word or expression in each gap.",
