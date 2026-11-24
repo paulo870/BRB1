@@ -971,6 +971,7 @@ if (question.type === "sentence-choice") {
 /* =====================================
    MATCHING
    COUNT EACH MATCH INDIVIDUALLY
+   SHOW CORRECT ANSWERS
 ===================================== */
 
 if (question.type === "matching") {
@@ -988,44 +989,49 @@ if (question.type === "matching") {
         const isCorrect =
             normalize(select.value) === normalize(correctAnswer);
 
+        /* Remove previous feedback */
+
         select.classList.remove("correct", "incorrect");
+
+        const previousLabel = select.parentElement.querySelector(
+            ".engine-match-correct-answer"
+        );
+
+        if (previousLabel) {
+            previousLabel.remove();
+        }
+
+        /* Apply visual feedback */
 
         select.classList.add(
             isCorrect ? "correct" : "incorrect"
         );
 
-        /* Remove previous correct-answer label */
-
-        const previousLabel = select.nextElementSibling;
-
-        if (
-            previousLabel &&
-            previousLabel.classList.contains("engine-match-correct-answer")
-        ) {
-            previousLabel.remove();
-        }
-
         if (isCorrect) {
 
             questionCorrect++;
-
             correctCount++;
 
         } else {
 
-            const answerLabel = document.createElement("span");
+            /* Display correct answer */
+
+            const answerLabel = document.createElement("div");
 
             answerLabel.className = "engine-match-correct-answer";
 
-            answerLabel.textContent = `Correct: ${correctAnswer}`;
+            answerLabel.textContent =
+                `Correct answer: ${correctAnswer}`;
 
-            select.insertAdjacentElement("afterend", answerLabel);
+            select.parentElement.appendChild(answerLabel);
 
         }
 
         totalCount++;
 
     });
+
+    /* Update activity feedback */
 
     element.classList.add(
         questionCorrect === selects.length ? "correct" : "incorrect"
