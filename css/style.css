@@ -3901,3 +3901,15 @@ body:not(.sidebar-hidden) #sidebar-toggle {
     }
 
 }
+#game-viewer {
+    background: #071b20;
+}
+
+#game-frame {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #071b20;
+    opacity: 1;
+}
