@@ -3,7 +3,22 @@
     "use strict";
 
     const $ = id => document.getElementById(id);
+/* =====================================================
+   SELECTED UNIT
+===================================================== */
 
+const params = new URLSearchParams(window.location.search);
+
+const unitNumber = Number(
+    params.get("unit") ||
+    sessionStorage.getItem("poliglotaSelectedGameUnit") ||
+    0
+);
+
+$("unit-pill").textContent = unitNumber
+    ? `UNIT ${String(unitNumber).padStart(2, "0")}`
+    : "UNIT NOT SELECTED";
+    
     const CATEGORIES = [
         "name",
         "place",
