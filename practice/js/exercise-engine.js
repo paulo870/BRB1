@@ -969,6 +969,30 @@ if (question.type === "sentence-choice") {
 
 const correct = check(question, answer);
 
+element.classList.add(
+    correct ? "correct" : "incorrect"
+);
+
+feedback.textContent = correct
+    ? "✓ Correct!"
+    : answer === null
+        ? "Please answer this question."
+        : "✗ Incorrect. Try again or reveal the answer.";
+
+if (correct) {
+    correctCount++;
+}
+
+totalCount++;
+
+    });
+
+    return {
+        correct: correctCount,
+        total: totalCount
+    };
+
+}
     /* =========================================
        SHOW ALL ANSWERS
     ========================================= */
