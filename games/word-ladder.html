@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#071b20">
 
     <title>Word Ladder | Academia Poliglota</title>
 
@@ -12,107 +13,256 @@
 
 <body>
 
-    <main class="container">
+    <main class="app-shell">
 
-        <header>
-            <a href="../index.html">← Games</a>
-            <span>ACADEMIA POLIGLOTA</span>
-            <h1>Word Ladder</h1>
-            <p>Guess the word. Climb the ladder.</p>
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div class="brand">
+
+                <span class="brand-mark">P</span>
+
+                <span>ACADEMIA <b>POLIGLOTA</b></span>
+
+            </div>
+
+            <div class="unit-pill" id="unit-pill">
+                LOADING UNIT...
+            </div>
+
         </header>
 
 
-        <section id="setup-screen" class="panel">
+        <!-- SETUP SCREEN -->
 
-            <h2>Select your unit</h2>
+        <section id="setup-screen" class="screen setup-screen">
 
-            <select id="unit-select">
+            <div class="eyebrow">
+                ACADEMIA POLIGLOTA · CLASSROOM GAME
+            </div>
 
-                <option value="">Choose a unit</option>
+            <h1>Ready to <span>play?</span></h1>
 
-                <option value="1">Unit 1</option>
-                <option value="2">Unit 2</option>
-                <option value="3">Unit 3</option>
-                <option value="4">Unit 4</option>
-                <option value="5">Unit 5</option>
-                <option value="6">Unit 6</option>
-                <option value="7">Unit 7</option>
-                <option value="8">Unit 8</option>
-                <option value="9">Unit 9</option>
-                <option value="10">Unit 10</option>
-                <option value="11">Unit 11</option>
-                <option value="12">Unit 12</option>
+            <p class="intro">
+                Guess the words, climb the ladder and compete
+                against your classmates.
+            </p>
 
-            </select>
 
-            <button id="start-btn">START GAME</button>
+            <div class="setup-card">
 
-            <p id="status"></p>
+                <div class="setup-grid">
+
+                    <label class="field">
+
+                        <span>NUMBER OF PLAYERS</span>
+
+                        <select id="player-count">
+
+                            <option value="1">1 player</option>
+                            <option value="2" selected>2 players</option>
+                            <option value="3">3 players</option>
+                            <option value="4">4 players</option>
+
+                        </select>
+
+                    </label>
+
+
+                    <label class="field">
+
+                        <span>NUMBER OF ROUNDS</span>
+
+                        <select id="round-count">
+
+                            <option value="3" selected>3 rounds</option>
+                            <option value="5">5 rounds</option>
+                            <option value="8">8 rounds</option>
+
+                        </select>
+
+                    </label>
+
+                </div>
+
+
+                <div id="player-fields" class="player-fields"></div>
+
+
+                <div id="vocab-status" class="vocab-status">
+                    Loading unit vocabulary...
+                </div>
+
+
+                <button id="start-btn" class="primary-btn" disabled>
+                    START GAME <span>→</span>
+                </button>
+
+            </div>
 
         </section>
 
 
-        <section id="game-screen" class="panel" hidden>
+        <!-- GAME SCREEN -->
 
-            <div class="game-info">
-
-                <span id="unit-label">UNIT 01</span>
-
-                <span id="word-progress">WORD 1</span>
-
-                <span id="score">0 PTS</span>
-
-            </div>
+        <section id="game-screen" class="screen game-screen" hidden>
 
 
-            <div class="ladder" id="ladder"></div>
+            <div class="game-heading">
+
+                <div>
+
+                    <div class="eyebrow">WORD LADDER</div>
+
+                    <h1 id="round-title">ROUND 1 / 3</h1>
+
+                    <p id="current-player">
+                        PLAYER 1'S TURN
+                    </p>
+
+                </div>
 
 
-            <div class="attempts">
-
-                <span>ATTEMPTS</span>
-
-                <div id="lives"></div>
-
-            </div>
-
-
-            <div id="word-tiles" class="word-tiles"></div>
-
-
-            <div class="hint-box">
-
-                <b>HINT</b>
-
-                <p id="hint"></p>
+                <button class="quiet-btn" id="end-game-btn">
+                    Finish game
+                </button>
 
             </div>
 
 
-            <div id="keyboard" class="keyboard"></div>
 
-            <div id="feedback"></div>
+            <div class="game-layout">
 
-            <button id="next-btn" hidden>
-                NEXT WORD
-            </button>
+
+                <!-- WORD LADDER GAME -->
+
+                <section class="ladder-panel">
+
+
+                    <div class="game-info">
+
+                        <span id="word-progress">ROUND 1</span>
+
+                        <span id="score">0 PTS</span>
+
+                    </div>
+
+
+                    <div class="ladder" id="ladder"></div>
+
+
+                    <div class="attempts">
+
+                        <span>ATTEMPTS</span>
+
+                        <div id="lives"></div>
+
+                    </div>
+
+
+                    <div id="word-tiles" class="word-tiles"></div>
+
+
+                    <div class="hint-box">
+
+                        <b>HINT</b>
+
+                        <p id="hint"></p>
+
+                    </div>
+
+
+                    <div id="keyboard" class="keyboard"></div>
+
+
+                    <div id="feedback"></div>
+
+
+                    <button id="next-btn" class="primary-btn" hidden>
+                        NEXT PLAYER →
+                    </button>
+
+
+                </section>
+
+
+
+                <!-- SCOREBOARD -->
+
+                <aside class="score-panel">
+
+                    <div class="score-head">
+
+                        <div>
+
+                            <div class="eyebrow">LIVE SCORE</div>
+
+                            <h2>Scoreboard</h2>
+
+                        </div>
+
+                        <span class="score-unit">
+                            WORD LADDER
+                        </span>
+
+                    </div>
+
+
+                    <div id="score-list" class="score-list"></div>
+
+
+                    <div class="score-note">
+
+                        Players take turns guessing one word
+                        per round.
+
+                        <br><br>
+
+                        Correct answers earn points according
+                        to the number of attempts remaining.
+
+                    </div>
+
+                </aside>
+
+
+            </div>
 
         </section>
 
 
-        <section id="result-screen" class="panel" hidden>
 
-            <h2>Game completed!</h2>
+        <!-- RESULTS SCREEN -->
 
-            <div id="final-result"></div>
+        <section id="result-screen" class="screen result-screen" hidden>
 
-            <button onclick="location.reload()">
-                PLAY AGAIN
+            <div class="eyebrow">GAME COMPLETE</div>
+
+            <h1>That's a <span>wrap!</span></h1>
+
+            <p class="intro">
+                Final scores for this Word Ladder game.
+            </p>
+
+
+            <div id="final-scores" class="final-scores"></div>
+
+
+            <button id="play-again-btn" class="primary-btn">
+                PLAY AGAIN ↻
             </button>
 
         </section>
 
     </main>
+
+
+    <!-- SHARED VOCABULARY SYSTEM -->
+
+    <script src="js/vocabulary.js"></script>
+
+    <!-- WORD LADDER -->
 
     <script src="js/word-ladder.js"></script>
 
