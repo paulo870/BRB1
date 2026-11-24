@@ -968,7 +968,75 @@ if (question.type === "sentence-choice") {
     return;
 
 }
+/* =====================================
+   MATCHING
+   COUNT EACH MATCH INDIVIDUALLY
+===================================== */
 
+if (question.type === "matching") {
+
+    const selects = element.querySelectorAll("[data-match]");
+
+    const expected = question.answer;
+
+    let questionCorrect = 0;
+
+    selects.forEach((select, index) => {
+
+        const correctAnswer = expected[index];
+
+        const isCorrect =
+            normalize(select.value) === normalize(correctAnswer);
+
+        select.classList.remove("correct", "incorrect");
+
+        select.classList.add(
+            isCorrect ? "correct" : "incorrect"
+        );
+
+        /* Remove previous correct-answer label */
+
+        const previousLabel = select.nextElementSibling;
+
+        if (
+            previousLabel &&
+            previousLabel.classList.contains("engine-match-correct-answer")
+        ) {
+            previousLabel.remove();
+        }
+
+        if (isCorrect) {
+
+            questionCorrect++;
+
+            correctCount++;
+
+        } else {
+
+            const answerLabel = document.createElement("span");
+
+            answerLabel.className = "engine-match-correct-answer";
+
+            answerLabel.textContent = `Correct: ${correctAnswer}`;
+
+            select.insertAdjacentElement("afterend", answerLabel);
+
+        }
+
+        totalCount++;
+
+    });
+
+    element.classList.add(
+        questionCorrect === selects.length ? "correct" : "incorrect"
+    );
+
+    feedback.textContent =
+        `${questionCorrect}/${selects.length} correct`;
+
+    return;
+
+}
 /* =====================================
    ALL OTHER EXERCISE TYPES
 ===================================== */
