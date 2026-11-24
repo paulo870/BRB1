@@ -139,39 +139,33 @@
 },
 
 {
-    "id": "activity-03",
-    "type": "short-answer",
+    "id": "activity-05",
+    "type": "cloze",
     "title": "Asking Someone to Repeat Information",
     "instructions": "Listen again and complete the expressions for asking somebody to repeat the information.",
-   "media": {
-                "type": "audio",
-                "src": "../audios/student-book-audios/unit_1/page9_Track_1.3.mp3",
-                "controls": true,
-                "download": false,
-                "playbackSpeed": [0.75, 1, 1.25, 1.5]
-            },    
+    "media": {
+        "type": "audio",
+        "src": "../audios/student-book-audios/unit_1/page9_Track_1.3.mp3",
+        "controls": true,
+        "download": false,
+        "playbackSpeed": [0.75, 1, 1.25, 1.5]
+    },
     "questions": [
         {
-            "question": "1. Sorry, can you __________?",
-            "answer": "say that again"
+            "text": "1. Sorry, can you {{blank}}?",
+            "answer": ["say that again"]
         },
         {
-            "question": "2. Sorry, can you __________ a bit __________?",
-            "answer": [
-                "speak",
-                "more slowly"
-            ]
+            "text": "2. Sorry, can you {{blank}} a bit {{blank}}?",
+            "answer": ["speak", "more slowly"]
         },
         {
-            "question": "3. Sorry, __________ employees do you have?",
-            "answer": "how many"
+            "text": "3. Sorry, {{blank}} employees do you have?",
+            "answer": ["how many"]
         },
         {
-            "question": "4. And __________ your annual sales __________?",
-            "answer": [
-                "what are",
-                "again"
-            ]
+            "text": "4. And {{blank}} your annual sales {{blank}}?",
+            "answer": ["what are", "again"]
         }
     ]
 }
