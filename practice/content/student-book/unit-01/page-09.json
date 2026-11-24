@@ -105,5 +105,84 @@
                 }
             ]
         }
+
+        {
+    "id": "activity-02",
+    "type": "short-answer",
+    "title": "Listening - Company Information",
+    "instructions": "Listen to the conversation and write the information about the company.",
+         "media": {
+                "type": "audio",
+                "src": "../audios/student-book-audios/unit_1/page9_Track_1.3.mp3",
+                "controls": true,
+                "download": false,
+                "playbackSpeed": [0.75, 1, 1.25, 1.5]
+            },    
+    "questions": [
+        {
+            "question": "Number of countries:",
+            "answer": "165"
+        },
+        {
+            "question": "Number of factories:",
+            "answer": "89"
+        },
+        {
+            "question": "Number of employees:",
+            "answer": "305000"
+        },
+        {
+            "question": "Annual sales:",
+            "answer": "17.8 billion"
+        }
+    ]
+}
+
+{
+    "id": "activity-05",
+    "type": "short-answer",
+    "title": "Asking Someone to Repeat Information",
+    "instructions": "Listen again and complete the expressions for asking somebody to repeat the information.",
+   "media": {
+                "type": "audio",
+                "src": "../audios/student-book-audios/unit_1/page9_Track_1.3.mp3",
+                "controls": true,
+                "download": false,
+                "playbackSpeed": [0.75, 1, 1.25, 1.5]
+            },    
+    "questions": [
+        {
+            "question": "1. Sorry, can you __________?",
+            "answer": "say that again"
+        },
+        {
+            "question": "2. Sorry, can you __________ a bit __________?",
+            "answer": [
+                "speak",
+                "more slowly"
+            ]
+        },
+        {
+            "question": "3. Sorry, __________ employees do you have?",
+            "answer": "how many"
+        },
+        {
+            "question": "4. And __________ your annual sales __________?",
+            "answer": [
+                "what are",
+                "again"
+            ]
+        }
+    ]
+}
+
+
+
+
+        
+
+
+
+        
     ]
 }
