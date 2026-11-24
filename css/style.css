@@ -3913,3 +3913,13 @@ body:not(.sidebar-hidden) #sidebar-toggle {
     background: #071b20;
     opacity: 1;
 }
+/* =================================
+   PROTECT PRESENTATION IMAGES
+================================= */
+
+#slide-image {
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: auto;
+}
