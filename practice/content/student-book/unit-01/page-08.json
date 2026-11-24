@@ -8,8 +8,7 @@
             "id": "activity-01",
             "type": "true or false",
             "title": "True or False",
-            "instructions": "Are these sentences about Gazprom, Nestlé and Toyota 
-            true or false?"
+            "instructions": "Are these sentences about Gazprom, Nestlé and Toyota true or false?"
           
             "questions": [
                 { 
