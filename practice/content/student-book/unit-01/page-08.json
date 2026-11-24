@@ -1,1 +1,20 @@
-
+{
+    "book": "student-book",
+    "unit": 1,
+    "page": 8,
+    "title": "Unit 1 - Page 8",
+    "activities": [
+        {
+            "id": "activity-01",
+            "type": "true or false",
+            "title": "True or False",
+            "instructions": "Are these sentences about Gazprom, Nestlé and Toyota
+true (T) or false (F)?",
+          
+            "questions": [
+                { 
+                   "id": 1,
+            "statement": "Gazprom produces energy.",
+            "answer": true,
+            
+        },
