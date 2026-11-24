@@ -1,3 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* =====================================================
+   POLIGLOTA DESIGN SYSTEM
+===================================================== */
+
+:root {
+    --ink: #071b20;
+    --panel: #0d292e;
+    --panel2: #12363b;
+
+    --teal: #20b4ad;
+    --teal2: #087d79;
+
+    --red: #ff4136;
+
+    --muted: #9bb6b7;
+    --line: rgba(181,225,222,.16);
+    --white: #f5fbfa;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -10,84 +31,377 @@ body {
         #16464a 0,
         #071b20 54%
     );
-    font-family: Inter, Arial, sans-serif;
-    color: #ffffff;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
 }
 
-.container {
-    width: min(700px, 94%);
-    margin: 30px auto;
-}
-
-header {
-    margin-bottom: 25px;
-}
-
-header a {
-    display: block;
-    color: #017a79;
-    text-decoration: none;
-    margin-bottom: 20px;
-    font-weight: 800;
-}
-
-header span {
-    color: #03aaa2;
-    font-size: 11px;
-    letter-spacing: 2px;
-    font-weight: 900;
-}
-
-header h1 {
-    margin: 8px 0;
-    font-size: 35px;
-}
-
-.panel {
-    background: #0d292e;
-    color: #ffffff;
-    border-radius: 18px;
-    padding: 28px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, .25);
-}
-
+button,
+input,
 select {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #d5e6e5;
-    border-radius: 9px;
-    margin: 12px 0;
+    font: inherit;
 }
 
 button {
     cursor: pointer;
-    border: none;
-    background: #017a79;
-    color: white;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.app-shell {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    padding: 22px 28px 40px;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 18px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-family: Manrope, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .16em;
+}
+
+.brand b {
+    color: var(--teal);
+}
+
+.brand-mark {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    color: var(--teal2);
+    font-size: 22px;
     font-weight: 900;
-    padding: 13px 20px;
-    border-radius: 9px;
+    box-shadow: inset 0 0 0 5px #b9d0cf;
 }
 
-#start-btn,
-#next-btn {
+.unit-pill {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .13em;
+    color: #a9e7e2;
+    border: 1px solid rgba(32,180,173,.45);
+    background: rgba(32,180,173,.1);
+    padding: 9px 13px;
+    border-radius: 99px;
+    white-space: nowrap;
+}
+
+/* =====================================================
+   GENERAL TYPOGRAPHY
+===================================================== */
+
+.screen {
+    padding: 52px 0 20px;
+}
+
+.eyebrow {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .2em;
+    color: var(--teal);
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+    font-family: Manrope, sans-serif;
+}
+
+h1,
+h2 {
+    letter-spacing: -.04em;
+}
+
+h1 {
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.05;
+    margin: 13px 0;
+}
+
+h1 span {
+    color: var(--teal);
+}
+
+h2 {
+    font-size: 25px;
+}
+
+.intro {
+    max-width: 600px;
+    color: #b4c9c9;
+    line-height: 1.65;
+    margin-bottom: 28px;
+}
+
+/* =====================================================
+   SETUP SCREEN
+===================================================== */
+
+.setup-card {
+    max-width: 660px;
+    padding: 25px;
+    background: linear-gradient(
+        145deg,
+        rgba(18,54,59,.95),
+        rgba(9,34,39,.95)
+    );
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 22px 70px #0003;
+}
+
+.setup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.field span {
+    font-size: 10px;
+    letter-spacing: .14em;
+    color: #a6c1c1;
+    font-weight: 800;
+}
+
+.setup-card select,
+.player-input {
     width: 100%;
-    margin-top: 12px;
+    background: #071f24;
+    color: #fff;
+    border: 1px solid #285258;
+    border-radius: 10px;
+    padding: 13px 14px;
+    outline: none;
 }
 
-.game-info {
+.setup-card select:focus,
+.player-input:focus {
+    border-color: var(--teal);
+}
+
+/* =====================================================
+   PLAYER FIELDS
+===================================================== */
+
+.player-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 17px;
+}
+
+.player-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    color: #a6c1c1;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.player-input {
+    margin-top: 2px;
+}
+
+/* =====================================================
+   VOCABULARY STATUS
+===================================================== */
+
+.vocab-status {
+    font-size: 12px;
+    color: #9fc3c2;
+    margin: 19px 0 15px;
+    min-height: 18px;
+    line-height: 1.5;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.primary-btn,
+.quiet-btn {
+    border: 0;
+    border-radius: 10px;
+    font-weight: 800;
+    letter-spacing: .06em;
+    transition: .2s;
+}
+
+.primary-btn {
+    background: var(--teal);
+    color: #032629;
+    padding: 15px 20px;
+    box-shadow: 0 8px 25px #20b4ad24;
+}
+
+.primary-btn:hover:not(:disabled) {
+    background: #54d3cb;
+    transform: translateY(-1px);
+}
+
+.primary-btn:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.primary-btn span {
+    float: right;
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.setup-card > .primary-btn {
+    width: 100%;
+}
+
+.quiet-btn {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: #b7cece;
+    padding: 10px 14px;
+    font-size: 11px;
+}
+
+.quiet-btn:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+}
+
+/* =====================================================
+   GAME HEADING
+===================================================== */
+
+.game-heading {
     display: flex;
     justify-content: space-between;
-    font-size: 11px;
-    font-weight: 900;
-    color: #017a79;
-    gap: 10px;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
 }
 
+.game-heading h1 {
+    font-size: 34px;
+    margin: 8px 0 5px;
+}
+
+#current-player {
+    color: var(--teal);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    margin: 0;
+}
+
+/* =====================================================
+   GAME LAYOUT
+===================================================== */
+
+.game-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, .8fr);
+    gap: 20px;
+    align-items: stretch;
+}
+
+.ladder-panel,
+.score-panel {
+    background: linear-gradient(
+        145deg,
+        rgba(15,48,53,.96),
+        rgba(8,31,36,.96)
+    );
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 24px;
+    min-width: 0;
+}
+
+/* =====================================================
+   LADDER GAME PANEL
+===================================================== */
+
+.ladder-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* =====================================================
+   GAME INFORMATION
+===================================================== */
+
+.game-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    color: #a9e7e2;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .1em;
+}
+
+#word-progress {
+    color: var(--teal);
+}
+
+#score {
+    color: #a9e8e2;
+    font-family: Manrope, sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+/* =====================================================
+   LADDER VISUAL
+===================================================== */
+
 .ladder {
-    margin: 20px auto;
+    width: 100%;
     max-width: 280px;
     height: 150px;
+    margin: 20px auto;
 }
 
 .ladder svg {
@@ -95,18 +409,25 @@ button {
     height: 100%;
 }
 
+/* =====================================================
+   ATTEMPTS / LIVES
+===================================================== */
+
 .attempts {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 900;
-    margin: 15px;
+    letter-spacing: .12em;
+    color: #a6c1c1;
+    margin: 15px 0;
 }
 
 #lives {
     display: flex;
+    align-items: center;
     gap: 7px;
 }
 
@@ -114,51 +435,104 @@ button {
     width: 13px;
     height: 13px;
     border-radius: 50%;
-    background: #03aaa2;
+    background: var(--teal);
+    box-shadow: 0 0 10px rgba(32,180,173,.2);
 }
 
 .life.lost {
-    background: #ff4136;
+    background: var(--red);
+    box-shadow: none;
 }
+
+/* =====================================================
+   WORD TILES
+===================================================== */
 
 .word-tiles {
     display: flex;
     justify-content: center;
-    gap: 6px;
+    align-items: center;
+    gap: 7px;
     flex-wrap: wrap;
+    width: 100%;
     margin: 20px 0;
 }
 
 .tile {
     width: 35px;
     height: 43px;
-    border-bottom: 3px solid #03aaa2;
+    border-bottom: 3px solid var(--teal);
     display: grid;
     place-items: center;
+    font-family: Manrope, sans-serif;
     font-size: 22px;
     font-weight: 900;
+    color: var(--white);
 }
 
+.space-tile {
+    width: 15px;
+    border: none;
+}
+
+.revealed-tile {
+    color: var(--teal);
+}
+
+/* =====================================================
+   HINT BOX
+===================================================== */
+
 .hint-box {
+    width: 100%;
+    text-align: left;
     padding: 15px;
     background: #eaf7f5;
     border-radius: 10px;
 }
 
 .hint-box b {
-    color: #017a79;
+    color: var(--teal2);
     font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .12em;
 }
 
+.hint-box p {
+    color: #163b3e;
+    margin: 8px 0 0;
+    line-height: 1.5;
+    font-size: 13px;
+}
+
+/* =====================================================
+   KEYBOARD
+===================================================== */
+
 .keyboard {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 7px;
     margin-top: 20px;
 }
 
 .keyboard button {
+    min-width: 0;
     padding: 12px 0;
+    border: 1px solid #285258;
+    border-radius: 9px;
+    background: #09242a;
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 800;
+    transition: .2s;
+}
+
+.keyboard button:hover:not(:disabled) {
+    border-color: var(--teal);
+    background: #10373b;
+    transform: translateY(-1px);
 }
 
 .keyboard button:disabled {
@@ -168,1014 +542,291 @@ button {
 
 .keyboard button.good {
     background: #159b71;
+    border-color: #159b71;
+    color: #fff;
+    opacity: 1;
 }
 
 .keyboard button.bad {
-    background: #ff4136;
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+    opacity: 1;
 }
+
+/* =====================================================
+   FEEDBACK
+===================================================== */
 
 #feedback {
+    width: 100%;
+    min-height: 24px;
     text-align: center;
-    font-weight: 900;
-    margin: 15px;
-}
-
-#feedback.success {
-    color: #159b71;
-}
-
-#feedback.error {
-    color: #ff4136;
-}
-
-[hidden] {
-    display: none !important;
-}
-
-@media(max-width:450px) {
-
-    .panel {
-        padding: 16px;
-    }
-
-    .keyboard {
-        grid-template-columns: repeat(6, 1fr);
-    }
-
-}
-/* =====================================================
-   WORD LADDER — POLIGLOTA AROUND DESIGN
-===================================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
-
-
-:root {
-
-    --ink: #071b20;
-    --panel: #0d292e;
-    --panel2: #12363b;
-
-    --teal: #20b4ad;
-    --teal2: #087d79;
-
-    --red: #ff4136;
-
-    --muted: #9bb6b7;
-
-    --line: rgba(181,225,222,.16);
-
-    --white: #f5fbfa;
-
-}
-
-
-body {
-
-    font-family: 'DM Sans', sans-serif;
-
-}
-
-
-button,
-input,
-select {
-
-    font: inherit;
-
-}
-
-
-.app-shell {
-
-    width: min(1180px, 100%);
-
-    margin: 0 auto;
-
-    padding: 22px 28px 40px;
-
-}
-
-
-.topbar {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    border-bottom: 1px solid var(--line);
-
-    padding-bottom: 18px;
-
-}
-
-
-.brand {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
-
-    font-family: Manrope, sans-serif;
-
+    font-weight: 800;
     font-size: 13px;
-
-    font-weight: 800;
-
-    letter-spacing: .16em;
-
-}
-
-
-.brand b {
-
-    color: var(--teal);
-
-}
-
-
-.brand-mark {
-
-    width: 34px;
-
-    height: 34px;
-
-    border-radius: 50%;
-
-    display: grid;
-
-    place-items: center;
-
-    background: #fff;
-
-    color: var(--teal2);
-
-    font-size: 22px;
-
-    font-weight: 900;
-
-    box-shadow: inset 0 0 0 5px #b9d0cf;
-
-}
-
-
-.unit-pill {
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: .13em;
-
-    color: #a9e7e2;
-
-    border: 1px solid rgba(32,180,173,.45);
-
-    background: rgba(32,180,173,.1);
-
-    padding: 9px 13px;
-
-    border-radius: 99px;
-
-}
-
-
-.screen {
-
-    padding: 52px 0 20px;
-
-}
-
-
-.eyebrow {
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: .2em;
-
-    color: var(--teal);
-
-    text-transform: uppercase;
-
-}
-
-
-h1,
-h2 {
-
-    font-family: Manrope, sans-serif;
-
-    letter-spacing: -.04em;
-
-}
-
-
-h1 {
-
-    font-size: clamp(34px, 5vw, 56px);
-
-    line-height: 1.05;
-
-}
-
-
-h1 span {
-
-    color: var(--teal);
-
-}
-
-
-.intro {
-
-    max-width: 600px;
-
-    color: #b4c9c9;
-
-    line-height: 1.65;
-
-    margin-bottom: 28px;
-
-}
-
-
-/* =====================================================
-   SETUP
-===================================================== */
-
-.setup-card {
-
-    max-width: 660px;
-
-    padding: 25px;
-
-    background: linear-gradient(
-        145deg,
-        rgba(18,54,59,.95),
-        rgba(9,34,39,.95)
-    );
-
-    border: 1px solid var(--line);
-
-    border-radius: 20px;
-
-    box-shadow: 0 22px 70px #0003;
-
-}
-
-
-.setup-grid {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 15px;
-
-}
-
-
-.field {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 9px;
-
-}
-
-
-.field span {
-
-    font-size: 10px;
-
-    letter-spacing: .14em;
-
-    color: #a6c1c1;
-
-    font-weight: 800;
-
-}
-
-
-.setup-card select,
-.player-input {
-
-    width: 100%;
-
-    background: #071f24;
-
-    color: #fff;
-
-    border: 1px solid #285258;
-
-    border-radius: 10px;
-
-    padding: 13px 14px;
-
-    outline: none;
-
-}
-
-
-.setup-card select:focus,
-.player-input:focus {
-
-    border-color: var(--teal);
-
-}
-
-
-.player-fields {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 12px;
-
-    margin-top: 17px;
-
-}
-
-
-.player-field {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 7px;
-
-    color: #a6c1c1;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-}
-
-
-.vocab-status {
-
-    font-size: 12px;
-
-    color: #9fc3c2;
-
-    margin: 19px 0 15px;
-
-    min-height: 18px;
-
-}
-
-
-/* =====================================================
-   BUTTONS
-===================================================== */
-
-.primary-btn,
-.quiet-btn {
-
-    border: 0;
-
-    border-radius: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: .06em;
-
-    transition: .2s;
-
-}
-
-
-.primary-btn {
-
-    background: var(--teal);
-
-    color: #032629;
-
-    padding: 15px 20px;
-
-    box-shadow: 0 8px 25px #20b4ad24;
-
-}
-
-
-.primary-btn:hover {
-
-    background: #54d3cb;
-
-    transform: translateY(-1px);
-
-}
-
-
-.primary-btn:disabled {
-
-    opacity: .45;
-
-    cursor: not-allowed;
-
-    transform: none;
-
-}
-
-
-.primary-btn span {
-
-    float: right;
-
-    margin-left: 20px;
-
-    font-size: 18px;
-
-}
-
-
-.setup-card > .primary-btn {
-
-    width: 100%;
-
-}
-
-
-.quiet-btn {
-
-    background: transparent;
-
-    border: 1px solid var(--line);
-
-    color: #b7cece;
-
-    padding: 10px 14px;
-
-    font-size: 11px;
-
-}
-
-
-/* =====================================================
-   GAME HEADING
-===================================================== */
-
-.game-heading {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 24px;
-
-}
-
-
-.game-heading h1 {
-
-    font-size: 34px;
-
-    margin-bottom: 5px;
-
-}
-
-
-#current-player {
-
-    color: var(--teal);
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    letter-spacing: .12em;
-
-}
-
-
-/* =====================================================
-   GAME LAYOUT
-===================================================== */
-
-.game-layout {
-
-    display: grid;
-
-    grid-template-columns: minmax(0, 1.5fr) minmax(280px, .8fr);
-
-    gap: 20px;
-
-    align-items: stretch;
-
-}
-
-
-.ladder-panel,
-.score-panel {
-
-    background: linear-gradient(
-        145deg,
-        rgba(15,48,53,.96),
-        rgba(8,31,36,.96)
-    );
-
-    border: 1px solid var(--line);
-
-    border-radius: 20px;
-
-    padding: 24px;
-
-    min-width: 0;
-
-}
-
-
-.ladder-panel {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    text-align: center;
-
-}
-
-
-.game-info {
-
-    width: 100%;
-
-    color: #a9e7e2;
-
-}
-
-
-.ladder {
-
-    margin: 20px auto;
-
-}
-
-
-/* =====================================================
-   WORD TILES
-===================================================== */
-
-.word-tiles {
-
-    gap: 7px;
-
-    margin: 20px 0;
-
-}
-
-
-.tile {
-
-    width: 35px;
-
-    height: 43px;
-
-    border-bottom: 3px solid var(--teal);
-
-    display: grid;
-
-    place-items: center;
-
-    font-size: 22px;
-
-    font-weight: 900;
-
-}
-
-
-.space-tile {
-
-    border: none;
-
-    width: 15px;
-
-}
-
-
-.revealed-tile {
-
-    color: var(--teal);
-
-}
-
-
-/* =====================================================
-   HINT
-===================================================== */
-
-.hint-box {
-
-    width: 100%;
-
-    text-align: left;
-
-    padding: 15px;
-
-    background: #eaf7f5;
-
-    border-radius: 10px;
-
-}
-
-
-.hint-box b {
-
-    color: var(--teal2);
-
-    font-size: 11px;
-
-}
-
-
-.hint-box p {
-
-    color: #163b3e;
-
-    margin-bottom: 0;
-
     line-height: 1.5;
-
+    margin: 15px 0;
 }
-
-
-/* =====================================================
-   KEYBOARD
-===================================================== */
-
-.keyboard {
-
-    width: 100%;
-
-    grid-template-columns: repeat(7, 1fr);
-
-}
-
-
-.keyboard button {
-
-    padding: 12px 0;
-
-}
-
-
-.keyboard button.good {
-
-    background: #159b71;
-
-}
-
-
-.keyboard button.bad {
-
-    background: var(--red);
-
-}
-
-
-.keyboard button:disabled {
-
-    opacity: .25;
-
-}
-
 
 #feedback.success {
-
     color: #54d3a0;
-
 }
-
 
 #feedback.error {
-
     color: #ff8178;
-
 }
 
+/* =====================================================
+   NEXT TURN BUTTON
+===================================================== */
 
 #next-btn {
-
     width: 100%;
-
     margin-top: 15px;
-
 }
-
 
 /* =====================================================
    SCOREBOARD
 ===================================================== */
 
 .score-panel {
-
     display: flex;
-
     flex-direction: column;
-
 }
-
 
 .score-head {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
+    gap: 12px;
     border-bottom: 1px solid var(--line);
-
     padding-bottom: 16px;
-
 }
-
 
 .score-head h2 {
-
     margin: 5px 0 0;
-
     font-size: 25px;
-
 }
-
 
 .score-unit {
-
     font-size: 10px;
-
     font-weight: 800;
-
     letter-spacing: .1em;
-
     color: #a6e8e2;
-
     background: #0c4447;
-
     padding: 8px 10px;
-
     border-radius: 8px;
-
+    white-space: nowrap;
 }
-
 
 .score-list {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 10px;
-
     margin: 19px 0;
-
 }
-
 
 .score-row {
-
     display: grid;
-
-    grid-template-columns: 25px minmax(0,1fr) auto;
-
+    grid-template-columns: 25px minmax(0, 1fr) auto;
     align-items: center;
-
     gap: 10px;
-
     background: #09242a;
-
     border: 1px solid var(--line);
-
     padding: 12px;
-
     border-radius: 11px;
-
 }
-
 
 .score-row.active-player {
-
     border-color: var(--teal);
-
     background: #104347;
-
 }
-
 
 .player-rank {
-
     color: var(--teal);
-
     font-size: 12px;
-
     font-weight: 900;
-
 }
-
 
 .player-name {
-
     font-weight: 700;
-
     overflow: hidden;
-
     text-overflow: ellipsis;
-
     white-space: nowrap;
-
 }
-
 
 .player-score {
-
     font-family: Manrope, sans-serif;
-
     font-weight: 800;
-
     font-size: 20px;
-
     color: #b8f2ed;
-
+    white-space: nowrap;
 }
-
-
-.score-note {
-
-    font-size: 11px;
-
-    line-height: 1.55;
-
-    color: #8eaaaa;
-
-    margin-top: auto;
-
-    padding-top: 17px;
-
-}
-
 
 /* =====================================================
-   RESULTS
+   SCOREBOARD NOTE
+===================================================== */
+
+.score-note {
+    font-size: 11px;
+    line-height: 1.65;
+    color: #8eaaaa;
+    margin-top: auto;
+    padding-top: 17px;
+    border-top: 1px solid var(--line);
+}
+
+/* =====================================================
+   RESULTS SCREEN
 ===================================================== */
 
 .result-screen {
-
     text-align: center;
-
     max-width: 700px;
-
     margin: auto;
-
 }
 
+.result-screen h1 {
+    margin: 13px 0;
+}
 
 .result-screen .intro {
-
     margin-left: auto;
-
     margin-right: auto;
-
 }
-
 
 .final-scores {
-
     display: grid;
-
     gap: 10px;
-
     margin: 20px auto 25px;
-
     text-align: left;
-
 }
-
 
 .final-row {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
+    gap: 15px;
     background: #0d3035;
-
     border: 1px solid var(--line);
-
     padding: 16px 19px;
-
     border-radius: 12px;
-
 }
-
 
 .final-row.winner {
-
     border-color: var(--teal);
-
     background: #104347;
-
 }
-
 
 .final-row strong {
-
-    font-size: 18px;
-
+    font-family: Manrope, sans-serif;
+    font-size: 16px;
 }
-
 
 .final-row span {
-
     color: #a9e8e2;
-
     font-weight: 800;
-
+    white-space: nowrap;
 }
 
+.result-screen > .primary-btn {
+    min-width: 220px;
+}
 
 /* =====================================================
    RESPONSIVE
 ===================================================== */
 
-@media(max-width: 800px) {
+@media (max-width: 800px) {
 
     .game-layout {
-
         grid-template-columns: 1fr;
-
     }
 
     .screen {
-
         padding-top: 35px;
-
     }
 
 }
 
-
-@media(max-width: 520px) {
+@media (max-width: 520px) {
 
     .app-shell {
-
         padding: 15px 14px 28px;
+    }
 
+    .brand {
+        font-size: 10px;
+        letter-spacing: .1em;
+        gap: 6px;
+    }
+
+    .brand-mark {
+        width: 30px;
+        height: 30px;
+        font-size: 19px;
+    }
+
+    .unit-pill {
+        font-size: 9px;
+        padding: 8px 9px;
     }
 
     .setup-grid,
     .player-fields {
-
         grid-template-columns: 1fr;
-
     }
 
     .setup-card,
     .ladder-panel,
     .score-panel {
-
         padding: 18px;
-
-    }
-
-    .game-heading h1 {
-
-        font-size: 27px;
-
     }
 
     .game-heading {
-
         align-items: flex-end;
-
+        gap: 10px;
     }
 
-    .brand {
+    .game-heading h1 {
+        font-size: 27px;
+    }
 
+    .game-heading .quiet-btn {
+        padding: 9px 10px;
         font-size: 10px;
-
     }
 
-    .unit-pill {
+    .score-head h2 {
+        font-size: 21px;
+    }
 
+    .score-unit {
         font-size: 9px;
+        padding: 7px 8px;
+    }
 
+    .keyboard {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .keyboard button {
+        padding: 11px 0;
+    }
+
+    .tile {
+        width: 30px;
+        height: 39px;
+        font-size: 19px;
+    }
+
+    .final-row {
+        padding: 13px;
+    }
+
+    .final-row strong {
+        font-size: 14px;
     }
 
 }
