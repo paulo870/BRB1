@@ -15,7 +15,34 @@
                     "question": "Gazprom produces energy.",
                     "answer": true
                 }
+                {
+                    "type": "true-false",
+                    "question": "The companies aren't competitors.",
+                    "answer": true
+                }
+                {
+                    "type": "true-false",
+                    "question": "Nestlé provides services but it doesn't produce anything.",
+                    "answer": false
+                }
+                {
+                    "type": "true-false",
+                    "question": "Two of the companies produce cars.",
+                    "answer": false
+                }
+                 {
+                    "type": "true-false",
+                    "question": "Toyota isn't Russian.",
+                    "answer": true
+                }
+                {
+                    "type": "true-false",
+                    "question": "Nestlé and Gazprom don't have their head office in Japan.",
+                    "answer": true
+                }
             ]
+            
+            
         }
     ]
 }
