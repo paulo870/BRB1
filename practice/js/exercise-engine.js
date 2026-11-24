@@ -882,34 +882,92 @@ if (
     return;
 
 }
-        /* =====================================
-           ALL OTHER EXERCISE TYPES
-        ===================================== */
+       /* =====================================
+   SENTENCE CHOICE
+   COUNT EACH WORD CHOICE INDIVIDUALLY
+===================================== */
 
-        const correct = check(question, answer);
+if (question.type === "sentence-choice") {
 
-        element.classList.add(
-            correct ? "correct" : "incorrect"
+    const selects = element.querySelectorAll(
+        ".engine-sentence-choice"
+    );
+
+    const correctAnswers = question.parts
+        .filter(part => typeof part !== "string")
+        .map(part => part.answer);
+
+    let questionCorrect = 0;
+
+    selects.forEach((select, index) => {
+
+        const correctAnswer = correctAnswers[index];
+
+        const isCorrect = select.value === correctAnswer;
+
+        select.classList.remove("correct", "incorrect");
+
+        select.classList.add(
+            isCorrect ? "correct" : "incorrect"
         );
 
-        feedback.textContent = correct
-            ? "✓ Correct!"
-            : answer === null
-                ? "Please answer this question."
-                : "✗ Incorrect. Try again or reveal the answer.";
+        /* Remove previous correct-answer label */
 
-        if (correct) correctCount++;
+        const previousLabel = select.nextElementSibling;
+
+        if (
+            previousLabel &&
+            previousLabel.classList.contains(
+                "engine-sentence-correct-answer"
+            )
+        ) {
+            previousLabel.remove();
+        }
+
+        if (isCorrect) {
+
+            questionCorrect++;
+            correctCount++;
+
+        } else {
+
+            const answerLabel = document.createElement("span");
+
+            answerLabel.className =
+                "engine-sentence-correct-answer";
+
+            answerLabel.textContent =
+                ` Correct: ${correctAnswer}`;
+
+            select.insertAdjacentElement(
+                "afterend",
+                answerLabel
+            );
+
+        }
 
         totalCount++;
 
     });
 
-    return {
-        correct: correctCount,
-        total: totalCount
-    };
+    element.classList.add(
+        questionCorrect === selects.length
+            ? "correct"
+            : "incorrect"
+    );
+
+    feedback.textContent =
+        `${questionCorrect}/${selects.length} correct`;
+
+    return;
 
 }
+
+/* =====================================
+   ALL OTHER EXERCISE TYPES
+===================================== */
+
+const correct = check(question, answer);
 
     /* =========================================
        SHOW ALL ANSWERS
