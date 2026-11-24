@@ -2281,3 +2281,29 @@ body {
     min-width: 0;
     font-weight: inherit;
 }
+.engine-sentence-choice-text {
+    font-size: 16px;
+    line-height: 2.5;
+    color: inherit;
+}
+
+.engine-sentence-choice {
+    display: inline-block;
+    min-width: 135px;
+    max-width: 100%;
+    padding: 5px 9px;
+    margin: 2px 4px;
+    border: 1px solid #20b4ad;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #183638;
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.engine-sentence-choice:focus {
+    outline: 2px solid rgba(32, 180, 173, 0.25);
+    border-color: #087d79;
+}
