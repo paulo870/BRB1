@@ -99,7 +99,19 @@ function loadImage(src) {
     };
     slideImage.src = src;
 }
+// ==========================
+// PREVENT IMAGE SAVING
+// ==========================
 
+// Disable right-click on the presentation image
+slideImage.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+});
+
+// Prevent dragging the presentation image
+slideImage.addEventListener("dragstart", function(e) {
+    e.preventDefault();
+});
 // ==========================
 // HOME PAGE
 // ==========================
