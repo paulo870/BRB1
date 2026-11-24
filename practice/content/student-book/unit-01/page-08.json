@@ -9,16 +9,13 @@
             "type": "true-false",
             "title": "True or False",
             "instructions": "Are these sentences about Gazprom, Nestlé and Toyota true or false?",
-        
             "questions": [
-                { 
-                   "id": 1,
-            "question": "Gazprom produces energy.",
-            "answer": true,
-            
-        }
- 
+                {
+                    "type": "true-false",
+                    "question": "Gazprom produces energy.",
+                    "answer": true
+                }
             ]
-         }
+        }
     ]
 }
