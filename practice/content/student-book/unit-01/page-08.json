@@ -42,5 +42,72 @@
                 }
             ]
         }
+          {
+            "id": "activity-02",
+            "type": "sentence-choice",
+            "title": "Choose the Correct Word",
+            "instructions": "Read the text and choose the correct word or expression in each gap.",
+            "questions": [
+                {
+                    "type": "sentence-choice",
+                    "parts": [
+                        "You ",
+                        {
+                            "options": ["probably know", "probably knows"],
+                            "answer": "probably know"
+                        },
+                        " that Nestlé ",
+                        {
+                            "options": ["produce", "produces"],
+                            "answer": "produces"
+                        },
+                        " Nespresso machines and Nescafé instant coffee. And many people ",
+                        {
+                            "options": ["see", "sees"],
+                            "answer": "see"
+                        },
+                        " the Nestlé name on their breakfast cereal packet every morning. But what else ",
+                        {
+                            "options": ["do", "does"],
+                            "answer": "do"
+                        },
+                        " you know about the company? What other products ",
+                        {
+                            "options": ["is", "does"],
+                            "answer": "does"
+                        },
+                        " it sell, and where? And the food industry ",
+                        {
+                            "options": ["isn't", "doesn't"],
+                            "answer": "isn't"
+                        },
+                        " always green, so what ",
+                        {
+                            "options": ["does the company do", "does the company does"],
+                            "answer": "does the company do"
+                        },
+                        " to protect the environment? Our reporter Rosa Manning ",
+                        {
+                            "options": ["talk", "talks"],
+                            "answer": "talks"
+                        },
+                        " to employees of Nestlé and discovers what they do. She ",
+                        {
+                            "options": ["learn", "learns"],
+                            "answer": "learns"
+                        },
+                        " why most employees ",
+                        {
+                            "options": ["are", "do"],
+                            "answer": "are"
+                        },
+                        " happy to work there and why most of Nestlé's employees ",
+                        {
+                            "options": ["isn't", "don't"],
+                            "answer": "don't"
+                        },
+                        " want to leave.\n\nListen to Nestlé in Focus tonight at 8 p.m. to learn more about one of the world's biggest food companies."
+                    ]
+                }
     ]
 }
