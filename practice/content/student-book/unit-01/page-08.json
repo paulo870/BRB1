@@ -41,8 +41,8 @@
                     "answer": true
                 }
             ]
-        }
-          {
+        },
+        {
             "id": "activity-02",
             "type": "sentence-choice",
             "title": "Choose the Correct Word",
@@ -109,5 +109,7 @@
                         " want to leave.\n\nListen to Nestlé in Focus tonight at 8 p.m. to learn more about one of the world's biggest food companies."
                     ]
                 }
+            ]
+        }
     ]
 }
