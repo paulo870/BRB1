@@ -4010,3 +4010,38 @@ body:not(.sidebar-hidden) #sidebar-toggle {
     display: none;
     width: 0;
 }
+/* =========================================================
+   DROPDOWN PANELS — OUTSIDE SCROLLABLE SIDEBAR
+========================================================= */
+
+.dropdown-content {
+    position: fixed !important;
+
+    left: 90px;
+
+    z-index: 100000 !important;
+
+    max-height: calc(100vh - 20px);
+    max-height: calc(100dvh - 20px);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    display: none;
+}
+
+/* Open dropdown */
+.dropdown-content.dropdown-open {
+    display: flex;
+}
+
+/* Invisible scrollbar */
+.dropdown-content {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.dropdown-content::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
