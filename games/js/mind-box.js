@@ -1,239 +1,789 @@
-<!DOCTYPE html>
-<html lang="en">
+(() => {
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#071b20">
+    "use strict";
 
-    <title>Mind Box | Academia Poliglota</title>
+    const $ = id => document.getElementById(id);
 
-    <link rel="stylesheet" href="css/mind-box.css">
-</head>
 
-<body>
+    /* =====================================================
+       UNIT
+    ===================================================== */
 
-    <main class="app-shell">
+    const params = new URLSearchParams(window.location.search);
 
-        <header class="topbar">
+    const unitNumber = Number(
+        params.get("unit") ||
+        sessionStorage.getItem("poliglotaSelectedGameUnit") ||
+        0
+    );
 
-            <div class="brand">
-                <span class="brand-mark">P</span>
-                <span>POLIGLOTA <b>MINDBOX</b></span>
-            </div>
 
-            <div class="unit-pill" id="unit-pill">
-                LOADING UNIT…
-            </div>
+    /* =====================================================
+       GAME STATE
+    ===================================================== */
 
-        </header>
+    const state = {
 
+        unit: 0,
 
-        <!-- SETUP SCREEN -->
+        questions: [],
 
-        <section id="setup-screen" class="screen setup-screen">
+        questionBag: [],
 
-            <div class="eyebrow">
-                ACADEMIA POLIGLOTA · CLASSROOM GAME
-            </div>
+        names: [],
 
-            <h1>Ready to <span>think?</span></h1>
+        scores: [],
 
-            <p class="intro">
-                Set up the players and rounds. Challenge your knowledge
-                with questions from the selected unit.
-            </p>
+        totalRounds: 5,
 
+        round: 0,
 
-            <div class="setup-card">
+        player: 0,
 
-                <div class="setup-grid">
+        answered: false,
 
-                    <label class="field">
+        currentQuestion: null,
 
-                        <span>NUMBER OF PLAYERS</span>
+        finished: false
 
-                        <select id="player-count">
+    };
 
-                            <option value="1">1 player</option>
-                            <option value="2" selected>2 players</option>
-                            <option value="3">3 players</option>
-                            <option value="4">4 players</option>
 
-                        </select>
+    /* =====================================================
+       HELPERS
+    ===================================================== */
 
-                    </label>
+    function escapeHTML(value) {
 
+        return String(value ?? "").replace(/[&<>"']/g, char => ({
 
-                    <label class="field">
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#039;"
 
-                        <span>NUMBER OF ROUNDS</span>
+        })[char]);
 
-                        <select id="round-count">
+    }
 
-                            <option value="3">3 rounds</option>
-                            <option value="5" selected>5 rounds</option>
-                            <option value="8">8 rounds</option>
 
-                        </select>
+    function shuffle(items) {
 
-                    </label>
+        const copy = [...items];
 
-                </div>
+        for (let i = copy.length - 1; i > 0; i--) {
 
+            const j = Math.floor(Math.random() * (i + 1));
 
-                <div id="player-fields" class="player-fields"></div>
+            [copy[i], copy[j]] = [copy[j], copy[i]];
 
+        }
 
-                <div class="vocab-status" id="vocab-status">
-                    Loading questions...
-                </div>
+        return copy;
 
+    }
 
-                <button id="start-btn" class="primary-btn" disabled>
-                    START GAME <span>→</span>
-                </button>
 
-            </div>
+    function setStatus(message, isError = false) {
 
-        </section>
+        $("vocab-status").textContent = message;
 
+        $("vocab-status").style.color = isError
+            ? "#ff938c"
+            : "#9fc3c2";
 
-        <!-- GAME SCREEN -->
+    }
 
-        <section id="game-screen" class="screen game-screen" hidden>
 
-            <div class="game-heading">
-
-                <div>
-
-                    <div class="eyebrow">MIND BOX CHALLENGE</div>
-
-                    <h1 id="round-title">ROUND 1 / 5</h1>
-
-                </div>
-
-                <button class="quiet-btn" id="end-game-btn">
-                    Finish game
-                </button>
-
-            </div>
-
-
-            <div class="game-layout">
-
-                <!-- QUESTION PANEL -->
-
-                <section class="question-panel">
-
-                    <div class="question-top">
-
-                        <div class="brain-icon">
-                            🧠
-                        </div>
-
-                        <div class="question-progress">
-
-                            <div id="question-number">
-                                QUESTION 1 / 10
-                            </div>
-
-                            <div class="progress-bar">
-                                <div id="progress"></div>
-                            </div>
-
-                            <strong id="score">0 POINTS</strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <div id="current-player" class="current-player">
-                        PLAYER'S TURN
-                    </div>
-
-
-                    <div id="question" class="question-text"></div>
-
-
-                    <div id="options" class="options"></div>
-
-
-                    <div id="feedback" class="feedback"></div>
-
-
-                    <button
-                        id="next-btn"
-                        class="primary-btn next-btn"
-                        hidden
+    /* =====================================================
+       PLAYER SETUP
+    ===================================================== */
+
+    function makePlayerFields() {
+
+        const count = Number($("player-count").value);
+
+        $("player-fields").innerHTML = Array.from(
+            { length: count },
+            (_, i) => `
+
+                <label class="player-field">
+
+                    PLAYER ${i + 1}
+
+                    <input
+                        class="player-input"
+                        id="player-${i}"
+                        maxlength="18"
+                        autocomplete="off"
+                        placeholder="Player ${i + 1}"
+                        value="${
+                            i === 0
+                                ? "Player 1"
+                                : i === 1
+                                    ? "Player 2"
+                                    : ""
+                        }"
                     >
-                        NEXT TURN →
-                    </button>
 
-                </section>
+                </label>
 
+            `
+        ).join("");
 
-                <!-- SCOREBOARD -->
-
-                <aside class="score-panel">
-
-                    <div class="score-head">
-
-                        <div>
-
-                            <div class="eyebrow">LIVE SCORE</div>
-
-                            <h2>Scoreboard</h2>
-
-                        </div>
-
-                        <span class="score-unit">
-                            +100 PTS
-                        </span>
-
-                    </div>
+    }
 
 
-                    <div id="score-list" class="score-list"></div>
+    /* =====================================================
+       LOAD QUESTIONS
+       ORIGINAL QUESTIONS.TXT SYSTEM
+    ===================================================== */
+
+    async function loadQuestions(unit) {
+
+        const response = await fetch("data/questions.txt");
+
+        if (!response.ok) {
+
+            throw new Error("Could not load questions.txt");
+
+        }
+
+        const text = await response.text();
+
+        return text.split(/\r?\n/)
+
+            .filter(line => line.trim() && !line.startsWith("#"))
+
+            .map(line => {
+
+                const [
+
+                    unitNumber,
+
+                    question,
+
+                    optionA,
+
+                    optionB,
+
+                    optionC,
+
+                    optionD,
+
+                    answer
+
+                ] = line.split("|").map(x => x.trim());
 
 
-                    <div class="score-note">
-                        Each correct answer earns 100 points.
-                        The player with the highest score wins.
-                    </div>
+                return {
 
-                </aside>
+                    unit: Number(unitNumber),
 
-            </div>
+                    question,
 
-        </section>
+                    options: [
+
+                        optionA,
+
+                        optionB,
+
+                        optionC,
+
+                        optionD
+
+                    ],
+
+                    answer: Number(answer)
+
+                };
+
+            })
+
+            .filter(item => {
+
+                return (
+
+                    item.unit === unit &&
+
+                    item.question &&
+
+                    item.options.every(Boolean) &&
+
+                    Number.isInteger(item.answer) &&
+
+                    item.answer >= 0 &&
+
+                    item.answer <= 3
+
+                );
+
+            });
+
+    }
 
 
-        <!-- RESULTS SCREEN -->
+    /* =====================================================
+       INITIALISE
+    ===================================================== */
 
-        <section id="result-screen" class="screen result-screen" hidden>
+    async function initialise() {
 
-            <div class="eyebrow">GAME COMPLETE</div>
+        $("unit-pill").textContent = unitNumber
 
-            <h1>That's a <span>wrap!</span></h1>
+            ? `UNIT ${String(unitNumber).padStart(2, "0")}`
 
-            <p class="intro">
-                Final scores for this Mind Box challenge.
-            </p>
-
-            <div id="final-scores" class="final-scores"></div>
-
-            <button class="primary-btn" id="play-again-btn">
-                PLAY AGAIN ↻
-            </button>
-
-        </section>
-
-    </main>
+            : "UNIT NOT SELECTED";
 
 
-    <script src="js/mind-box.js"></script>
+        makePlayerFields();
 
-</body>
-</html>
+
+        $("player-count").addEventListener(
+            "change",
+            makePlayerFields
+        );
+
+
+        if (!unitNumber) {
+
+            setStatus(
+                "Return to the Games Hub and select a unit first.",
+                true
+            );
+
+            return;
+
+        }
+
+
+        setStatus("Loading questions...");
+
+
+        try {
+
+            state.questions = await loadQuestions(unitNumber);
+
+
+            if (!state.questions.length) {
+
+                throw new Error(
+                    "No questions available for this unit."
+                );
+
+            }
+
+
+            state.unit = unitNumber;
+
+
+            setStatus(
+                `Unit ${unitNumber} · ${state.questions.length} questions loaded.`
+            );
+
+
+            $("start-btn").disabled = false;
+
+        } catch (error) {
+
+            console.error(error);
+
+            setStatus(
+                error.message,
+                true
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       QUESTION BAG
+    ===================================================== */
+
+    function getNextQuestion() {
+
+        if (!state.questionBag.length) {
+
+            state.questionBag = shuffle(state.questions);
+
+        }
+
+
+        return state.questionBag.pop();
+
+    }
+
+
+    /* =====================================================
+       START GAME
+    ===================================================== */
+
+    function startGame() {
+
+        const count = Number($("player-count").value);
+
+
+        state.names = Array.from(
+
+            { length: count },
+
+            (_, i) => {
+
+                return (
+
+                    ($(`player-${i}`).value || "").trim() ||
+
+                    `Player ${i + 1}`
+
+                );
+
+            }
+
+        );
+
+
+        state.scores = Array(count).fill(0);
+
+        state.totalRounds = Number($("round-count").value);
+
+        state.round = 0;
+
+        state.player = 0;
+
+        state.answered = false;
+
+        state.finished = false;
+
+        state.questionBag = shuffle(state.questions);
+
+
+        $("setup-screen").hidden = true;
+
+        $("game-screen").hidden = false;
+
+        $("result-screen").hidden = true;
+
+
+        renderScoreboard();
+
+        showQuestion();
+
+    }
+
+
+    /* =====================================================
+       SHOW QUESTION
+    ===================================================== */
+
+    function showQuestion() {
+
+        if (state.finished) return;
+
+
+        state.answered = false;
+
+
+        state.currentQuestion = getNextQuestion();
+
+
+        const totalQuestions =
+            state.totalRounds * state.names.length;
+
+
+        const currentQuestionNumber =
+            state.round * state.names.length + state.player + 1;
+
+
+        const playerName = state.names[state.player];
+
+
+        $("round-title").textContent =
+
+            `ROUND ${state.round + 1} / ${state.totalRounds}`;
+
+
+        $("question-number").textContent =
+
+            `QUESTION ${currentQuestionNumber} / ${totalQuestions}`;
+
+
+        $("progress").style.width =
+
+            `${(currentQuestionNumber - 1) / totalQuestions * 100}%`;
+
+
+        $("current-player").textContent =
+
+            `${playerName.toUpperCase()}'S TURN`;
+
+
+        $("score").textContent =
+
+            `${state.scores[state.player]} POINTS`;
+
+
+        $("question").textContent =
+
+            state.currentQuestion.question;
+
+
+        $("feedback").textContent = "";
+
+        $("feedback").className = "feedback";
+
+
+        $("next-btn").hidden = true;
+
+
+        renderOptions();
+
+        renderScoreboard();
+
+    }
+
+
+    /* =====================================================
+       RENDER OPTIONS
+    ===================================================== */
+
+    function renderOptions() {
+
+        const item = state.currentQuestion;
+
+
+        $("options").innerHTML = item.options.map(
+
+            (option, index) => `
+
+                <button
+                    type="button"
+                    class="option"
+                    data-index="${index}"
+                >
+
+                    <span class="option-letter">
+                        ${"ABCD"[index]}
+                    </span>
+
+                    <span>${escapeHTML(option)}</span>
+
+                </button>
+
+            `
+
+        ).join("");
+
+
+        $("options").querySelectorAll(".option").forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                checkAnswer(
+                    Number(button.dataset.index)
+                );
+
+            });
+
+        });
+
+    }
+
+
+    /* =====================================================
+       CHECK ANSWER
+    ===================================================== */
+
+    function checkAnswer(selected) {
+
+        if (state.answered || state.finished) return;
+
+
+        state.answered = true;
+
+
+        const item = state.currentQuestion;
+
+        const correct = item.answer;
+
+
+        const buttons = $("options").querySelectorAll(".option");
+
+
+        buttons.forEach(button => {
+
+            button.disabled = true;
+
+
+            const index = Number(button.dataset.index);
+
+
+            if (index === correct) {
+
+                button.classList.add("correct");
+
+            }
+
+
+            if (index === selected && selected !== correct) {
+
+                button.classList.add("wrong");
+
+            }
+
+        });
+
+
+        if (selected === correct) {
+
+            state.scores[state.player] += 100;
+
+
+            $("feedback").textContent =
+
+                "Excellent! +100 POINTS";
+
+
+            $("feedback").classList.add("correct-text");
+
+        } else {
+
+            $("feedback").textContent =
+
+                `Not quite! The correct answer is ${item.options[correct]}.`;
+
+
+            $("feedback").classList.add("wrong-text");
+
+        }
+
+
+        $("score").textContent =
+
+            `${state.scores[state.player]} POINTS`;
+
+
+        renderScoreboard();
+
+
+        $("next-btn").hidden = false;
+
+
+        const isLastTurn =
+
+            state.round === state.totalRounds - 1 &&
+
+            state.player === state.names.length - 1;
+
+
+        $("next-btn").textContent = isLastTurn
+
+            ? "SEE FINAL RESULTS →"
+
+            : "NEXT TURN →";
+
+    }
+
+
+    /* =====================================================
+       NEXT TURN
+    ===================================================== */
+
+    function nextTurn() {
+
+        if (!state.answered || state.finished) return;
+
+
+        state.player++;
+
+
+        if (state.player >= state.names.length) {
+
+            state.player = 0;
+
+            state.round++;
+
+        }
+
+
+        if (state.round >= state.totalRounds) {
+
+            finishGame();
+
+            return;
+
+        }
+
+
+        showQuestion();
+
+    }
+
+
+    /* =====================================================
+       SCOREBOARD
+    ===================================================== */
+
+    function renderScoreboard() {
+
+        $("score-list").innerHTML = state.names.map(
+
+            (name, i) => `
+
+                <div class="score-row ${
+                    i === state.player && !state.finished
+                        ? "active"
+                        : ""
+                }">
+
+                    <span class="player-name">
+                        ${escapeHTML(name)}
+                    </span>
+
+                    <span class="player-score">
+                        ${state.scores[i]}
+                    </span>
+
+                </div>
+
+            `
+
+        ).join("");
+
+    }
+
+
+    /* =====================================================
+       FINISH GAME
+    ===================================================== */
+
+    function finishGame() {
+
+        if (state.finished) return;
+
+
+        state.finished = true;
+
+
+        $("game-screen").hidden = true;
+
+        $("result-screen").hidden = false;
+
+
+        const ranked = state.names.map((name, i) => ({
+
+            name,
+
+            score: state.scores[i],
+
+            correct: state.scores[i] / 100
+
+        })).sort((a, b) => b.score - a.score);
+
+
+        const highestScore = ranked[0].score;
+
+
+        $("final-scores").innerHTML = ranked.map(
+
+            (player, index) => `
+
+                <div class="final-row ${
+                    player.score === highestScore
+                        ? "winner"
+                        : ""
+                }">
+
+                    <strong>
+
+                        ${index === 0 ? "🏆 " : ""}
+
+                        ${index + 1}. ${escapeHTML(player.name)}
+
+                    </strong>
+
+                    <span>
+                        ${player.score} PTS
+                    </span>
+
+                </div>
+
+            `
+
+        ).join("");
+
+    }
+
+
+    /* =====================================================
+       RESET GAME
+    ===================================================== */
+
+    function playAgain() {
+
+        state.scores = [];
+
+        state.questions = state.questions;
+
+        state.questionBag = [];
+
+        state.round = 0;
+
+        state.player = 0;
+
+        state.answered = false;
+
+        state.finished = false;
+
+
+        $("result-screen").hidden = true;
+
+        $("game-screen").hidden = true;
+
+        $("setup-screen").hidden = false;
+
+
+        setStatus(
+            `Unit ${state.unit} · ${state.questions.length} questions loaded.`
+        );
+
+    }
+
+
+    /* =====================================================
+       EVENT LISTENERS
+    ===================================================== */
+
+    $("start-btn").addEventListener(
+        "click",
+        startGame
+    );
+
+
+    $("next-btn").addEventListener(
+        "click",
+        nextTurn
+    );
+
+
+    $("end-game-btn").addEventListener(
+        "click",
+        finishGame
+    );
+
+
+    $("play-again-btn").addEventListener(
+        "click",
+        playAgain
+    );
+
+
+    /* =====================================================
+       INITIALISE GAME
+    ===================================================== */
+
+    initialise();
+
+})();
