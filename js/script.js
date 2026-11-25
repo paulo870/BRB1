@@ -55,14 +55,17 @@ function clearEnvironmentState() {
 
 }
 // ==========================
-// DROPDOWN TOGGLE — SCROLL FIX
+// DROPDOWN TOGGLE — FIXED
 // ==========================
 
 const controlBar = document.querySelector(".control-bar");
 
 const dropdownMap = new Map();
 
-// Store each panel before moving it outside the sidebar
+let activeDropdownButton = null;
+
+
+// Move dropdown panels outside sidebar
 dropdownBtns.forEach(btn => {
 
     const panel = btn.parentElement.querySelector(".dropdown-content");
@@ -75,14 +78,11 @@ dropdownBtns.forEach(btn => {
 
 });
 
-let activeDropdownButton = null;
-
 
 // Position dropdown beside its corresponding icon
 function positionDropdown(btn, panel) {
 
     const buttonRect = btn.getBoundingClientRect();
-    const sidebarRect = controlBar.getBoundingClientRect();
 
     const panelHeight = panel.offsetHeight;
 
@@ -96,8 +96,9 @@ function positionDropdown(btn, panel) {
         maxTop
     );
 
-    panel.style.left = sidebarRect.right + "px";
-    panel.style.top = top + "px";
+    panel.style.left = `${buttonRect.right + 10}px`;
+
+    panel.style.top = `${top}px`;
 
 }
 
@@ -105,12 +106,12 @@ function positionDropdown(btn, panel) {
 // Close all dropdowns
 function closeDropdowns() {
 
-    document.querySelectorAll(".dropdown").forEach(dropdown => {
-        dropdown.classList.remove("show");
-    });
+    dropdownMap.forEach((panel, btn) => {
 
-    dropdownMap.forEach(panel => {
         panel.classList.remove("dropdown-open");
+
+        btn.parentElement.classList.remove("show");
+
     });
 
     activeDropdownButton = null;
@@ -121,15 +122,17 @@ function closeDropdowns() {
 // Open and close dropdowns
 dropdownBtns.forEach(btn => {
 
-    btn.addEventListener("click", (e) => {
+    btn.addEventListener("click", function(e) {
 
+        e.preventDefault();
         e.stopPropagation();
 
         const panel = dropdownMap.get(btn);
 
         if (!panel) return;
 
-        const alreadyOpen = panel.classList.contains("dropdown-open");
+        const alreadyOpen =
+            panel.classList.contains("dropdown-open");
 
         closeDropdowns();
 
@@ -150,39 +153,56 @@ dropdownBtns.forEach(btn => {
 });
 
 
+// Prevent clicks inside dropdown from closing it
+dropdownMap.forEach(panel => {
+
+    panel.addEventListener("click", function(e) {
+
+        e.stopPropagation();
+
+    });
+
+});
+
+
 // Close when clicking outside
-window.addEventListener("click", () => {
+window.addEventListener("click", function() {
+
     closeDropdowns();
+
 });
 
 
-// Keep the dropdown positioned while scrolling
-controlBar.addEventListener("scroll", () => {
+// Reposition while scrolling
+controlBar.addEventListener("scroll", function() {
 
     if (!activeDropdownButton) return;
 
     const panel = dropdownMap.get(activeDropdownButton);
 
     if (panel) {
+
         positionDropdown(activeDropdownButton, panel);
+
     }
 
 });
 
 
-// Reposition on window resize
-window.addEventListener("resize", () => {
+// Reposition when resizing
+window.addEventListener("resize", function() {
 
     if (!activeDropdownButton) return;
 
     const panel = dropdownMap.get(activeDropdownButton);
 
     if (panel) {
+
         positionDropdown(activeDropdownButton, panel);
+
     }
 
 });
-
 // ==========================
 // LOAD IMAGE FUNCTION
 // ==========================
