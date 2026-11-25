@@ -82,6 +82,7 @@ dropdownBtns.forEach(btn => {
 // Position dropdown beside its corresponding icon
 function positionDropdown(btn, panel) {
 
+    const sidebarRect = controlBar.getBoundingClientRect();
     const buttonRect = btn.getBoundingClientRect();
 
     const panelHeight = panel.offsetHeight;
@@ -96,14 +97,9 @@ function positionDropdown(btn, panel) {
         maxTop
     );
 
-    panel.style.left = `${buttonRect.right + 10}px`;
-
+    panel.style.left = `${sidebarRect.right + 8}px`;
     panel.style.top = `${top}px`;
-
 }
-
-
-// Close all dropdowns
 function closeDropdowns() {
 
     dropdownMap.forEach((panel, btn) => {
