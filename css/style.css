@@ -4987,3 +4987,73 @@ body.sidebar-hidden #prev-btn {
     }
 
 }
+/* =========================================================
+   PLATFORM DESIGN — FIXES
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. MAKE SIDEBAR LABELS BOLD
+   --------------------------------------------------------- */
+
+.control-bar > a::after,
+.control-bar .dropdown::after {
+    font-weight: 700 !important;
+}
+
+
+/* ---------------------------------------------------------
+   2. RESTORE STUDENT BOOK AND ACTIVITY BOOK CLICKS
+   --------------------------------------------------------- */
+
+/* Keep the dropdown containers interactive */
+.control-bar .dropdown {
+    position: relative;
+    z-index: 20;
+    pointer-events: auto !important;
+    cursor: pointer;
+}
+
+/* Make sure the actual icons receive clicks */
+.control-bar .dropdown-btn {
+    position: relative;
+    z-index: 21;
+    pointer-events: auto !important;
+    cursor: pointer;
+}
+
+/* Keep decorative pseudo-elements from blocking clicks */
+.control-bar::before,
+.control-bar::after,
+.control-bar > a::before,
+.control-bar > a::after,
+.control-bar .dropdown::before,
+.control-bar .dropdown::after {
+    pointer-events: none !important;
+}
+
+/* Keep dropdown menus above the sidebar */
+.dropdown-content {
+    z-index: 5000 !important;
+}
+
+
+/* ---------------------------------------------------------
+   3. RESTORE THE BACKGROUND IMAGE
+   --------------------------------------------------------- */
+
+.slide-container {
+    background-color: transparent !important;
+
+    background-image:
+        linear-gradient(
+            rgba(5, 18, 24, 0.10),
+            rgba(5, 18, 24, 0.10)
+        ),
+        url("../images/background.jpg") !important;
+
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed;
+}
