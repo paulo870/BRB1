@@ -205,9 +205,13 @@ function autoFitImage() {
 }
 
 function loadImage(src) {
+
+    slideImage.style.display = "block";
+
     slideImage.onload = function() {
         autoFitImage();
     };
+
     slideImage.src = src;
 }
 // ==========================
@@ -227,15 +231,17 @@ slideImage.addEventListener("dragstart", function(e) {
 // HOME PAGE
 // ==========================
 function loadHome() {
+
     currentImages = [];
     currentIndex = 0;
 
-    // Remove homepage image
-    slideImage.src = "";
-    slideImage.style.display = "none";
+    // Clear the homepage image without hiding the slide element
+    slideImage.removeAttribute("src");
 
+    // Hide navigation buttons
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
+
 }
 
 // ==========================
