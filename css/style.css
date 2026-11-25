@@ -4508,10 +4508,6 @@ body::before {
 }
 
 .dropdown-content {
-    left: calc(100% + 5px) !important;
-
-    top: 0 !important;
-
     background:
         linear-gradient(
             145deg,
