@@ -235,7 +235,8 @@ function loadHome() {
     currentImages = [];
     currentIndex = 0;
 
-    // Clear the homepage image without hiding the slide element
+    // Clear the slide without requesting an image
+    slideImage.onload = null;
     slideImage.removeAttribute("src");
 
     // Hide navigation buttons
