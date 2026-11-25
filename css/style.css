@@ -4039,3 +4039,951 @@ body:not(.sidebar-hidden) #sidebar-toggle {
 .dropdown-content::-webkit-scrollbar {
     display: none;
 }
+/* =========================================================
+   ACADEMIA POLIGLOTA — NEW PLATFORM DESIGN
+   VISUAL REDESIGN LAYER
+   ========================================================= */
+
+
+/* =========================================================
+   1. DESIGN SYSTEM
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --nav-width: 300px;
+
+    --teal-dark: #04282B;
+    --teal-mid: #073A3D;
+    --teal-light: #0A4A4D;
+
+    --teal-accent: #20C1B6;
+    --teal-bright: #3FD6CA;
+
+    --gold: #F0C34E;
+
+    --page-background: #EEF6F6;
+
+    --text-dark: #173C3D;
+    --text-muted: #789493;
+}
+
+
+/* =========================================================
+   2. GLOBAL BACKGROUND
+   ========================================================= */
+
+html,
+body {
+    font-family: 'Inter', sans-serif !important;
+    background: var(--page-background) !important;
+    color: var(--text-dark);
+}
+
+body {
+    background-image: none !important;
+}
+
+body::before {
+    display: none !important;
+}
+
+
+/* =========================================================
+   3. SIDEBAR
+   ========================================================= */
+
+.control-bar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: var(--nav-width);
+    height: 100vh;
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    gap: 5px;
+
+    padding: 125px 18px 28px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background:
+        radial-gradient(
+            140% 50% at 0% 0%,
+            rgba(32, 193, 182, 0.28),
+            transparent 55%
+        ),
+        radial-gradient(
+            120% 40% at 100% 100%,
+            rgba(32, 193, 182, 0.16),
+            transparent 60%
+        ),
+        linear-gradient(
+            180deg,
+            #0A4A4D 0%,
+            #073A3D 50%,
+            #04282B 100%
+        ) !important;
+
+    border-right: none !important;
+
+    box-shadow:
+        6px 0 30px rgba(4, 40, 43, 0.28);
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    z-index: 5000;
+
+    scrollbar-width: none;
+}
+
+
+/* Hide scrollbar */
+
+.control-bar::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Decorative gold edge */
+
+.control-bar::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 2px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(240, 195, 78, 0.9) 18%,
+            rgba(240, 195, 78, 0.2) 60%,
+            transparent
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   4. SIDEBAR LOGO
+   ========================================================= */
+
+.control-bar::before {
+    content: "";
+
+    position: absolute;
+
+    top: 25px;
+    left: 24px;
+
+    width: 205px;
+    height: 70px;
+
+    background-image: url('../images/logo.png');
+
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   5. NAVIGATION ITEMS
+   ========================================================= */
+
+.control-bar > a,
+.control-bar > .dropdown {
+    position: relative;
+
+    width: 100%;
+    min-height: 64px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 14px;
+
+    padding: 3px 12px 3px 4px;
+
+    border: 1px solid transparent;
+    border-radius: 15px;
+
+    background: transparent;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+/* Hover */
+
+.control-bar > a:hover,
+.control-bar > .dropdown:hover {
+    background: rgba(255, 255, 255, 0.07);
+
+    border-color:
+        rgba(255, 255, 255, 0.10);
+}
+
+
+/* =========================================================
+   6. NAVIGATION ICON TILES
+   ========================================================= */
+
+.control-bar .control-icon {
+    width: 58px !important;
+    height: 58px !important;
+
+    min-width: 58px;
+    min-height: 58px;
+
+    flex: 0 0 58px;
+
+    margin: 0 !important;
+
+    padding: 9px !important;
+
+    object-fit: contain;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.16),
+            transparent 50%
+        ),
+        linear-gradient(
+            160deg,
+            #2C7376 0%,
+            #0F4D50 50%,
+            #072F32 100%
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    box-shadow:
+        inset 0 1.5px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.35),
+        0 8px 16px rgba(0, 0, 0, 0.25);
+
+    transform: none !important;
+
+    filter: none !important;
+
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Icon hover */
+
+.control-bar > a:hover .control-icon,
+.control-bar > .dropdown:hover .control-icon {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.22),
+            transparent 50%
+        ),
+        linear-gradient(
+            160deg,
+            #3FD6CA 0%,
+            #149A92 50%,
+            #075450 100%
+        );
+
+    box-shadow:
+        inset 0 1.5px 0 rgba(255, 255, 255, 0.45),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.3),
+        0 8px 20px rgba(32, 193, 182, 0.3);
+}
+
+
+/* =========================================================
+   7. NAVIGATION LABELS
+   ========================================================= */
+
+.control-bar > a::after,
+.control-bar > .dropdown::after {
+    flex: 1;
+
+    color: #DCEFEE;
+
+    font-family: 'Inter', sans-serif;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    letter-spacing: 0;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+
+/* Home */
+
+#home-btn::after {
+    content: "Home";
+}
+
+
+/* Student Book */
+
+.control-bar > .dropdown:nth-of-type(1)::after {
+    content: "Student Book";
+}
+
+
+/* Activity Book */
+
+.control-bar > .dropdown:nth-of-type(2)::after {
+    content: "Activity Book";
+}
+
+
+/* Audio */
+
+#audio-btn::after {
+    content: "Audio";
+}
+
+
+/* Video */
+
+.control-bar > a:nth-of-type(3)::after {
+    content: "Videos";
+}
+
+
+/* Edit */
+
+#edit-btn::after {
+    content: "Edit";
+}
+
+
+/* Whiteboard */
+
+#whiteboard-btn::after {
+    content: "Whiteboard";
+}
+
+
+/* Games */
+
+#games-btn::after {
+    content: "Games";
+}
+
+
+/* =========================================================
+   8. ACTIVE HOME BUTTON
+   ========================================================= */
+
+#home-btn {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(32, 193, 182, 0.30),
+            rgba(32, 193, 182, 0.05)
+        );
+
+    border-color:
+        rgba(64, 214, 204, 0.38);
+}
+
+#home-btn::after {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+#home-btn::before {
+    content: "";
+
+    position: absolute;
+
+    right: 15px;
+    top: 50%;
+
+    width: 7px;
+    height: 7px;
+
+    transform: translateY(-50%);
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    box-shadow:
+        0 0 10px rgba(240, 195, 78, 0.8);
+}
+
+
+/* =========================================================
+   9. NAVIGATION GROUP LABELS
+   ========================================================= */
+
+#audio-btn {
+    margin-top: 25px;
+}
+
+#audio-btn::before {
+    content: "MEDIA";
+
+    position: absolute;
+
+    left: 12px;
+    top: -25px;
+
+    color: #86C3BF;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.16em;
+}
+
+
+#edit-btn {
+    margin-top: 25px;
+}
+
+#edit-btn::before {
+    content: "CLASSROOM";
+
+    position: absolute;
+
+    left: 12px;
+    top: -25px;
+
+    color: #86C3BF;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.16em;
+}
+
+
+/* =========================================================
+   10. DROPDOWN BEHAVIOUR
+   ========================================================= */
+
+.control-bar > .dropdown {
+    position: relative;
+    justify-content: flex-start;
+}
+
+.dropdown-content {
+    left: calc(100% + 5px) !important;
+
+    top: 0 !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            #123C3E,
+            #06282B
+        ) !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================================
+   11. MAIN CONTENT AREA
+   ========================================================= */
+
+.slide-container {
+    position: absolute;
+
+    left: var(--nav-width) !important;
+    top: 0;
+
+    width: calc(100% - var(--nav-width)) !important;
+    height: 100vh;
+
+    background:
+        radial-gradient(
+            ellipse at 75% 20%,
+            rgba(32, 193, 182, 0.08),
+            transparent 42%
+        ),
+        linear-gradient(
+            135deg,
+            #F8FCFC 0%,
+            #EEF6F6 55%,
+            #E5F2F1 100%
+        ) !important;
+
+    background-image:
+        radial-gradient(
+            ellipse at 75% 20%,
+            rgba(32, 193, 182, 0.08),
+            transparent 42%
+        ),
+        linear-gradient(
+            135deg,
+            #F8FCFC 0%,
+            #EEF6F6 55%,
+            #E5F2F1 100%
+        ) !important;
+
+    overflow: auto !important;
+}
+
+
+/* =========================================================
+   12. PRESENTATION IMAGE
+   ========================================================= */
+
+#slide-image {
+    border-radius: 5px;
+
+    box-shadow:
+        0 18px 50px rgba(20, 65, 65, 0.16);
+}
+
+
+/* Hide empty homepage image */
+
+#slide-image[src=""] {
+    display: none !important;
+}
+
+
+/* =========================================================
+   13. HOMEPAGE VISUAL
+   ========================================================= */
+
+.slide-container:has(#slide-image[src=""]) .slide-wrapper {
+    position: relative;
+
+    min-height: 100%;
+}
+
+
+/* Homepage heading */
+
+.slide-container:has(#slide-image[src=""]) .slide-wrapper::before {
+    content:
+        "ACADEMIA POLIGLOTA\A Your Global Learning Platform";
+
+    position: absolute;
+
+    top: 17%;
+    left: 9%;
+
+    z-index: 2;
+
+    white-space: pre-line;
+
+    color: #17494A;
+
+    font-family: 'Inter', sans-serif;
+
+    font-size: clamp(25px, 3.2vw, 43px);
+    font-weight: 800;
+
+    line-height: 1.5;
+
+    letter-spacing: -1.2px;
+}
+
+
+/* Decorative map / connection artwork */
+
+.slide-container:has(#slide-image[src=""]) .slide-wrapper::after {
+    content: "";
+
+    position: absolute;
+
+    right: 5%;
+    bottom: 5%;
+
+    width: 65%;
+    height: 65%;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    opacity: 0.75;
+
+    background-image:
+        radial-gradient(circle at 20% 40%, #20C1B6 0 4px, transparent 5px),
+        radial-gradient(circle at 45% 25%, #F0C34E 0 4px, transparent 5px),
+        radial-gradient(circle at 70% 45%, #20C1B6 0 4px, transparent 5px),
+        radial-gradient(circle at 82% 75%, #20C1B6 0 4px, transparent 5px),
+        radial-gradient(circle at 35% 78%, #F0C34E 0 4px, transparent 5px);
+
+    background-repeat: no-repeat;
+
+    filter: drop-shadow(0 4px 8px rgba(20, 100, 95, 0.1));
+}
+
+
+/* =========================================================
+   14. SIDEBAR TOGGLE
+   ========================================================= */
+
+#sidebar-toggle {
+    left: var(--nav-width) !important;
+
+    width: 32px;
+    height: 40px;
+
+    color: #ffffff;
+
+    background: #075450 !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 0 9px 9px 0;
+
+    box-shadow:
+        4px 0 15px rgba(0, 0, 0, 0.18);
+
+    z-index: 6000;
+}
+
+body:not(.sidebar-hidden) #sidebar-toggle {
+    left: var(--nav-width) !important;
+}
+
+body.sidebar-hidden #sidebar-toggle {
+    left: 0 !important;
+}
+
+body.sidebar-hidden .control-bar {
+    transform: translateX(-100%);
+}
+
+body.sidebar-hidden .slide-container {
+    left: 0 !important;
+    width: 100% !important;
+}
+
+
+/* =========================================================
+   15. PRESENTATION NAVIGATION
+   ========================================================= */
+
+#prev-btn {
+    left: calc(var(--nav-width) + 20px) !important;
+}
+
+body.sidebar-hidden #prev-btn {
+    left: 35px !important;
+}
+
+
+/* =========================================================
+   16. MEDIA PANELS
+   ========================================================= */
+
+#audio-list-container,
+#video-list-container,
+#presentation-list-container,
+#presentations-unit-container {
+    left: calc(var(--nav-width) + 22px);
+}
+
+#slide-audio {
+    left: calc(var(--nav-width) + 22px);
+}
+
+#whiteboard {
+    left: calc(var(--nav-width) + 20px);
+    width: calc(100% - var(--nav-width) - 40px);
+}
+
+
+/* =========================================================
+   17. PRACTICE BUTTON
+   ========================================================= */
+
+#practice-btn {
+    background:
+        linear-gradient(
+            135deg,
+            #0E7C77,
+            #05403E
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 8px 20px rgba(4, 64, 62, 0.2);
+}
+
+#practice-btn:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #149A92,
+            #075450
+        );
+}
+
+
+/* =========================================================
+   18. RESPONSIVE SIDEBAR
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    :root {
+        --nav-width: 250px;
+    }
+
+    .control-bar {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+
+    .control-bar::before {
+        left: 18px;
+        width: 185px;
+    }
+
+}
+
+
+/* =========================================================
+   19. MOBILE SIDEBAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    :root {
+        --nav-width: 76px;
+    }
+
+    .control-bar {
+        width: 76px;
+
+        padding: 15px 8px;
+
+        align-items: center;
+    }
+
+    .control-bar::before {
+        top: 18px;
+        left: 12px;
+
+        width: 50px;
+        height: 42px;
+
+        background-image: url('../images/logo.png');
+    }
+
+    .control-bar > a,
+    .control-bar > .dropdown {
+        width: 58px;
+        min-height: 60px;
+
+        justify-content: center;
+
+        padding: 0;
+    }
+
+    .control-bar .control-icon {
+        width: 48px !important;
+        height: 48px !important;
+
+        min-width: 48px;
+        min-height: 48px;
+
+        flex-basis: 48px;
+    }
+
+    .control-bar > a::after,
+    .control-bar > .dropdown::after {
+        display: none;
+    }
+
+    .control-bar > a::before {
+        display: none;
+    }
+
+    #audio-btn,
+    #edit-btn {
+        margin-top: 15px;
+    }
+
+    #audio-btn::before,
+    #edit-btn::before {
+        display: none;
+    }
+
+    .slide-container {
+        left: 76px !important;
+        width: calc(100% - 76px) !important;
+    }
+
+    #sidebar-toggle {
+        left: 76px !important;
+    }
+
+    body:not(.sidebar-hidden) #sidebar-toggle {
+        left: 76px !important;
+    }
+
+    body.sidebar-hidden #sidebar-toggle {
+        left: 0 !important;
+    }
+
+    #prev-btn {
+        left: 88px !important;
+    }
+
+    body.sidebar-hidden #prev-btn {
+        left: 35px !important;
+    }
+
+    #audio-list-container,
+    #video-list-container,
+    #presentation-list-container,
+    #presentations-unit-container {
+        left: 88px;
+        max-width: calc(100vw - 100px);
+    }
+
+    #slide-audio {
+        left: 88px;
+        width: calc(100vw - 105px);
+    }
+
+    #whiteboard {
+        left: 88px;
+        width: calc(100% - 100px);
+    }
+
+}
+
+
+/* =========================================================
+   20. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    :root {
+        --nav-width: 64px;
+    }
+
+    .control-bar {
+        width: 64px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .control-bar::before {
+        left: 9px;
+        width: 45px;
+    }
+
+    .control-bar > a,
+    .control-bar > .dropdown {
+        width: 54px;
+    }
+
+    .control-bar .control-icon {
+        width: 44px !important;
+        height: 44px !important;
+
+        min-width: 44px;
+        min-height: 44px;
+
+        flex-basis: 44px;
+    }
+
+    .slide-container {
+        left: 64px !important;
+        width: calc(100% - 64px) !important;
+    }
+
+    #sidebar-toggle,
+    body:not(.sidebar-hidden) #sidebar-toggle {
+        left: 64px !important;
+    }
+
+    #prev-btn {
+        left: 76px !important;
+    }
+
+    #audio-list-container,
+    #video-list-container,
+    #presentation-list-container,
+    #presentations-unit-container {
+        left: 76px;
+    }
+
+    #slide-audio {
+        left: 76px;
+        width: calc(100vw - 90px);
+    }
+
+    #whiteboard {
+        left: 76px;
+        width: calc(100% - 88px);
+    }
+
+}
+
+
+/* =========================================================
+   21. ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .control-bar,
+    .control-bar *,
+    .slide-container {
+        transition: none !important;
+        animation: none !important;
+    }
+
+}
