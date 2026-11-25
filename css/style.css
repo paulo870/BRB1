@@ -5057,3 +5057,19 @@ body.sidebar-hidden #prev-btn {
     background-repeat: no-repeat !important;
     background-attachment: fixed;
 }
+/* =========================================================
+   FIX: DROPDOWN PANELS MOVED OUTSIDE THE SIDEBAR
+   ========================================================= */
+
+.dropdown-content {
+    position: fixed !important;
+    display: none;
+    z-index: 10000 !important;
+}
+
+.dropdown-content.dropdown-open {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
