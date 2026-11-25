@@ -29,25 +29,7 @@ hideAudioBtn.addEventListener("click", () => {
 let currentImages = [];
 let currentIndex = 0;
 let currentScale = 1;
-/* =========================================================
-   ACTIVE SIDEBAR SECTION
-========================================================= */
 
-function setActiveSection(activeElement) {
-
-    document.querySelectorAll(
-        ".control-bar > a, .control-bar > .dropdown"
-    ).forEach(item => {
-
-        item.classList.remove("active-section");
-
-    });
-
-    if (activeElement) {
-        activeElement.classList.add("active-section");
-    }
-
-}
 // ==========================
 // SAVE CURRENT PAGE STATE
 // ==========================
@@ -84,35 +66,15 @@ let activeDropdownButton = null;
 
 
 // Move dropdown panels outside sidebar
-document.querySelectorAll(".control-bar > .dropdown").forEach(dropdown => {
+dropdownBtns.forEach(btn => {
 
-    dropdown.addEventListener("click", function(e) {
+    const panel = btn.parentElement.querySelector(".dropdown-content");
 
-        e.preventDefault();
-        e.stopPropagation();
+    if (!panel) return;
 
-        const btn = dropdown.querySelector(".dropdown-btn");
-        const panel = dropdownMap.get(btn);
+    dropdownMap.set(btn, panel);
 
-        if (!panel) return;
-
-        const alreadyOpen = panel.classList.contains("dropdown-open");
-
-        closeDropdowns();
-
-        if (!alreadyOpen) {
-
-            dropdown.classList.add("show");
-
-            panel.classList.add("dropdown-open");
-
-            activeDropdownButton = btn;
-
-            positionDropdown(btn, panel);
-
-        }
-
-    });
+    document.body.appendChild(panel);
 
 });
 
@@ -283,7 +245,6 @@ slideImage.addEventListener("dragstart", function(e) {
 // HOME PAGE
 // ==========================
 function loadHome() {
-    setActiveSection(homeBtn);
 
     currentImages = [];
     currentIndex = 0;
@@ -301,9 +262,6 @@ function loadHome() {
 // STUDENT BOOK
 // ==========================
 function loadStudentUnit(unitNumber) {
-    setActiveSection(
-    document.querySelector("#students-book-dropdown").parentElement
-);
     currentImages = [];
     currentIndex = 0;
 
@@ -341,9 +299,6 @@ function loadStudentUnit(unitNumber) {
 // ACTIVITY BOOK
 // ==========================
 function loadActivityUnit(unitNumber) {
-    setActiveSection(
-    document.querySelector("#activity-book-dropdown").parentElement
-);
     currentImages = [];
     currentIndex = 0;
 
