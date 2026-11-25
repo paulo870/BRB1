@@ -235,16 +235,15 @@ function loadHome() {
     currentImages = [];
     currentIndex = 0;
 
-    // Clear the slide without requesting an image
     slideImage.onload = null;
     slideImage.removeAttribute("src");
 
-    // Hide navigation buttons
+    // Hide the image completely
+    slideImage.style.display = "none";
+
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
-
 }
-
 // ==========================
 // STUDENT BOOK
 // ==========================
