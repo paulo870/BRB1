@@ -4410,10 +4410,12 @@ body::before {
 
 
 /* =========================================================
-   8. ACTIVE HOME BUTTON
-   ========================================================= */
+   ACTIVE NAVIGATION ITEM
+========================================================= */
 
-#home-btn {
+.control-bar > a.active-section,
+.control-bar > .dropdown.active-section {
+
     background:
         linear-gradient(
             90deg,
@@ -4425,12 +4427,19 @@ body::before {
         rgba(64, 214, 204, 0.38);
 }
 
-#home-btn::after {
+
+.control-bar > a.active-section::after,
+.control-bar > .dropdown.active-section::after {
+
     color: #ffffff;
-    font-weight: 600;
+
+    font-weight: 700;
 }
 
-#home-btn::before {
+
+.control-bar > a.active-section::before,
+.control-bar > .dropdown.active-section::before {
+
     content: "";
 
     position: absolute;
@@ -5108,4 +5117,49 @@ body.sidebar-hidden #prev-btn {
 .dropdown-content a:hover {
     background: rgba(32, 193, 182, 0.2);
     color: #ffffff !important;
+}
+/* =========================================================
+   AUDIO PLAYER CLOSE BUTTON
+========================================================= */
+
+#hide-audio-btn {
+    position: fixed;
+
+    bottom: 90px;
+    left: calc(var(--nav-width) + 22px);
+
+    z-index: 6001;
+
+    display: none;
+
+    padding: 9px 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 7px;
+
+    background: #073A3D;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+#hide-audio-btn:hover {
+    background: #0A4A4D;
+}
+
+@media (max-width: 600px) {
+    #hide-audio-btn {
+        left: 88px;
+    }
+}
+
+@media (max-width: 420px) {
+    #hide-audio-btn {
+        left: 76px;
+    }
 }
