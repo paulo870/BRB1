@@ -229,7 +229,11 @@ slideImage.addEventListener("dragstart", function(e) {
 function loadHome() {
     currentImages = [];
     currentIndex = 0;
-    loadImage("images/homepage.jpg");
+
+    // Remove homepage image
+    slideImage.src = "";
+    slideImage.style.display = "none";
+
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
 }
