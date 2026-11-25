@@ -114,18 +114,16 @@ function closeDropdowns() {
 
 }
 
+// Open and close dropdowns — ICON AND LABEL
 
-// Open and close dropdowns
-dropdownBtns.forEach(btn => {
+dropdownMap.forEach((panel, btn) => {
 
-    btn.addEventListener("click", function(e) {
+    const dropdown = btn.parentElement;
+
+    dropdown.addEventListener("click", function(e) {
 
         e.preventDefault();
         e.stopPropagation();
-
-        const panel = dropdownMap.get(btn);
-
-        if (!panel) return;
 
         const alreadyOpen =
             panel.classList.contains("dropdown-open");
@@ -134,7 +132,7 @@ dropdownBtns.forEach(btn => {
 
         if (!alreadyOpen) {
 
-            btn.parentElement.classList.add("show");
+            dropdown.classList.add("show");
 
             panel.classList.add("dropdown-open");
 
