@@ -4405,7 +4405,7 @@ body::before {
 /* Games */
 
 #games-btn::after {
-    content: "Games";
+    content: "Challenges";
 }
 
 
